@@ -1452,7 +1452,7 @@ var/global/global_lentahtml = ""
 	var/eng_rank_name_s = "Rookie"
 	switch(rating)
 		if(ZONE_LEGEND to INFINITY)
-			eng_rank_name_s = "Legend"
+			eng_rank_name_s = "Zone Legend"
 		if(EXPERT to ZONE_LEGEND)
 			eng_rank_name_s = "Expert"
 		if(VETERAN to EXPERT)
@@ -1502,7 +1502,7 @@ var/global/global_lentahtml = ""
 
 	switch(rep)
 		if(AMAZING to INFINITY)
-			rep_name_s = "Блатной"
+			rep_name_s = "Уважаема&#x44F;"
 		if(VERYGOOD to AMAZING)
 			rep_name_s = "Очень хороша&#x44F;"
 		if(GOOD to VERYGOOD)
@@ -1523,7 +1523,7 @@ var/global/global_lentahtml = ""
 
 	switch(rep)
 		if(AMAZING to INFINITY)
-			eng_rep_name_s = "Jesus"
+			eng_rep_name_s = "Fine"
 		if(VERYGOOD to AMAZING)
 			eng_rep_name_s = "Very Good"
 		if(GOOD to VERYGOOD)
@@ -1535,7 +1535,7 @@ var/global/global_lentahtml = ""
 		if(DISGUSTING to VERYBAD)
 			eng_rep_name_s = "Very Bad"
 		if(-INFINITY to DISGUSTING)
-			eng_rep_name_s = "Satan"
+			eng_rep_name_s = "Awful"
 
 	return eng_rep_name_s
 

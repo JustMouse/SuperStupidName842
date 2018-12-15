@@ -180,3 +180,13 @@
 
 /obj/structure/bed/chair/brevno/rotate()
 	return
+
+/obj/structure/bed/chair/bench
+	name = "bench"
+	desc = "Скамейка, на которой можно сидеть."
+	eng_desc = "You can sit on this."
+	icon = 'icons/stalker/decor.dmi'
+	icon_state = "bench1"
+
+/obj/structure/bed/chair/bench/bench2
+	icon_state = "bench2"
