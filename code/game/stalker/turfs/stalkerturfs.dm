@@ -304,14 +304,14 @@ var/global/list/GryazEdgeCache
 		return
 
 	if(busy)
-		user << "<span class='notice'>Someone's already washing here.</span>"
+		user << "<span class='notice'>Кто-то уже моется здесь!</span>"
 		return
 	var/selected_area = parse_zone(user.zone_sel.selecting)
 	var/washing_face = 0
 	if(selected_area in list("head", "mouth", "eyes"))
 		washing_face = 1
-	user.visible_message("<span class='notice'>[user] start washing their [washing_face ? "face" : "hands"]...</span>", \
-						"<span class='notice'>You start washing your [washing_face ? "face" : "hands"]...</span>")
+	user.visible_message("<span class='notice'>[user] начинает мыть [washing_face ? "face" : "hands"]...</span>", \
+						"<span class='notice'>Вы начинаете мыть [washing_face ? "face" : "hands"]...</span>")
 	busy = 1
 
 	if(!do_after(user, 40, target = src))
@@ -320,8 +320,8 @@ var/global/list/GryazEdgeCache
 
 	busy = 0
 
-	user.visible_message("<span class='notice'>[user] washes their [washing_face ? "face" : "hands"] using [src].</span>", \
-						"<span class='notice'>You wash your [washing_face ? "face" : "hands"] using [src].</span>")
+	user.visible_message("<span class='notice'>[user] моет [washing_face ? "face" : "hands"], используя [src].</span>", \
+						"<span class='notice'>Вы моете своё [washing_face ? "face" : "hands"], используя [src].</span>")
 	if(washing_face)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -336,7 +336,7 @@ var/global/list/GryazEdgeCache
 
 /turf/stalker/floor/water/attackby(obj/item/O, mob/user, params)
 	if(busy)
-		user << "<span class='warning'>Someone's already washing here!</span>"
+		user << "<span class='warning'>Кто-то уже моется здесь!</span>"
 		return
 
 	if(istype(O, /obj/item/weapon/reagent_containers))
@@ -372,15 +372,15 @@ var/global/list/GryazEdgeCache
 	if(I.flags & ABSTRACT) //Abstract items like grabs won't wash. No-drop items will though because it's still technically an item in your hand.
 		return
 
-	user << "<span class='notice'>You start washing [I]...</span>"
+	user << "<span class='notice'>Вы начали мыть [I]...</span>"
 	busy = 1
 	if(!do_after(user, 40, target = src))
 		busy = 0
 		return
 	busy = 0
 	O.clean_blood()
-	user.visible_message("<span class='notice'>[user] washes [I] using [src].</span>", \
-						"<span class='notice'>You wash [I] using [src].</span>")
+	user.visible_message("<span class='notice'>[user] помыл [I], используя [src].</span>", \
+						"<span class='notice'>Вы помыли [I], используя [src].</span>")
 
 /turf/stalker/floor/water/Entered(atom/movable/A)
 	..()

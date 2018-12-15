@@ -91,18 +91,18 @@
 	return pick(available_skin_tones)
 
 var/list/available_skin_tones = list(
-	"albino",
+//	"albino",
 	"caucasian1",
-	"caucasian2",
-	"caucasian3",
-	"latino",
-	"mediterranean",
-	"asian1",
-	"asian2",
-	"arab",
-	"indian",
-	"african1",
-	"african2",
+//	"caucasian2",
+//	"caucasian3",
+//	"latino",
+//	"mediterranean",
+//	"asian1",
+//	"asian2",
+//	"arab",
+//	"indian",
+//	"african1",
+//	"african2",
 	)
 
 var/list/skin_tones = list(

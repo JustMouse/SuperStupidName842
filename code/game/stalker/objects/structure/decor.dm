@@ -614,31 +614,33 @@
 /obj/structure/stalker/cacheable/New()
 	..()
 
-	if(!cache_chance)
-		cache_chance = rand(6,8)
+//	if(!cache_chance)
+//		cache_chance = rand(6,8)
 
 	if(cache_quality == -1)
-		switch(z)
-			if(4 to INFINITY)
-				cache_quality = rand(1, 2)//rand(2, 3)
+		switch(rand(1,3))
 			if(3)
-				cache_quality = rand(0, 1)
+				cache_quality = rand(2, 3)
 			if(2)
-				cache_quality = 0
-				cache_chance += 2
+				cache_quality = rand(0, 1)
 			if(1)
-				cache_quality = rand(1, 2)//0
-				cache_chance -= 4
+				cache_quality = 0
+//			if(0)
+//				cache_quality = rand(1, 2)//0
+//				cache_chance -= 4
 
 	switch(cache_quality)
 		if(3)
-			cache_chance -= 2.5
+			cache_chance -= 4
+
+		if(2)
+			cache_chance += 6
 
 		if(1)
-			cache_chance += 1
+			cache_chance += 10
 
 		if(0)
-			cache_chance += 2
+			cache_chance += 30
 
 	if(!prob(cache_chance))
 		//internal_cache = null
@@ -662,15 +664,15 @@
 /obj/structure/stalker/cacheable/attack_hand(mob/user)
 	..()
 
-	user.visible_message("<span class='notice'>[user] starts inspecting [src]...</span>", "<span class='notice'>You start inspecting [src]...</span>")
+	user.visible_message("<span class='notice'>[user] начал исследовать [src]...</span>", "<span class='notice'>Вы начали исследовать [src]...</span>")
 	if(!do_after(user, 30, 1, src))
 		return
 
 	if(!internal_cache)
-		user.visible_message("<span class='notice'>[user] finds nothing in [src].</span>", "<span class='notice'>You find nothing in [src].</span>")
+		user.visible_message("<span class='notice'>[user] ничего не нашёл в [src].</span>", "<span class='notice'>Вы ничего не нашли в [src].</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] discovered a hidden cache in [src].</span>", "<span class='notice'>You discovered a hidden cache in [src].</span>")
+	user.visible_message("<span class='notice'>[user] нашёл спр&#255;танный лут в [src].</span>", "<span class='notice'>Вы нашли спр&#255;танный лут в [src].</span>")
 
 	playsound(loc, "rustle", 50, 1, -5)
 	if(user.s_active)
@@ -691,21 +693,21 @@
 	if(!KPK.owner || KPK.owner != H)
 		return
 
-	show_lenta_message(null, KPK, null, "PDA", "OS", "You discovered a stash in the [src]!", selfsound = 1)
+//	show_lenta_message(null, KPK, null, "PDA", "OS", "You discovered a stash in the [src]!", selfsound = 1)
 
-	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+//	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 
-	if(!sk)
-		return
+//	if(!sk)
+//		return
 
-	sk.fields["rating"] +=  25 * (2 ** cache_quality)
+//	sk.fields["rating"] +=  25 * (2 ** cache_quality)
 
 	if(!internal_cache.cached_cash)
 		return
 
-	sk.fields["money"] += internal_cache.cached_cash
-	show_lenta_message(null, KPK, null, "PDA", "OS", "You found a bitRU key that gave you access to [internal_cache.cached_cash] RU on your account!", selfsound = 1)
-	internal_cache.cached_cash = 0
+//	sk.fields["money"] += internal_cache.cached_cash
+//	show_lenta_message(null, KPK, null, "PDA", "OS", "You found a bitRU key that gave you access to [internal_cache.cached_cash] RU on your account!", selfsound = 1)
+//	internal_cache.cached_cash = 0
 
 /obj/item/weapon/storage/stalker/cache
 	name = "cache"
