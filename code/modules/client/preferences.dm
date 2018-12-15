@@ -196,15 +196,15 @@ var/list/preferences_datums = list()
 			dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>"
 			dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbaglist[backbag]]</a><BR></td>"
 
-			if(pref_species.use_skintones)
+//			if(pref_species.use_skintones)
 
-				dat += "<td valign='top' width='21%'>"
+//				dat += "<td valign='top' width='21%'>"
 
-				dat += "<h3>Skin Tone</h3>"
+//				dat += "<h3>Skin Tone</h3>"
 
-				dat += "<a href='?_src_=prefs;preference=s_tone;task=input'>[skin_tone]</a><BR>"
+//				dat += "<a href='?_src_=prefs;preference=s_tone;task=input'>[skin_tone]</a><BR>"
 
-				dat += "</td>"
+//				dat += "</td>"
 
 			if(HAIR in pref_species.specflags)
 
@@ -920,10 +920,10 @@ var/list/preferences_datums = list()
 					if(new_body_markings)
 						features["body_markings"] = new_body_markings
 
-				if("s_tone")
-					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in available_skin_tones
-					if(new_s_tone)
-						skin_tone = new_s_tone
+//				if("s_tone")
+//					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in available_skin_tones
+//					if(new_s_tone)
+//						skin_tone = new_s_tone
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null
