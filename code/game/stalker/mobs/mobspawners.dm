@@ -70,6 +70,13 @@
 	cooldown = 6000 //Кол-во минут * 1000 - кд шитспавна
 	loot = list(/mob/living/simple_animal/hostile/mutant/dog = 100)
 
+/obj/effect/spawner/lootdrop/stalker/mobspawner/pseudog_spawner
+	name = "psy-dog mutant"
+	lootcount = 1
+	radius = 10 //Радиус разброса лута
+	cooldown = 6000 //Кол-во минут * 1000 - кд шитспавна
+	loot = list(/mob/living/simple_animal/hostile/mutant/pseudog = 100)
+
 /obj/effect/spawner/lootdrop/stalker/mobspawner/kaban_spawner
 	name = "kaban mutant"
 	lootcount = 1

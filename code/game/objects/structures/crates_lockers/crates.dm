@@ -32,6 +32,13 @@
 	icon_crate = "o2crate"
 	icon_state = "o2crate"
 
+/obj/structure/closet/crate/supertrash
+	desc = "Здесь хранится сокровище."
+	eng_desc = "There is some treasure here!"
+	name = "Trashcan"
+	icon_crate = "supertrash"
+	icon_state = "supertrash"
+
 /obj/structure/closet/crate/trashcart
 	desc = "A heavy, metal trashcart with wheels."
 	name = "trash cart"
