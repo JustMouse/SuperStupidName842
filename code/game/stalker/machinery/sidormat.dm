@@ -66,51 +66,51 @@ var/list/global_sidormat_list = list(
 
 	"Ammo Boxes" = list(
 		////////////////////////////////  Патроны  /////////////////////////////////////////
-		new /datum/data/stalker_equipment("9x18mm Box",				"Коробка 9х18мм",							/obj/item/ammo_box/stalker/b9x18,						1500,	ROOKIE),
-		new /datum/data/stalker_equipment("9x18mm AP Box",			"Коробка 9x18мм Бронебойные",				/obj/item/ammo_box/stalker/b9x18P,						2500,	EXPERIENCED),
-		new /datum/data/stalker_equipment("7.62x25mm Box",			"Коробка 7.62x25мм",						/obj/item/ammo_box/stalker/b762x25,						1500,	ROOKIE),
-		new /datum/data/stalker_equipment("9x19mm Box",				"Коробка 9x19мм",							/obj/item/ammo_box/stalker/b9x19,						2500,	ROOKIE),
-		new /datum/data/stalker_equipment("9x19mm AP Box",			"Коробка 9x19мм Бронебойные",				/obj/item/ammo_box/stalker/b9x19P,						3750,	EXPERIENCED),
-		new /datum/data/stalker_equipment(".45 ACP Box",			"Коробка .45 ACP",							/obj/item/ammo_box/stalker/bacp45,						5000,	ROOKIE),
-		new /datum/data/stalker_equipment(".45 ACP Hydroshock Box",	"Коробка .45 ACP Hydroshock",				/obj/item/ammo_box/stalker/bacp45ap,					7500,	EXPERIENCED),
-		new /datum/data/stalker_equipment(".44 Magnum Box",			"Коробка .44 Магнум",						/obj/item/ammo_box/stalker/bmag44,						7000,	EXPERIENCED),
-		new /datum/data/stalker_equipment(".44 Magnum FMJ Box",		"Коробка .44 Магнум Цельномет. оболочка",	/obj/item/ammo_box/stalker/bmag44fmj,					10000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("12x70 Buckshot Box",		"Коробка дроби 12x70",						/obj/item/ammo_box/stalker/b12x70,						3000,	ROOKIE),
-		new /datum/data/stalker_equipment("12x70 Slug Box",			"Коробка дроби 12x70 Бронебойные",			/obj/item/ammo_box/stalker/b12x70P,						4500,	EXPERIENCED),
-		new /datum/data/stalker_equipment("12x70 Dart Box",			"Коробка 12x70 Дротик",						/obj/item/ammo_box/stalker/b12x70D,						6000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("5.45x39mm Box",			"Коробка 5.45х39мм",						/obj/item/ammo_box/stalker/b545,						8000,	ROOKIE),
-		new /datum/data/stalker_equipment("5.45x39mm AP Box",		"Коробка 5.45х39мм Бронебойные",			/obj/item/ammo_box/stalker/b545ap,						12000,	VETERAN),
-		new /datum/data/stalker_equipment("5.56x45mm Box",			"Коробка 5.56x45мм",						/obj/item/ammo_box/stalker/b55645,						10000,	ROOKIE),
-		new /datum/data/stalker_equipment("5.56x45mm AP Box",		"Коробка 5.56x45мм Бронебойные",			/obj/item/ammo_box/stalker/b55645ap,					15000,	VETERAN),
-		new /datum/data/stalker_equipment("7.62x51 Box",			"Коробка 7.62х51",							/obj/item/ammo_box/stalker/b762x51,						8000,	ROOKIE),
-		new /datum/data/stalker_equipment("9x39 PAB-9 Box",			"Коробка 9x39мм ПАБ-9",						/obj/item/ammo_box/stalker/b939,						10000,	EXPERIENCED)
+		new /datum/data/stalker_equipment("9x18mm Box",				"Коробка 9х18мм",							/obj/item/ammo_box/stalker/b9x18,						1500,	ROOKIE, sale_price = 750),
+		new /datum/data/stalker_equipment("9x18mm AP Box",			"Коробка 9x18мм Бронебойные",				/obj/item/ammo_box/stalker/b9x18P,						2500,	EXPERIENCED, sale_price = 12500),
+		new /datum/data/stalker_equipment("7.62x25mm Box",			"Коробка 7.62x25мм",						/obj/item/ammo_box/stalker/b762x25,						1500,	ROOKIE, sale_price = 750),
+		new /datum/data/stalker_equipment("9x19mm Box",				"Коробка 9x19мм",							/obj/item/ammo_box/stalker/b9x19,						2500,	ROOKIE, sale_price = 1250),
+		new /datum/data/stalker_equipment("9x19mm AP Box",			"Коробка 9x19мм Бронебойные",				/obj/item/ammo_box/stalker/b9x19P,						3750,	EXPERIENCED, sale_price = 1875),
+		new /datum/data/stalker_equipment(".45 ACP Box",			"Коробка .45 ACP",							/obj/item/ammo_box/stalker/bacp45,						5000,	ROOKIE, sale_price = 2500),
+		new /datum/data/stalker_equipment(".45 ACP Hydroshock Box",	"Коробка .45 ACP Hydroshock",				/obj/item/ammo_box/stalker/bacp45ap,					7500,	EXPERIENCED, sale_price = 3750),
+		new /datum/data/stalker_equipment(".44 Magnum Box",			"Коробка .44 Магнум",						/obj/item/ammo_box/stalker/bmag44,						7000,	EXPERIENCED, sale_price = 3500),
+		new /datum/data/stalker_equipment(".44 Magnum FMJ Box",		"Коробка .44 Магнум Цельномет. оболочка",	/obj/item/ammo_box/stalker/bmag44fmj,					10000,	EXPERIENCED, sale_price = 5000),
+		new /datum/data/stalker_equipment("12x70 Buckshot Box",		"Коробка дроби 12x70",						/obj/item/ammo_box/stalker/b12x70,						3000,	ROOKIE, sale_price = 1500),
+		new /datum/data/stalker_equipment("12x70 Slug Box",			"Коробка дроби 12x70 Бронебойные",			/obj/item/ammo_box/stalker/b12x70P,						4500,	EXPERIENCED, sale_price = 2250),
+		new /datum/data/stalker_equipment("12x70 Dart Box",			"Коробка 12x70 Дротик",						/obj/item/ammo_box/stalker/b12x70D,						6000,	EXPERIENCED, sale_price = 3000),
+		new /datum/data/stalker_equipment("5.45x39mm Box",			"Коробка 5.45х39мм",						/obj/item/ammo_box/stalker/b545,						8000,	ROOKIE, sale_price = 4000),
+		new /datum/data/stalker_equipment("5.45x39mm AP Box",		"Коробка 5.45х39мм Бронебойные",			/obj/item/ammo_box/stalker/b545ap,						12000,	VETERAN, sale_price = 6000),
+		new /datum/data/stalker_equipment("5.56x45mm Box",			"Коробка 5.56x45мм",						/obj/item/ammo_box/stalker/b55645,						10000,	ROOKIE, sale_price = 5000),
+		new /datum/data/stalker_equipment("5.56x45mm AP Box",		"Коробка 5.56x45мм Бронебойные",			/obj/item/ammo_box/stalker/b55645ap,					15000,	VETERAN, sale_price = 7500),
+		new /datum/data/stalker_equipment("7.62x51 Box",			"Коробка 7.62х51",							/obj/item/ammo_box/stalker/b762x51,						8000,	ROOKIE, sale_price = 4000),
+		new /datum/data/stalker_equipment("9x39 PAB-9 Box",			"Коробка 9x39мм ПАБ-9",						/obj/item/ammo_box/stalker/b939,						10000,	EXPERIENCED, sale_price = 5000)
 		),
 
 	"Ammo Magazines and Clips" = list(
-		new /datum/data/stalker_equipment("PMm; PB1s Magazine",						"Магазин к ПМм; ПБ1с",			/obj/item/ammo_box/magazine/stalker/m9x18pm,			700,	ROOKIE),
-		new /datum/data/stalker_equipment("TT Magazine",							"Магазин к ТТ",					/obj/item/ammo_box/magazine/stalker/tt,					600,	ROOKIE),
-		new /datum/data/stalker_equipment("Fort-12 Magazine",						"Магазин к Форт-12",			/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000,	ROOKIE),
-		new /datum/data/stalker_equipment("Kiparis Magazine",						"Магазин к Кипарису",			/obj/item/ammo_box/magazine/stalker/kiparis,			1400,	ROOKIE),
-		new /datum/data/stalker_equipment("MP-5 Magazine",							"Магазин к МП-5",				/obj/item/ammo_box/magazine/stalker/m9x19mp5,			2000,	ROOKIE),
-		new /datum/data/stalker_equipment("PPSh Drum",								"Магазин к ППШ",				/obj/item/ammo_box/magazine/stalker/ppsh,				5000,	ROOKIE),
-		new /datum/data/stalker_equipment("5.45x39mm Magazine",						"Магазин 5.45x39мм",			/obj/item/ammo_box/magazine/stalker/m545,				2250,	ROOKIE),
-		new /datum/data/stalker_equipment("5.56x45mm Magazine",						"Магазин 5.56x45мм",			/obj/item/ammo_box/magazine/stalker/m556x45,			3500,	ROOKIE),
-		new /datum/data/stalker_equipment("AS \"Val\" Magazine",					"Магазин к АС \"Вал\"",			/obj/item/ammo_box/magazine/stalker/sp9x39val,			3000,	VETERAN),
-		new /datum/data/stalker_equipment("Tunder S14 Magazine",					"Магазин к ОЦ-14 Гроза",		/obj/item/ammo_box/magazine/stalker/sp9x39groza,		3500,	EXPERIENCED),
-		new /datum/data/stalker_equipment("Vintorez Magazine",						"Магазин к Винторезу",			/obj/item/ammo_box/magazine/stalker/sp9x39vint,			3000,	VETERAN),
-		new /datum/data/stalker_equipment("Colt M1911; SIG-Sauer P220 Magazine",	"Магазин к Кольту; П-220",		/obj/item/ammo_box/magazine/stalker/sc45,				1400,	ROOKIE),
-		new /datum/data/stalker_equipment("Beretta 92FS Magazine",					"Магазин к Беретте 92ФС",		/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500,	ROOKIE),
-		new /datum/data/stalker_equipment("Beretta M38 Magazine",					"Магазин к Беретте М38",		/obj/item/ammo_box/magazine/stalker/berettam38,			1250,	ROOKIE),
-		new /datum/data/stalker_equipment("USP-match Magazine",						"Магазин к ЮСП-Матч",			/obj/item/ammo_box/magazine/stalker/usp45,				2500,	ROOKIE),
-		new /datum/data/stalker_equipment("Desert Eagle Magazine",					"Магазин к Desert Eagle",		/obj/item/ammo_box/magazine/stalker/desert,				2000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("PKM ammo belt box",						"Жестянка с лентой к ПКМ",		/obj/item/ammo_box/magazine/stalker/pkm,				20000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("7.62x51 Clip",							"Обойма 7.62х51",				/obj/item/ammo_box/stalker/cl762x51,					800,	ROOKIE)
+		new /datum/data/stalker_equipment("PMm; PB1s Magazine",						"Магазин к ПМм; ПБ1с",			/obj/item/ammo_box/magazine/stalker/m9x18pm,			700,	ROOKIE, sale_price = 350),
+		new /datum/data/stalker_equipment("TT Magazine",							"Магазин к ТТ",					/obj/item/ammo_box/magazine/stalker/tt,					600,	ROOKIE, sale_price = 300),
+		new /datum/data/stalker_equipment("Fort-12 Magazine",						"Магазин к Форт-12",			/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000,	ROOKIE, sale_price = 500),
+		new /datum/data/stalker_equipment("Kiparis Magazine",						"Магазин к Кипарису",			/obj/item/ammo_box/magazine/stalker/kiparis,			1400,	ROOKIE, sale_price = 700),
+		new /datum/data/stalker_equipment("MP-5 Magazine",							"Магазин к МП-5",				/obj/item/ammo_box/magazine/stalker/m9x19mp5,			2000,	ROOKIE, sale_price = 1000),
+		new /datum/data/stalker_equipment("PPSh Drum",								"Магазин к ППШ",				/obj/item/ammo_box/magazine/stalker/ppsh,				5000,	ROOKIE, sale_price = 2500),
+		new /datum/data/stalker_equipment("5.45x39mm Magazine",						"Магазин 5.45x39мм",			/obj/item/ammo_box/magazine/stalker/m545,				2250,	ROOKIE, sale_price = 1125),
+		new /datum/data/stalker_equipment("5.56x45mm Magazine",						"Магазин 5.56x45мм",			/obj/item/ammo_box/magazine/stalker/m556x45,			3500,	ROOKIE, sale_price = 1750),
+		new /datum/data/stalker_equipment("AS \"Val\" Magazine",					"Магазин к АС \"Вал\"",			/obj/item/ammo_box/magazine/stalker/sp9x39val,			3000,	VETERAN, sale_price = 1500),
+		new /datum/data/stalker_equipment("Tunder S14 Magazine",					"Магазин к ОЦ-14 Гроза",		/obj/item/ammo_box/magazine/stalker/sp9x39groza,		3500,	EXPERIENCED, sale_price = 1750),
+		new /datum/data/stalker_equipment("Vintorez Magazine",						"Магазин к Винторезу",			/obj/item/ammo_box/magazine/stalker/sp9x39vint,			3000,	VETERAN, sale_price = 1500),
+		new /datum/data/stalker_equipment("Colt M1911; SIG-Sauer P220 Magazine",	"Магазин к Кольту; П-220",		/obj/item/ammo_box/magazine/stalker/sc45,				1400,	ROOKIE, sale_price = 700),
+		new /datum/data/stalker_equipment("Beretta 92FS Magazine",					"Магазин к Беретте 92ФС",		/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500,	ROOKIE, sale_price = 750),
+		new /datum/data/stalker_equipment("Beretta M38 Magazine",					"Магазин к Беретте М38",		/obj/item/ammo_box/magazine/stalker/berettam38,			1250,	ROOKIE, sale_price = 625),
+		new /datum/data/stalker_equipment("USP-match Magazine",						"Магазин к ЮСП-Матч",			/obj/item/ammo_box/magazine/stalker/usp45,				2500,	ROOKIE, sale_price = 1250),
+		new /datum/data/stalker_equipment("Desert Eagle Magazine",					"Магазин к Desert Eagle",		/obj/item/ammo_box/magazine/stalker/desert,				2000,	EXPERIENCED, sale_price = 1000),
+		new /datum/data/stalker_equipment("PKM ammo belt box",						"Жестянка с лентой к ПКМ",		/obj/item/ammo_box/magazine/stalker/pkm,				20000,	EXPERIENCED, sale_price = 10000),
+		new /datum/data/stalker_equipment("7.62x51 Clip",							"Обойма 7.62х51",				/obj/item/ammo_box/stalker/cl762x51,					800,	ROOKIE, sale_price = 400)
 		),
 
 	"Suits" = list(
 		///////////////////////////////  Броня  /////////////////////////////////////////
-		new /datum/data/stalker_equipment("Leather jacket",				"Кожанка",							/obj/item/clothing/suit/hooded/kozhanka,					5000,	ROOKIE),
-		new /datum/data/stalker_equipment("White leather jacket",		"Бела&#x44F; кожанка",				/obj/item/clothing/suit/hooded/kozhanka/white,				5000,	ROOKIE),
+		new /datum/data/stalker_equipment("Leather jacket",				"Кожанка",							/obj/item/clothing/suit/hooded/kozhanka,					5000,	ROOKIE, sale_price = 1000),
+		new /datum/data/stalker_equipment("White leather jacket",		"Бела&#x44F; кожанка",				/obj/item/clothing/suit/hooded/kozhanka/white,				5000,	ROOKIE, sale_price = 1000),
 		new	/datum/data/stalker_equipment("Bandit jacket",				"Бандитска&#x44F; кожанка",			/obj/item/clothing/suit/hooded/kozhanka/banditka,			6000,	ROOKIE,		faction = "Bandits"),
 		new	/datum/data/stalker_equipment("Army suit",					"Армейский комбинезон",				/obj/item/clothing/suit/army,								15000,	ROOKIE,		faction = "Army"),
 		new /datum/data/stalker_equipment("\"Sunrize\"",				"Комбинезон \"Зар&#x44F;\"",		/obj/item/clothing/suit/hooded/kombez,						33000,	ROOKIE,		faction = "Loners"),
@@ -136,9 +136,9 @@ var/list/global_sidormat_list = list(
 
 	"Masks and Helmets" = list(
 		////////////////////////////	Маски, Шлемы	/////////////////////////////////////
-		new /datum/data/stalker_equipment("Gasmask",					"Противогаз",					/obj/item/clothing/mask/gas/stalker,							7500,	ROOKIE),
-		new /datum/data/stalker_equipment("Merc gasmask",				"Противогаз наемников",			/obj/item/clothing/mask/gas/stalker/mercenary,					7500,	ROOKIE),
-		new /datum/data/stalker_equipment("Steel helmet",				"Стальная каска",				/obj/item/clothing/head/steel,									7500,	ROOKIE),
+		new /datum/data/stalker_equipment("Gasmask",					"Противогаз",					/obj/item/clothing/mask/gas/stalker,							7500,	ROOKIE, sale_price = 1000),
+		new /datum/data/stalker_equipment("Merc gasmask",				"Противогаз наемников",			/obj/item/clothing/mask/gas/stalker/mercenary,					7500,	ROOKIE, sale_price = 1000),
+		new /datum/data/stalker_equipment("Steel helmet",				"Стальная каска",				/obj/item/clothing/head/steel,									7500,	ROOKIE, sale_price = 1000),
 		new /datum/data/stalker_equipment("Light tactical helmet",		"Легкий тактический шлем",		/obj/item/clothing/head/hardhat/tactical/light,					12500,	EXPERIENCED),
 		new /datum/data/stalker_equipment("Tactical helmet",			"Тактический шлем",				/obj/item/clothing/head/tacticalhelmet,							25000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("Assault helmet",	    		"Штурмовой шлем",				/obj/item/clothing/head/assaultmerc,							30000,	EXPERIENCED,	faction = "Mercenaries"),
@@ -377,7 +377,7 @@ var/list/global_sidormat_list = list(
 		return
 
 	if(!ishuman(user))
-		say("You are not a human.")
+		say("Вы не человек.")
 		return
 
 	var/mob/living/carbon/human/H = user
@@ -388,7 +388,7 @@ var/list/global_sidormat_list = list(
 /obj/machinery/stalker/sidormat/interact(mob/living/carbon/human/H)
 
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
-		say("Put on your KPK.")
+		say("Наденьте ваш КПК.")
 		return
 
 	//find_record("sid", H.sid, data_core.stalkers)
@@ -396,11 +396,11 @@ var/list/global_sidormat_list = list(
 	var/datum/data/record/sk = KPK.profile
 
 	if(!sk || !KPK.owner)
-		say("Activate your KPK profile.")
+		say("Активируйте ваш КПК профиль.")
 		return
 
 	if(KPK.owner != H)
-		say("No access.")
+		say("Нет доступа.")
 		return
 
 	H.set_machine(src)
@@ -540,18 +540,18 @@ var/list/global_sidormat_list = list(
 	var/obj/item/device/stalker_pda/KPK = H.wear_id
 
 	if(!sk)
-		say("Activate your profile in KPK.")
+		say("Активируйте ваш профиль в КПЕ.")
 		return
 
 	if(KPK.sid != H.sid)
-		say("No access.")
+		say("Нет доступа.")
 		return
 
 	var/list/atom/movable/ontable = GetItemsOnTable()
 	var/total_cost = GetOnTableCost(ontable)
 
 	if(total_cost < 100)
-		say("Habar was not sold.")
+		say("Хабар не продан.")
 
 	for(var/atom/movable/I in ontable)
 		if(I.loc != itemloc)
@@ -560,13 +560,13 @@ var/list/global_sidormat_list = list(
 		sk.fields["money"] += GetCost(I)
 		balance = sk.fields["money"]
 
-		say("[I] was sold for [GetCost(I)].")
+		say("[I] был продан за [GetCost(I)].")
 
 		PlaceInPool(I)
 		CHECK_TICK
 
 	if(total_cost)
-		say("<b>Habar was successfully sold for [total_cost].</b>")
+		say("<b>Весь хабар был успешно продан за [total_cost].</b>")
 
 	updateUsrDialog()
 	return
@@ -587,11 +587,11 @@ var/list/global_sidormat_list = list(
 			say("Empty [AM] before selling.")
 			continue
 
-		if(istype(AM, /obj/item/ammo_box))
-			var/obj/item/ammo_box/AB = AM
-			if(AB.stored_ammo.len < AB.max_ammo)
-				say("Fill [AB] before selling.")
-				continue
+//		if(istype(AM, /obj/item/ammo_box))
+//			var/obj/item/ammo_box/AB = AM
+//			if(AB.stored_ammo.len < AB.max_ammo)
+//				say("Fill [AB] before selling.")
+//				continue
 
 		//if(istype(AM, /obj/item/weapon/reagent_containers))
 		//	say("[AM] can't be sold!")
@@ -607,6 +607,10 @@ var/list/global_sidormat_list = list(
 
 	for(var/atom/movable/item_on_table in ontable)
 		var/cost = GetCost(item_on_table)
+		if(istype(item_on_table, /obj/item/ammo_box))
+			var/obj/item/ammo_box/AB = item_on_table
+			if(AB.stored_ammo.len < AB.max_ammo)
+				cost = round(GetCost(item_on_table)/2)
 		if(cost)
 			total_cost += cost
 	return total_cost
