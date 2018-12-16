@@ -220,7 +220,7 @@
 
 /obj/structure/stalker/cacheable/yashik
 	name = "wooden crate"
-	icon_state = "yashik"
+	icon_state = "yashik_g"
 	desc = "Старый &#255;щик."
 	eng_desc = "Old wooden crate."
 	density = 1
