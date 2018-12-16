@@ -100,6 +100,11 @@
 	icon_state = "outdoor"
 	environment = 19
 
+/area/stalker/buildings/backwater/bunker
+	name = "Backwater - Buildings - Bunker \[NB\]"
+	icon_state = "buildings"
+	environment = 2
+
 ////////////////////////////////////////////////////////////////
 
 ///////////////////////ÇÀÒÎÍ - ÏÎÄÑÒÀÍÖÈß///////////////////////
