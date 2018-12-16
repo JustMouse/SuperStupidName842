@@ -5,6 +5,7 @@
 	view = "15x15"
 	cache_lifespan = 7
 	loop_checks=0
+	name = "Arcade Stalker"
 
 var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 
