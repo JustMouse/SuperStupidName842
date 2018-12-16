@@ -29,15 +29,18 @@
 /obj/structure/grille/stalker/CanPass(atom/movable/mover, turf/target, height=0)
 	if(istype(mover, /obj/item/projectile) && density)
 		if(src == /obj/structure/grille/stalker/beton)
-			return prob(0)
+			return 0
 		return prob(80)
+	world << "[src.icon_state] [src] [dir] [target] [loc] [/obj/structure/grille/stalker/beton]"
 	switch(src.icon_state)
-		if("fence0","fence1","fence2")
+		if("fence0","fence1")
 			if(get_dir(loc, target) == dir)
 				return !density
+			else
+				return 1
 		if("fence5")
-			return 1
-		if("fence3")
+			src.density = 0
+		if("fence3","fence2")
 			return 0
 		else
 			return 0
