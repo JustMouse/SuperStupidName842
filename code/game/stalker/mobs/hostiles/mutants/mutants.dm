@@ -237,7 +237,7 @@
 /mob/living/simple_animal/hostile/mutant/flesh
 	name = "flesh"
 	desc = "Мутировавша&#255; свинь&#255;."
-	eng_desc = "This abomination is a horribly mutated pig affected by radiation.His three eyes have lost all the vigor of life and his eyes are empty.Despite his large, heavy legs, he seems to be able to move at a decent speed, and is apparently able to catch up with a running human."
+	eng_desc = "This abomination is a horribly mutated pig affected by radiation. His three eyes have lost all the vigor of life and his eyes are empty.Despite his large, heavy legs, he seems to be able to move at a decent speed, and is apparently able to catch up with a running human."
 	turns_per_move = 5
 	speed = 5
 	a_intent = "harm"

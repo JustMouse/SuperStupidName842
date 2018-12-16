@@ -181,6 +181,20 @@
 /obj/structure/stalker/doski/doski4
 	icon_state = "doski_oblomki4"
 
+/obj/structure/stalker/listva
+	name = "leaves"
+	desc = "Опавш&#255; листва, осень ведь."
+	eng_desc = "Dead leaves."
+	icon_state = "leafs"
+	layer = 2.8
+	pass_flags = LETPASSTHROW
+
+/obj/structure/stalker/listva/listva2
+	icon_state = "leafs2"
+
+/obj/structure/stalker/listva/listva3
+	icon_state = "leafs3"
+
 /obj/structure/stalker/cacheable/battery
 	name = "battery"
 	desc = "Ржава&#255; отопительна&#255; батаре&#255;. Когда-то согревала дома, сейчас - просто очередна&#255; железка."
