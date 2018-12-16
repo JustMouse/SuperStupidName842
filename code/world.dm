@@ -5,7 +5,7 @@
 	view = "15x15"
 	cache_lifespan = 7
 	loop_checks=0
-	name = "Free ZONE S.T.A.L.K.E.R."
+	name = "O.B.O.S.R.A.L.K.E.R."
 
 var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 

@@ -23,20 +23,33 @@
 	density = 1
 	anchored = 1
 	flags = CONDUCT
-	layer = 2.9
+	layer = 4.01
 	health = 10000000
 
 /obj/structure/grille/stalker/CanPass(atom/movable/mover, turf/target, height=0)
-	if(get_dir(loc, target) == dir)
-		return !density
 	if(istype(mover, /obj/item/projectile) && density)
+		if(src == /obj/structure/grille/stalker/beton)
+			return prob(0)
 		return prob(80)
-	else
-		return 1
+	switch(src.icon_state)
+		if("fence0","fence1","fence2")
+			if(get_dir(loc, target) == dir)
+				return !density
+		if("fence5")
+			return 1
+		if("fence3")
+			return 0
+		else
+			return 0
 
 /obj/structure/grille/stalker/CheckExit(atom/movable/O as mob|obj, target)
-	if(get_dir(O.loc, target) == dir)
-		return 0
+	if(src.icon_state == ("fence0" || "fence1" || "fence2"))
+		if(get_dir(O.loc, target) == dir)
+			world << "[density] [loc] [target] [dir]31"
+			return 0
+	if(src.icon_state == "fence5")
+		return 1
+	world << "[density] [loc] [target] [dir]4"
 	return 1
 
 /obj/structure/grille/stalker/ex_act(severity, target)
