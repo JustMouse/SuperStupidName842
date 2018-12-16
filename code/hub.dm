@@ -6,7 +6,7 @@
 #else
 	hub_password = "kMZy3U5jJHSiBQjr"
 #endif
-	name = "/STALKER/ 13"
+	name = "/STALKER/ SS13"
 
 /*
 This is for any host that would like their server to appear on the main SS13 hub.

@@ -111,6 +111,7 @@
 	var/proj_pass_rate = 50
 
 /obj/structure/stalker/blocks/vanish/block1
+	layer = 4.01
 	icon_state = "block2"
 
 /obj/structure/stalker/blocks/vanish/block1/r
@@ -134,20 +135,23 @@
 /obj/structure/stalker/blocks/vanish/block2/l
 	icon_state = "block5l"
 
-/obj/structure/stalker/blocks/vanish/CanPass(atom/movable/mover, turf/target, height=0)//So bullets will fly over and stuff.
-	if(height==0)
-		return 1
-	if(istype(mover, /obj/item/projectile))
-		if(!anchored)
-			return 1
-		var/obj/item/projectile/proj = mover
-		if(proj.firer && Adjacent(proj.firer))
-			return 1
-		if(prob(proj_pass_rate))
-			return 1
-		return 0
+/obj/structure/stalker/blocks/vanish/block1/CanPass(atom/movable/mover, turf/target, height=0)
+//	if(istype(mover) && mover.checkpass(PASSGLASS))
+//		world << "[loc] [dir] [mover] [density]0"
+//		return 1
+	if(get_dir(loc, target) == dir)
+		return !density
+	if(istype(mover, /obj/item/projectile) && density)
+		return prob(30)
 	else
+		return 1
+
+/obj/structure/stalker/blocks/vanish/block1/CheckExit(atom/movable/O as mob|obj, target)
+//	if(istype(O) && O.checkpass(PASSGLASS))
+//		return 1
+	if(get_dir(O.loc, target) == dir)
 		return 0
+	return 1
 
 /obj/structure/stalker/blocks/vanish/pipe
 	name = "Pipe"

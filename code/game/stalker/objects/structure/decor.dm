@@ -344,7 +344,7 @@
 	icon_state = "lenin"
 
 /obj/structure/stalker/cacheable/intercom
-	name = "intercom"
+	name = "Интерком"
 	desc = "Домофон."
 	eng_desc = "Soviet intercom."
 	icon = 'icons/stalker/backwater.dmi'
@@ -354,13 +354,13 @@
 
 /obj/structure/stalker/cacheable/televizor/broken
 	icon_state = "TV_b"
-	name =  "TV-set"
+	name =  "Старый разбитый телевизор"
 	desc = "Старый разбитый советский телевизор."
 	density = 1
 	cache_size = 2
 
 /obj/structure/stalker/bigyashik
-	name = "Metal Container"
+	name = "Металлический контейнер"
 	icon = 'icons/stalker/yashiki/decorations_64x64.dmi'
 	icon_state = "bigyashik 0.0"
 	density = 1
@@ -379,7 +379,7 @@
 		return
 
 	if(busy)
-		user << "<span class='notice'>Someone's already washing here.</span>"
+		user << "<span class='notice'>Кто-то уже моется здесь!</span>"
 		return
 	var/selected_area = parse_zone(user.zone_sel.selecting)
 	var/washing_face = 0
@@ -411,14 +411,14 @@
 
 /obj/structure/stalker/water/attackby(obj/item/O, mob/user, params)
 	if(busy)
-		user << "<span class='warning'>Someone's already washing here!</span>"
+		user << "<span class='warning'>Кто-то уже моетс&#255; здесь!</span>"
 		return
 
 	if(istype(O, /obj/item/weapon/reagent_containers))
 		var/obj/item/weapon/reagent_containers/RG = O
 		if(RG.flags & OPENCONTAINER)
 			RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
-			user << "<span class='notice'>You fill [RG] from [src].</span>"
+			user << "<span class='notice'>Вы наполн&#255;ете [RG] из [src].</span>"
 			return
 
 	if(istype(O, /obj/item/weapon/melee/baton))
@@ -447,15 +447,15 @@
 	if(I.flags & ABSTRACT) //Abstract items like grabs won't wash. No-drop items will though because it's still technically an item in your hand.
 		return
 
-	user << "<span class='notice'>You start washing [I]...</span>"
+	user << "<span class='notice'>Вы начинаете мыть [I]...</span>"
 	busy = 1
 	if(!do_after(user, 40, target = src))
 		busy = 0
 		return
 	busy = 0
 	O.clean_blood()
-	user.visible_message("<span class='notice'>[user] washes [I] using [src].</span>", \
-						"<span class='notice'>You wash [I] using [src].</span>")
+	user.visible_message("<span class='notice'>[user] моет [I], использу&#255; [src].</span>", \
+						"<span class='notice'>Вы моете [I], использу&#255; [src].</span>")
 
 /obj/structure/stalker/oscillograph
 	name = "oscillograph"
@@ -552,7 +552,7 @@
 	icon_state = "100_rentgen"
 
 /obj/structure/stalker/bar_plitka
-	name = "tile"
+	name = "плитка"
 	icon = 'icons/stalker/floor.dmi'
 	icon_state = "bar_plate1"
 	layer = 2.3
@@ -597,7 +597,7 @@
 	anchored = 1
 	cache_size = 3
 
-//////////////////////////////Новые тайники////////////////////////////////
+//////////////////////////////Новый лут////////////////////////////////
 
 /obj/structure/stalker/cacheable
 	name = "cache"
@@ -631,16 +631,16 @@
 
 	switch(cache_quality)
 		if(3)
-			cache_chance -= 4
+			cache_chance -= 2
 
 		if(2)
-			cache_chance += 6
+			cache_chance += 3
 
 		if(1)
-			cache_chance += 10
+			cache_chance += 5
 
 		if(0)
-			cache_chance += 30
+			cache_chance += 20
 
 	if(!prob(cache_chance))
 		//internal_cache = null
@@ -672,7 +672,7 @@
 		user.visible_message("<span class='notice'>[user] ничего не нашёл в [src].</span>", "<span class='notice'>Вы ничего не нашли в [src].</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] нашёл спр&#255;танный лут в [src].</span>", "<span class='notice'>Вы нашли спр&#255;танный лут в [src].</span>")
+	user.visible_message("<span class='notice'>[user] нашёл хабар в [src].</span>", "<span class='notice'>Вы нашли спр&#255;танный лут в [src].</span>")
 
 	playsound(loc, "rustle", 50, 1, -5)
 	if(user.s_active)

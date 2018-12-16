@@ -5,7 +5,7 @@
 	view = "15x15"
 	cache_lifespan = 7
 	loop_checks=0
-	name = "Arcade Stalker"
+	name = "Free ZONE S.T.A.L.K.E.R."
 
 var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 
@@ -204,21 +204,15 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/proc/update_status()
 	var/s = ""
 
-	if (config && config.server_name)
-		s += "<b>[config.server_name]</b> &#8212; "
+//	if (config && config.server_name)
+//		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>\[INTERNATIONAL\]</b>"; //[station_name()]
-//	s += " ("
-//	s += "<a href=\"https://discord.gg/aBkc6NK\">" //Change this to wherever you want the hub to link to.
-//	s += "[game_version]"
-//	s += "Our Discord Server"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
-//	s += "</a>"
-//	s += ")"
+	s += "<b>\[Foundation\]</b>"; //[station_name()]
 	s += " ("
 	s += "byond 512 ONLY"
 	s += ")"
 
-	s += "<br><br><b>Discord</b>: <a href=\"https://discord.gg/P3EMVBW\">Lebensraum</a>"
+	s += "<br><br><b>Have fun!</b>"
 
 	if(ticker)
 		if(master_mode)
