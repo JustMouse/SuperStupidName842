@@ -26,6 +26,19 @@
 	layer = 2.9
 	health = 10000000
 
+/obj/structure/stalker/blocks/vanish/block1/CanPass(atom/movable/mover, turf/target, height=0)
+	if(get_dir(loc, target) == dir)
+		return !density
+	if(istype(mover, /obj/item/projectile) && density)
+		return prob(80)
+	else
+		return 1
+
+/obj/structure/stalker/blocks/vanish/block1/CheckExit(atom/movable/O as mob|obj, target)
+	if(get_dir(O.loc, target) == dir)
+		return 0
+	return 1
+
 /obj/structure/grille/stalker/ex_act(severity, target)
 	return
 
@@ -73,16 +86,6 @@
 	desc = "Зелённый забор. Лучше, чем серый."
 	icon_state = "1"
 	layer = 6.1
-
-obj/structure/grille/stalker/beton/CanPass(atom/movable/mover, turf/target, height=0)
-	if(height==0) return 1
-	if(istype(mover) && mover.checkpass(PASSGRILLE))
-		return 1
-	else
-		if(istype(mover, /obj/item/projectile) && density)
-			return prob(0)
-		else
-			return !density
 
 /turf/stalker
 	name = "stalker turf"
@@ -304,7 +307,7 @@ var/global/list/GryazEdgeCache
 		return
 
 	if(busy)
-		user << "<span class='notice'>Кто-то уже моется здесь!</span>"
+		user << "<span class='notice'>Кто-то уже моетс&#255; здесь!</span>"
 		return
 	var/selected_area = parse_zone(user.zone_sel.selecting)
 	var/washing_face = 0
@@ -320,8 +323,8 @@ var/global/list/GryazEdgeCache
 
 	busy = 0
 
-	user.visible_message("<span class='notice'>[user] моет [washing_face ? "face" : "hands"], используя [src].</span>", \
-						"<span class='notice'>Вы моете своё [washing_face ? "face" : "hands"], используя [src].</span>")
+	user.visible_message("<span class='notice'>[user] моет [washing_face ? "face" : "hands"], использу&#255; [src].</span>", \
+						"<span class='notice'>Вы моете своё [washing_face ? "face" : "hands"], использу&#255; [src].</span>")
 	if(washing_face)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user

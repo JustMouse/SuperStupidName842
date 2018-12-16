@@ -4,7 +4,9 @@
 	lootdoubles = 1
 	lootcount = 5
 
-	loot = list(
+	loot = list(/obj/structure/closet/crate/stalker/blue/stash/low = 100,
+				"" = 0)
+/*	loot = list(
 				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad = 20,
 				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 20,
 				/obj/item/weapon/gun/projectile/automatic/pistol/pm = 5,
@@ -29,15 +31,15 @@
 				/obj/item/device/detector/blink = 4,
 				/obj/nothing = 10
 				)
-
+*/
 /obj/effect/spawner/lootdrop/khabar_medium
 	name = "khabar loot spawner"
 	lootdoubles = 1
 	lootcount = 4
 
 	loot = list(
-				/obj/structure/closet/crate/stalker/blue = 1,
-				/obj/nothing = 11
+				/obj/structure/closet/crate/stalker/blue/stash/medium = 20,
+				"" = 80
 				)
 
 /obj/effect/spawner/lootdrop/khabar_high
@@ -46,8 +48,8 @@
 	lootcount = 3
 
 	loot = list(
-				/obj/structure/closet/crate/stalker/blue = 1,
-				/obj/nothing = 11
+				/obj/structure/closet/crate/stalker/blue/stash/high= 5,
+				"" = 95
 				)
 
 ///////////////////////////////////////////////Лутспавнер с кулдауном и бесконечным сроком работы////////////////////////////////////////////////////
