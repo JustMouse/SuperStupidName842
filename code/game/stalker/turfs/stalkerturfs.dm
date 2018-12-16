@@ -26,7 +26,7 @@
 	layer = 2.9
 	health = 10000000
 
-/obj/structure/stalker/blocks/vanish/block1/CanPass(atom/movable/mover, turf/target, height=0)
+/obj/structure/grille/stalker/CanPass(atom/movable/mover, turf/target, height=0)
 	if(get_dir(loc, target) == dir)
 		return !density
 	if(istype(mover, /obj/item/projectile) && density)
@@ -34,7 +34,7 @@
 	else
 		return 1
 
-/obj/structure/stalker/blocks/vanish/block1/CheckExit(atom/movable/O as mob|obj, target)
+/obj/structure/grille/stalker/CheckExit(atom/movable/O as mob|obj, target)
 	if(get_dir(O.loc, target) == dir)
 		return 0
 	return 1

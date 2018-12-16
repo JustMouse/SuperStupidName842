@@ -220,7 +220,7 @@
 
 /obj/structure/stalker/cacheable/yashik
 	name = "wooden crate"
-	icon_state = "yashik_g"
+	icon_state = "yashik"
 	desc = "Старый &#255;щик."
 	eng_desc = "Old wooden crate."
 	density = 1
@@ -648,13 +648,13 @@
 			cache_chance -= 2
 
 		if(2)
-			cache_chance += 3
-
-		if(1)
 			cache_chance += 5
 
+		if(1)
+			cache_chance += 10
+
 		if(0)
-			cache_chance += 20
+			cache_chance += 30
 
 	if(!prob(cache_chance))
 		//internal_cache = null
