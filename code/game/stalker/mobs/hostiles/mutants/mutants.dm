@@ -112,7 +112,7 @@
 	death_sound = 'sound/stalker/mobs/mutants/death/dog_death.ogg'
 	melee_damage_lower = 10
 	melee_damage_upper = 15
-	maxHealth = 25
+	maxHealth = 35
 	fearborder = 10
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	healable = 1
@@ -125,7 +125,7 @@
 	maxbodytemp = 1500
 	environment_smash = 0
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/item/weapon/stalker/loot/dog_tail, /obj/nothing, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/dog_tail, "", "")
 	random_loot = 1
 	attack_type = "bite"
 	move_to_delay = 1.2 //Real speed of a mob
@@ -156,7 +156,7 @@
 	attacktext = "claws at"
 	speak_emote = list("growls", "roars")
 	emote_see = list("growls!", "roars!")
-	maxHealth = 70
+	maxHealth = 90
 	healable = 1
 	melee_damage_lower = 20
 	attack_sound = 'sound/stalker/mobs/mutants/attack/snork_attack.ogg'
@@ -176,7 +176,7 @@
 	robust_searching = 1
 	deathmessage = "The snork seizes up and falls limp!"
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/item/weapon/stalker/loot/snork_leg, /obj/nothing, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/snork_leg, "", "")
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ranged = 1
@@ -248,7 +248,7 @@
 	attacktext = "crashes into"
 	speak_emote = list("grunts")
 	emote_see = list("shrieks aggressively!")
-	maxHealth = 40
+	maxHealth = 60
 	healable = 5
 	melee_damage_lower = 10
 	attack_sound = 'sound/stalker/mobs/mutants/attack/flesh_attack.ogg'
@@ -267,7 +267,7 @@
 	robust_searching = 1
 	deathmessage = "The flesh makes a death scream!"
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/item/weapon/stalker/loot/flesh_eye, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/flesh_eye, "")
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "smash"
@@ -290,7 +290,7 @@
 	attacktext = "crashes into"
 	speak_emote = list("grunts")
 	emote_see = list("grunts aggressively!")
-	maxHealth = 150
+	maxHealth = 180
 	healable = 1
 	melee_damage_lower = 25
 	attack_sound = 'sound/stalker/mobs/mutants/attack/boar_attack.ogg'
@@ -310,7 +310,7 @@
 	robust_searching = 1
 	deathmessage = "The boar makes a death scream!"
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/item/weapon/stalker/loot/boar_leg, /obj/nothing, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/boar_leg, "", "")
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "smash"
@@ -358,7 +358,7 @@
 	robust_searching = 1
 	deathmessage = "The bloodsucker makes a death scream!"
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/item/weapon/stalker/loot/bloodsucker, /obj/item/weapon/stalker/loot/bloodsucker, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/bloodsucker, /obj/item/weapon/stalker/loot/bloodsucker, "")
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "claw"
@@ -439,7 +439,7 @@
 	robust_searching = 1
 	deathmessage = "The pseudog makes a sinister howl!"
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/item/weapon/stalker/loot/pseudo_tail, /obj/nothing, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/pseudo_tail, "", "")
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "bite"

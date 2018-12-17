@@ -89,3 +89,12 @@
 	name = "closet"
 	desc = "Обычный железный шкафчик."
 	icon_state = "shkaf"
+
+/obj/structure/closet/stalker/shkaf/loot/medicine
+	name = "closet"
+	desc = "Обычный железный шкафчик."
+	icon_state = "shkaf"
+
+/obj/structure/closet/stalker/shkaf/loot/medicine/New()
+	..()
+

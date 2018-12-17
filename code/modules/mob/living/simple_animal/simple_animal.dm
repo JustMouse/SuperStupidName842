@@ -415,7 +415,7 @@
 					if(random_loot)
 						var/i = pickweight(loot)
 
-						if(i != /obj/nothing)
+						if(i != "")
 							new i(loc)
 					else
 						for(var/i in loot)

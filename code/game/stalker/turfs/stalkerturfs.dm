@@ -30,8 +30,7 @@
 	if(istype(mover, /obj/item/projectile) && density)
 		if(src == /obj/structure/grille/stalker/beton)
 			return 0
-		return prob(80)
-	world << "[src.icon_state] [src] [dir] [target] [loc] [/obj/structure/grille/stalker/beton]"
+		return 1
 	switch(src.icon_state)
 		if("fence0","fence1")
 			if(get_dir(loc, target) == dir)
@@ -39,20 +38,22 @@
 			else
 				return 1
 		if("fence5")
-			src.density = 0
+			return 1
 		if("fence3","fence2")
 			return 0
 		else
 			return 0
 
 /obj/structure/grille/stalker/CheckExit(atom/movable/O as mob|obj, target)
-	if(src.icon_state == ("fence0" || "fence1" || "fence2"))
-		if(get_dir(O.loc, target) == dir)
-			world << "[density] [loc] [target] [dir]31"
+	if(istype(O, /obj/item/projectile) && density)
+		if(src == /obj/structure/grille/stalker/beton)
+			return 0
+		return 1
+	if((src.icon_state == "fence0") || (src.icon_state == "fence1"))
+		if(get_dir(loc, target) == dir)
 			return 0
 	if(src.icon_state == "fence5")
 		return 1
-	world << "[density] [loc] [target] [dir]4"
 	return 1
 
 /obj/structure/grille/stalker/ex_act(severity, target)

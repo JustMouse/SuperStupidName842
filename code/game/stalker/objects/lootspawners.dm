@@ -1,11 +1,9 @@
 ///////////////////////////////////////////////Одноразовый лутспавнер////////////////////////////////////////////////////////////////////////////////
-/obj/effect/spawner/lootdrop/khabar_low
+/obj/effect/spawner/lootdrop/stalker/stash_crate/low
 	name = "khabar loot spawner"
-	lootdoubles = 1
-	lootcount = 5
 
-	loot = list(/obj/structure/closet/crate/stalker/blue/stash/low = 100,
-				"" = 0)
+	loot = list(/obj/structure/closet/crate/stalker/blue/stash/low = 80,
+				"" = 20)
 /*	loot = list(
 				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad = 20,
 				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 20,
@@ -29,35 +27,31 @@
 				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown = 2,
 				/obj/item/clothing/mask/gas/stalker = 4,
 				/obj/item/device/detector/blink = 4,
-				/obj/nothing = 10
+				"" = 10
 				)
 */
-/obj/effect/spawner/lootdrop/khabar_medium
+/obj/effect/spawner/lootdrop/stalker/stash_crate/medium
 	name = "khabar loot spawner"
-	lootdoubles = 1
-	lootcount = 4
 
 	loot = list(
-				/obj/structure/closet/crate/stalker/blue/stash/medium = 20,
-				"" = 80
+				/obj/structure/closet/crate/stalker/blue/stash/medium = 50,
+				"" = 50
 				)
 
-/obj/effect/spawner/lootdrop/khabar_high
+/obj/effect/spawner/lootdrop/stalker/stash_crate/high
 	name = "khabar loot spawner"
-	lootdoubles = 1
-	lootcount = 3
 
 	loot = list(
-				/obj/structure/closet/crate/stalker/blue/stash/high= 5,
-				"" = 95
+				/obj/structure/closet/crate/stalker/blue/stash/high= 10,
+				"" = 90
 				)
 
 ///////////////////////////////////////////////Лутспавнер с кулдауном и бесконечным сроком работы////////////////////////////////////////////////////
 
-/obj/effect/spawner/lootdrop/stalker
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable
 	name = "stalker lootspawner"
 	invisibility = 101
-	lootcount = 2
+	lootcount = 1
 	var/max_spawned = 3
 	var/radius = 10 //Радиус разброса лута
 	var/cooldown = 10000 //Кол-во минут * 1000 кд шитспавна
@@ -70,35 +64,36 @@
 	loot = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm = 85,
 				/obj/item/trash/can = 15)
 
-/obj/effect/spawner/lootdrop/stalker/New()
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/New()
 	SpawnLoot()
 
-/obj/effect/spawner/lootdrop/stalker/proc/SpawnLoot(enable_cooldown = 1)
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/proc/SpawnLoot()
 	if(!loot || !loot.len)
 		return
 
-	for(var/k = 0, k < lootcount, k++)
+	for(var/i = 0, i < lootcount, i++)
 
 		if(!loot.len)
 			return
 
 		var/lootspawn = pickweight(loot)
 
-		if(!lootspawn || lootspawn == /obj/nothing)
+		if(!lootspawn || lootspawn == "")
 			continue
 
 		spawned_loot.Add(lootspawn)
 
 		var/turf/T = get_turf(src)
-		var/obj/O = new lootspawn(T)
+		new lootspawn(T) //var/obj/O =
 
-		RandomMove(O)
+//		RandomMove(O)
 	////////////////////////////////////////////
 	sleep(rand(cooldown, cooldown + cooldown/2))
 	////////////////////////////////////////////
 	SpawnLoot()
 	return
 
+/*
 /obj/effect/spawner/lootdrop/stalker/proc/CanSpawn()
 	var/count = 0
 
@@ -112,8 +107,9 @@
 			spawned_loot.Remove(I)
 
 	return Clamp(lootcount - count, 0, lootcount)
+*/
 
-
+/*
 /obj/effect/spawner/lootdrop/stalker/proc/RandomMove(spawned)
 	if(spawned)
 		var/turf/T = get_turf(src)
@@ -123,7 +119,7 @@
 		O.Move(new_x, new_y, T.z)
 
 	return spawned
-
+*/
 /obj/effect/spawner/lootdrop/stalker/weapon/pistols
 	name = "stalker pistols"
 	loot = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm = 25,
@@ -133,7 +129,7 @@
 				/obj/item/weapon/gun/projectile/automatic/pistol/sip = 5,
 				/obj/item/weapon/gun/projectile/automatic/pistol/cora = 5,
 				/obj/item/weapon/gun/projectile/automatic/pistol/marta = 5,
-				/obj/nothing = 30)
+				"" = 30)
 
 /obj/effect/spawner/lootdrop/stalker/weapon/rifles_and_shotguns
 	name = "stalker rifles_and_shotguns"
@@ -141,23 +137,23 @@
 				/obj/item/weapon/gun/projectile/automatic/ak74 = 25,
 				/obj/item/weapon/gun/projectile/automatic/aksu74 = 35,
 				/obj/item/weapon/gun/projectile/automatic/tpc301 = 10,
-				/obj/nothing = 50)
+				"" = 50)
 
-/obj/effect/spawner/lootdrop/stalker/weapon/smgs
+/obj/effect/spawner/lootdrop/stalker/weapon/cooldown_enable/smgs
 	name = "stalker smgs"
 	loot = list(/obj/item/weapon/gun/projectile/automatic/mp5 = 30,
 				/obj/item/weapon/gun/projectile/automatic/aksu74 = 20,
-				/obj/nothing = 60)
+				"" = 60)
 
-/obj/effect/spawner/lootdrop/stalker/medicine
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/medicine
 	name = "stalker medicine"
 	lootcount = 1
 	loot = list(/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 30,
 				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army = 15,
 				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific = 5,
-				/obj/nothing = 60)
+				"" = 60)
 
-/obj/effect/spawner/lootdrop/stalker/food
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/food
 	name = "stalker food"
 	lootcount = 1
 	loot = list(/obj/item/weapon/reagent_containers/food/snacks/stalker/baton = 50,
@@ -165,7 +161,7 @@
 				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva = 20)
 
 
-/obj/effect/spawner/lootdrop/stalker/gravy
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/gravy
 	name = "stalker gravity"
 	radius = 3
 	lootcount = 1
@@ -174,9 +170,9 @@
 				/obj/item/weapon/artifact/stoneflower = 6,
 				/obj/item/weapon/artifact/nightstar = 3,
 				/obj/item/weapon/artifact/maminibusi = 1,
-				/obj/nothing = 80)
+				"" = 80)
 
-/obj/effect/spawner/lootdrop/stalker/electra
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/electra
 	name = "stalker electra"
 	radius = 3
 	lootcount = 1
@@ -185,9 +181,9 @@
 				/obj/item/weapon/artifact/moonlight = 6,
 				/obj/item/weapon/artifact/battery = 1,
 				/obj/item/weapon/artifact/pustishka = 1,
-				/obj/nothing = 80)
+				"" = 80)
 
-/obj/effect/spawner/lootdrop/stalker/fire
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/fire
 	name = "stalker fire"
 	radius = 3
 	lootcount = 1
@@ -195,12 +191,12 @@
 	loot = list(/obj/item/weapon/artifact/droplet = 13,
 				/obj/item/weapon/artifact/fireball = 6,
 				/obj/item/weapon/artifact/crystal = 3,
-				/obj/nothing = 80)
-
+				"" = 80)
+/*
 /obj/nothing
 	name = "nothing"
 	invisibility = 101
-/*
+
 obj/nothing/New()
 	qdel(src)
-*/
+*/cooldown_enable/
