@@ -8,19 +8,15 @@
 
 /obj/structure/stalker/car/gryzovik/south
 	icon = 'icons/stalker/cars/gruzovik_south.dmi'
-	icon_state = "1"
 
 /obj/structure/stalker/car/gryzovik/north
 	icon = 'icons/stalker/cars/gruzovik_north.dmi'
-	icon_state = "1"
 
 /obj/structure/stalker/car/gryzovik/west
 	icon = 'icons/stalker/cars/gruzovik_west.dmi'
-	icon_state = "1"
 
 /obj/structure/stalker/car/gryzovik/east
 	icon = 'icons/stalker/cars/gruzovik_east.dmi'
-	icon_state = "1"
 
 /obj/structure/stalker/car/gryzovik2
 	name = "Gruzovik"
@@ -49,8 +45,8 @@
 
 /obj/structure/stalker/car/gryzovik_army
 	name = "Gruzovik"
-	desc = "Старый советский армейские груховик со спущенными шинами."
-	eng_desc = "Old soviet truck."
+	desc = "Старый советский армейский грузовик со спущенными шинами."
+	eng_desc = "Old soviet army truck."
 
 /obj/structure/stalker/car/gryzovik_army/south
 	icon = 'icons/stalker/cars/gruzovik_army_south.dmi'
