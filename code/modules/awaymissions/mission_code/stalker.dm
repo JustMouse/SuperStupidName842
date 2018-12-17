@@ -126,28 +126,32 @@
 /area/stalker/buildings/backwater/skadovsk
 	name = "Backwater - Skadovsk \[NB\]"
 	icon_state = "skadovsk"
-	safezone = 1
+	safezone = 0
 	environment = 0
+	netralzone = 1
 	ambient_music = list()
 
 /area/stalker/buildings/backwater/skadovsk_respawn
 	name = "Backwater - Skadovsk (2nd floor) \[NB\]"
 	icon_state = "skadovsk"
-	safezone = 1
+	safezone = 0
 	environment = 0
+	netralzone = 1
 	ambient_music = list()
 
 /area/stalker/blowout/buildings/backwater/skadovsk
 	name = "Backwater - Skadovsk"
 	icon_state = "skadovsk"
-	safezone = 1
+	safezone = 0
 	environment = 0
+	netralzone = 1
 	ambient_music = list()
 
 /area/stalker/blowout/outdoor/backwater/skadovsk
 	name = "Backwater - Skadovsk \[O\]"
 	icon_state = "skadovsk"
-	safezone = 1
+	safezone = 0
+	netralzone = 1
 	environment = 19
 
 ////////////////////////////////////////////////////////////////

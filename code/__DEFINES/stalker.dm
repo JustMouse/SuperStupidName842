@@ -5,10 +5,11 @@
 #define UNIFORMPICK (pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark, /obj/item/clothing/under/color/switer/lolg, /obj/item/clothing/under/color/switer/tracksuit))
 
 ///////////////–≈…“»Õ√
-#define ZONE_LEGEND							10000
-#define EXPERT								7000
-#define VETERAN								5000
-#define EXPERIENCED							3000
+#define ZONE_LEGEND							15000
+#define EXPERT								11000
+#define VETERAN								8000
+#define EXPERIENCED							5000
+#define BEGINNER							3500
 #define ROOKIE								0
 
 ///////////////–≈œ”“¿÷»ﬂ

@@ -189,6 +189,19 @@
 	layer = 2.8
 	pass_flags = LETPASSTHROW
 
+/turf/stalker/floor/water/Entered(atom/movable/A)
+	..()
+	if(istype(A, /mob/living))
+		switch(rand(1,4))
+			if(1)
+				playsound(loc, 'sound/effects/footsteps/grass/grass1.wav', 100, 1)
+			if(2)
+				playsound(loc, 'sound/effects/footsteps/grass/grass2.wav', 100, 1)
+			if(3)
+				playsound(loc, 'sound/effects/footsteps/grass/grass3.wav', 100, 1)
+			if(4)
+				playsound(loc, 'sound/effects/footsteps/grass/grass4.wav', 100, 1)
+
 /obj/structure/stalker/listva/listva2
 	icon_state = "leafs2"
 

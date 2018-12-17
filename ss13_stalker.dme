@@ -16,6 +16,7 @@
 #include "_maps\__MAP_DEFINES.dm"
 #include "_maps\Zona2.dm"
 #include "_maps\map_files\Stalker\Zona2\backwater.dmm"
+#include "_maps\map_files\Stalker\Zona2\swamp.dmm"
 #include "_maps\map_files\Stalker\Zona2\underground1.dmm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"

@@ -988,28 +988,28 @@
 			else
 				M.do_attack_animation(H)
 
-				var/atk_verb = M.dna.species.attack_verb
-				if(H.lying)
-					atk_verb = "kick"
+			var/atk_verb = M.dna.species.attack_verb
+			if(H.lying)
+				atk_verb = "kick"
 
-				var/damage = rand(0, 9) + M.dna.species.punchmod
+			var/damage = rand(0, 9) + M.dna.species.punchmod
 
-				if(!damage)
-					playsound(H.loc, M.dna.species.miss_sound, 25, 1, -1)
-					H.visible_message("<span class='warning'>[M] has attempted to [atk_verb] [H]!</span>")
-					return 0
+			if(!damage)
+				playsound(H.loc, M.dna.species.miss_sound, 25, 1, -1)
+				H.visible_message("<span class='warning'>[M] has attempted to [atk_verb] [H]!</span>")
+				return 0
 
 
-				var/obj/item/organ/limb/affecting = H.get_organ(ran_zone(M.zone_sel.selecting))
-				var/armor_block = H.run_armor_check(affecting, "melee")
+			var/obj/item/organ/limb/affecting = H.get_organ(ran_zone(M.zone_sel.selecting))
+			var/armor_block = H.run_armor_check(affecting, "melee")
 
-				playsound(H.loc, M.dna.species.attack_sound, 25, 1, -1)
+			playsound(H.loc, M.dna.species.attack_sound, 25, 1, -1)
 
-				H.visible_message("<span class='danger'>[M] has [atk_verb]ed [H]!</span>", \
-								"<span class='userdanger'>[M] has [atk_verb]ed [H]!</span>")
+			H.visible_message("<span class='danger'>[M] has [atk_verb]ed [H]!</span>", \
+							"<span class='userdanger'>[M] has [atk_verb]ed [H]!</span>")
 
-				H.apply_damage(damage, BRUTE, affecting, armor_block)
-				add_logs(M, H, "punched")
+			H.apply_damage(damage, BRUTE, affecting, armor_block)
+			add_logs(M, H, "punched")
 				/*
 				if((H.stat != DEAD) && damage >= 9)
 					H.visible_message("<span class='danger'>[M] has weakened [H]!</span>", \
@@ -1033,17 +1033,17 @@
 				M.do_attack_animation(H)
 				add_logs(M, H, "disarmed")
 
-				if(H.w_uniform)
-					H.w_uniform.add_fingerprint(M)
-				var/obj/item/organ/limb/affecting = H.get_organ(ran_zone(M.zone_sel.selecting))
-				var/randn = rand(1, 100)
-				if(randn <= 25)
-					playsound(H, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-					H.visible_message("<span class='danger'>[M] has pushed [H]!</span>",
-									"<span class='userdanger'>[M] has pushed [H]!</span>")
-					H.apply_effect(2, WEAKEN, H.run_armor_check(affecting, "melee", "Your armor prevents your fall!", "Your armor softens your fall!"))
-					H.forcesay(hit_appends)
-					return
+			if(H.w_uniform)
+				H.w_uniform.add_fingerprint(M)
+			var/obj/item/organ/limb/affecting = H.get_organ(ran_zone(M.zone_sel.selecting))
+			var/randn = rand(1, 100)
+			if(randn <= 25)
+				playsound(H, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				H.visible_message("<span class='danger'>[M] has pushed [H]!</span>",
+								"<span class='userdanger'>[M] has pushed [H]!</span>")
+				H.apply_effect(2, WEAKEN, H.run_armor_check(affecting, "melee", "Your armor prevents your fall!", "Your armor softens your fall!"))
+				H.forcesay(hit_appends)
+				return
 
 				var/talked = 0	// BubbleWrap
 

@@ -2,8 +2,8 @@ var/global/list/obj/item/device/stalker_pda/KPKs = list()
 var/global/global_lentahtml = ""
 
 /obj/item/device/stalker_pda
-	name = "KPK"
-	desc = "A portable device, used to communicate with other stalkers."
+	name = "КПК"
+	desc = "Индивидуальный КПК - Карманный Персональный Компьютер. Основное средство св&#255;зи в Зоне."
 	icon = 'icons/stalker/device_new.dmi'
 	icon_state = "kpk_off"
 	item_state = "kpk"
@@ -1444,7 +1444,9 @@ var/global/global_lentahtml = ""
 			rus_rank_name_s = "Ветеран"
 		if(EXPERIENCED to VETERAN)
 			rus_rank_name_s = "Опытный"
-		if(ROOKIE to EXPERT)
+		if(BEGINNER to EXPERIENCED)
+			rus_rank_name_s = "Начинающий"
+		if(ROOKIE to BEGINNER)
 			rus_rank_name_s = "Новичок"
 	return rus_rank_name_s
 
@@ -1459,7 +1461,9 @@ var/global/global_lentahtml = ""
 			eng_rank_name_s = "Veteran"
 		if(EXPERIENCED to VETERAN)
 			eng_rank_name_s = "Experienced"
-		if(ROOKIE to EXPERIENCED)
+		if(BEGINNER to EXPERIENCED)
+			eng_rank_name_s = "Beginner"
+		if(ROOKIE to BEGINNER)
 			eng_rank_name_s = "Rookie"
 	return eng_rank_name_s
 

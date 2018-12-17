@@ -731,6 +731,15 @@ Sorry Giacom. Please don't be mad :(
 /mob/living/proc/check_ear_prot()
 	return 0
 
+///mob/living/stripPanelUnequip/rating()
+//		var/rating_add
+//	switch(rating_add)
+//		if(0 to 200)
+//			loot = low_tier_sidormatitems
+//		if(201 to 400)
+//			loot = medium_tier_sidormatitems
+//		if(401 to INFINITY)
+//			loot = high_tier_sidormatitems
 // The src mob is trying to strip an item from someone
 // Override if a certain type of mob should be behave differently when stripping items (can't, for example)
 /mob/living/stripPanelUnequip(obj/item/what, mob/who, where)
@@ -741,6 +750,10 @@ Sorry Giacom. Please don't be mad :(
 		else
 			src << "<span class='warning'>¬ы не можете раздевать людей в этой зоне!</span>"
 		return
+
+//	if(B.netralzone)
+//		src << "<span class='warning'>¬ы пытаете раздеть человека в нейтральной зоне!</span>"
+//		src << "<span class='warning'>-70 репутации</span>"
 
 	if(what.flags & NODROP)
 		src << "<span class='warning'>You can't remove \the [what.name], it appears to be stuck!</span>"
