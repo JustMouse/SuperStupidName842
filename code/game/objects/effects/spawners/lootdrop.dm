@@ -18,7 +18,7 @@
 				new lootspawn(get_turf(src))
 	qdel(src)
 
-/obj/effect/spawner/lootdrop/armory_contraband
+/obj/effect/spawner/lootdrop/stalker/armory_contraband
 	name = "armory contraband gun spawner"
 	lootdoubles = 0
 
@@ -32,31 +32,6 @@
 /obj/effect/spawner/lootdrop/maintenance
 	name = "maintenance loot spawner"
 
-	//How to balance this table
-	//-------------------------
-	//The total added weight of all the entries should be (roughly) equal to the total number of lootdrops
-	//(take in account those that spawn more than one object!)
-	//
-	//While this is random, probabilities tells us that item distribution will have a tendency to look like
-	//the content of the weighted table that created them.
-	//The less lootdrops, the less even the distribution.
-	//
-	//If you want to give items a weight <1 you can multiply all the weights by 10
-	//
-	//the "" entry will spawn nothing, if you increase this value,
-	//ensure that you balance it with more spawn points
-
-	//table data:
-	//-----------
-	//aft maintenance: 		24 items, 18 spots 2 extra (28/08/2014)
-	//asmaint: 				16 items, 11 spots 0 extra (08/08/2014)
-	//asmaint2:			 	36 items, 26 spots 2 extra (28/08/2014)
-	//fpmaint:				5  items,  4 spots 0 extra (08/08/2014)
-	//fpmaint2:				12 items, 11 spots 2 extra (28/08/2014)
-	//fsmaint:				0  items,  0 spots 0 extra (08/08/2014)
-	//fsmaint2:				40 items, 27 spots 5 extra (28/08/2014)
-	//maintcentral:			2  items,  2 spots 0 extra (08/08/2014)
-	//port:					5  items,  5 spots 0 extra (08/08/2014)
 	loot = list(
 				/obj/item/bodybag = 1,
 				/obj/item/clothing/glasses/meson = 2,
@@ -122,7 +97,7 @@
 				"" = 11
 				)
 
-/obj/effect/spawner/lootdrop/crate_spawner
+/obj/effect/spawner/lootdrop/stalker/crate_spawner
 	name = "lootcrate spawner"
 	lootdoubles = 0
 
@@ -130,3 +105,29 @@
 				/obj/structure/barricade/stalker/box = 30,
 				"" = 70
 				)
+
+	//How to balance this table
+	//-------------------------
+	//The total added weight of all the entries should be (roughly) equal to the total number of lootdrops
+	//(take in account those that spawn more than one object!)
+	//
+	//While this is random, probabilities tells us that item distribution will have a tendency to look like
+	//the content of the weighted table that created them.
+	//The less lootdrops, the less even the distribution.
+	//
+	//If you want to give items a weight <1 you can multiply all the weights by 10
+	//
+	//the "" entry will spawn nothing, if you increase this value,
+	//ensure that you balance it with more spawn points
+
+	//table data:
+	//-----------
+	//aft maintenance: 		24 items, 18 spots 2 extra (28/08/2014)
+	//asmaint: 				16 items, 11 spots 0 extra (08/08/2014)
+	//asmaint2:			 	36 items, 26 spots 2 extra (28/08/2014)
+	//fpmaint:				5  items,  4 spots 0 extra (08/08/2014)
+	//fpmaint2:				12 items, 11 spots 2 extra (28/08/2014)
+	//fsmaint:				0  items,  0 spots 0 extra (08/08/2014)
+	//fsmaint2:				40 items, 27 spots 5 extra (28/08/2014)
+	//maintcentral:			2  items,  2 spots 0 extra (08/08/2014)
+	//port:					5  items,  5 spots 0 extra (08/08/2014)

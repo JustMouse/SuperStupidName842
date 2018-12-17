@@ -50,7 +50,7 @@
 
 		var/lootspawn = pickweight(loot)
 
-		if(!lootspawn || lootspawn == /obj/nothing)
+		if(!lootspawn || lootspawn == "")
 			return
 
 		//var/obj/item/weapon/artifact/lootspawn_art = lootspawn
@@ -266,7 +266,7 @@
 	active_icon_state = "electra1"
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/nothing = 90,
+	loot = list("" = 90,
 				/obj/item/weapon/artifact/flash = 5,
 				/obj/item/weapon/artifact/moonlight = 3.5,
 				/obj/item/weapon/artifact/battery = 1.5,
@@ -293,7 +293,7 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/nothing = 80,
+	loot = list("" = 80,
 				/obj/item/weapon/artifact/meduza = 12,
 				/obj/item/weapon/artifact/stoneflower = 5,
 				/obj/item/weapon/artifact/nightstar = 2,
@@ -328,7 +328,7 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/nothing = 80,
+	loot = list("" = 80,
 				/obj/item/weapon/artifact/meduza = 12,
 				/obj/item/weapon/artifact/stoneflower = 6,
 				/obj/item/weapon/artifact/nightstar = 2
@@ -348,7 +348,7 @@
 	active_icon_state = "jarka1"
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/nothing = 90,
+	loot = list("" = 90,
 				/obj/item/weapon/artifact/droplet = 5,
 				/obj/item/weapon/artifact/fireball = 3,
 				/obj/item/weapon/artifact/crystal = 1.5,
@@ -440,7 +440,7 @@
 	active_icon_state = "holodec" //needs activation icon
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/nothing = 80,
+	loot = list("" = 80,
 				/obj/item/weapon/artifact/stone_blood = 10,
 				/obj/item/weapon/artifact/bubble = 5.5,
 				/obj/item/weapon/artifact/mica = 3,
