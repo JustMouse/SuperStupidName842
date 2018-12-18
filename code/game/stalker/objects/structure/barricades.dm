@@ -136,11 +136,7 @@
 	icon_state = "block5l"
 
 /obj/structure/stalker/blocks/vanish/block1/CanPass(atom/movable/mover, turf/target, height=0)
-//	if(istype(mover) && mover.checkpass(PASSGLASS))
-//		world << "[loc] [dir] [mover] [density]0"
-//		return 1
 	if(istype(mover, /obj/item/projectile) && density)
-		world << "[loc] [dir] [mover] [density]0"
 		return prob(30)
 	if(get_dir(loc, target) == dir)
 		return !density
@@ -148,9 +144,6 @@
 		return 1
 
 /obj/structure/stalker/blocks/vanish/block1/CheckExit(atom/movable/O as mob|obj, target)
-//	if(istype(O) && O.checkpass(PASSGLASS))
-//		return 1
-	world << "[loc] [dir] [O] [density]123"
 	if(istype(O, /obj/item/projectile) && density)
 		return 1
 	if(get_dir(O.loc, target) == dir)

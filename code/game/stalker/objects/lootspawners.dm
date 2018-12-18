@@ -1,51 +1,3 @@
-///////////////////////////////////////////////Одноразовый лутспавнер////////////////////////////////////////////////////////////////////////////////
-/obj/effect/spawner/lootdrop/stalker/stash_crate/low
-	name = "khabar loot spawner"
-
-	loot = list(/obj/structure/closet/crate/stalker/blue/stash/low = 80,
-				"" = 20)
-/*	loot = list(
-				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad = 20,
-				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 20,
-				/obj/item/weapon/gun/projectile/automatic/pistol/pm = 5,
-				/obj/item/weapon/gun/projectile/automatic/pistol/fort12 = 5,
-				/obj/item/weapon/gun/projectile/automatic/pistol/pb1s = 5,
-				/obj/item/weapon/gun/projectile/automatic/mp5 = 1,
-				/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff = 4,
-				/obj/item/weapon/gun/projectile/revolver/bm16 = 3,
-				/obj/item/ammo_box/stalker/b9x18 = 10,
-				/obj/item/ammo_box/stalker/b9x18P = 10,
-				/obj/item/ammo_box/stalker/b12x70 = 10,
-				/obj/item/ammo_box/stalker/b12x70P = 10,
-				/obj/item/ammo_box/stalker/b12x70D = 10,
-				/obj/item/ammo_box/stalker/b9x19 = 10,
-				/obj/item/ammo_box/stalker/b9x19P = 10,
-				/obj/item/clothing/suit/hooded/kombez/mercenary = 1,
-				/obj/item/clothing/suit/hooded/kombez/kombez_bandit = 1,
-				/obj/item/clothing/suit/army = 1,
-				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat = 2,
-				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown = 2,
-				/obj/item/clothing/mask/gas/stalker = 4,
-				/obj/item/device/detector/blink = 4,
-				"" = 10
-				)
-*/
-/obj/effect/spawner/lootdrop/stalker/stash_crate/medium
-	name = "khabar loot spawner"
-
-	loot = list(
-				/obj/structure/closet/crate/stalker/blue/stash/medium = 50,
-				"" = 50
-				)
-
-/obj/effect/spawner/lootdrop/stalker/stash_crate/high
-	name = "khabar loot spawner"
-
-	loot = list(
-				/obj/structure/closet/crate/stalker/blue/stash/high= 10,
-				"" = 90
-				)
-
 ///////////////////////////////////////////////Лутспавнер с кулдауном и бесконечным сроком работы////////////////////////////////////////////////////
 
 /obj/effect/spawner/lootdrop/stalker/cooldown_enable
@@ -59,55 +11,51 @@
 	loot = list(/obj/item/stack/medical/gauze/bint = 75,
 				/obj/item/trash/can = 25)
 
-/obj/effect/spawner/lootdrop/stalker/weapon
-	lootcount = 1
-	loot = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm = 85,
-				/obj/item/trash/can = 15)
-
 /obj/effect/spawner/lootdrop/stalker/cooldown_enable/New()
 	SpawnLoot()
 
 /obj/effect/spawner/lootdrop/stalker/cooldown_enable/proc/SpawnLoot()
-	if(!loot || !loot.len)
+	world << "SPAWNLOOT [src]"
+	if(!loot || !loot.len) //Если пустой
 		return
 
-	for(var/i = 0, i < lootcount, i++)
+	for(var/i = 0, i < CanSpawn(), i++) //Создаём объекты
 
 		if(!loot.len)
 			return
 
-		var/lootspawn = pickweight(loot)
+		var/lootspawn = pickweight(loot) //Забиваем переменную рандомным объектом из loot
 
-		if(!lootspawn || lootspawn == "")
+		if(!lootspawn || lootspawn == "") //Если объект - ничего
 			continue
 
-		spawned_loot.Add(lootspawn)
+		spawned_loot.Add(lootspawn) //Заполняем список лутом
 
 		var/turf/T = get_turf(src)
 		new lootspawn(T) //var/obj/O =
-
+		"SPAWNLOOT1 [src]"
 //		RandomMove(O)
-	////////////////////////////////////////////
-	sleep(rand(cooldown, cooldown + cooldown/2))
-	////////////////////////////////////////////
+
+	sleep(rand(cooldown, cooldown + cooldown/2)) //Рандом кулдауна
+
 	SpawnLoot()
 	return
 
-/*
-/obj/effect/spawner/lootdrop/stalker/proc/CanSpawn()
-	var/count = 0
 
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/proc/CanSpawn() //Проверяем на спавн
+	var/count = 0
+	world << "CANSPAWN [src]"
 	for(var/I in spawned_loot)
 
 		var/obj/O = I
-
 		if(!(O.loc in range(7, src)))
 			count++
 		else
 			spawned_loot.Remove(I)
+		world << "CANSPAWN1 [src]"
 
-	return Clamp(lootcount - count, 0, lootcount)
-*/
+	return Clamp(lootcount - count, 0, lootcount) //define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
+
 
 /*
 /obj/effect/spawner/lootdrop/stalker/proc/RandomMove(spawned)
