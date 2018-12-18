@@ -1,3 +1,5 @@
+///////////////////////////////////////////////Одноразовый лутспавнер////////////////////////////////////////////////////////////////////////////////
+
 /obj/effect/spawner/lootdrop
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "x2"
@@ -17,6 +19,59 @@
 			if(lootspawn)
 				new lootspawn(get_turf(src))
 	qdel(src)
+
+
+/obj/effect/spawner/lootdrop/stalker/stash_crate/low
+	name = "khabar loot spawner"
+
+	loot = list(/obj/structure/closet/crate/stalker/blue/stash/low = 80,
+				"" = 20)
+/*	loot = list(
+				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad = 20,
+				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 20,
+				/obj/item/weapon/gun/projectile/automatic/pistol/pm = 5,
+				/obj/item/weapon/gun/projectile/automatic/pistol/fort12 = 5,
+				/obj/item/weapon/gun/projectile/automatic/pistol/pb1s = 5,
+				/obj/item/weapon/gun/projectile/automatic/mp5 = 1,
+				/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff = 4,
+				/obj/item/weapon/gun/projectile/revolver/bm16 = 3,
+				/obj/item/ammo_box/stalker/b9x18 = 10,
+				/obj/item/ammo_box/stalker/b9x18P = 10,
+				/obj/item/ammo_box/stalker/b12x70 = 10,
+				/obj/item/ammo_box/stalker/b12x70P = 10,
+				/obj/item/ammo_box/stalker/b12x70D = 10,
+				/obj/item/ammo_box/stalker/b9x19 = 10,
+				/obj/item/ammo_box/stalker/b9x19P = 10,
+				/obj/item/clothing/suit/hooded/kombez/mercenary = 1,
+				/obj/item/clothing/suit/hooded/kombez/kombez_bandit = 1,
+				/obj/item/clothing/suit/army = 1,
+				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat = 2,
+				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown = 2,
+				/obj/item/clothing/mask/gas/stalker = 4,
+				/obj/item/device/detector/blink = 4,
+				"" = 10
+				)
+*/
+/obj/effect/spawner/lootdrop/stalker/stash_crate/medium
+	name = "khabar loot spawner"
+
+	loot = list(
+				/obj/structure/closet/crate/stalker/blue/stash/medium = 50,
+				"" = 50
+				)
+
+/obj/effect/spawner/lootdrop/stalker/stash_crate/high
+	name = "khabar loot spawner"
+
+	loot = list(
+				/obj/structure/closet/crate/stalker/blue/stash/high= 10,
+				"" = 90
+				)
+
+/obj/effect/spawner/lootdrop/stalker/weapon
+	lootcount = 1
+	loot = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm = 85,
+				/obj/item/trash/can = 15)
 
 /obj/effect/spawner/lootdrop/stalker/armory_contraband
 	name = "armory contraband gun spawner"

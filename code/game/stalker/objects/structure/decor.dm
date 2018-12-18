@@ -52,6 +52,11 @@
 	eng_desc = "Water in this puddle is not very clean. But you can still wash your face or clothes with it."
 	icon_state = "luzha"
 
+/obj/structure/stalker/water/luzha/Entered(atom/movable/A)
+	..()
+	if(istype(A, /mob/living))
+		playsound(src, get_sfx("waterfootsteps"), 80, 1)
+
 /obj/structure/stalker/water/luzha/kap
 	name = "puddle"
 	desc = "ќбыкновенна&#255; лужа. ¬ода, вроде бы, не сама&#255; чиста&#255;, но умытьс&#255; или смыть остатки гр&#255;зи с одежды в ней можно."
@@ -189,18 +194,18 @@
 	layer = 2.8
 	pass_flags = LETPASSTHROW
 
-/turf/stalker/floor/water/Entered(atom/movable/A)
+/obj/structure/stalker/listva/Entered(atom/movable/A)
 	..()
 	if(istype(A, /mob/living))
 		switch(rand(1,4))
 			if(1)
-				playsound(loc, 'sound/effects/footsteps/grass/grass1.wav', 100, 1)
+				playsound(src, get_sfx("grassfootsteps"), 80, 1)
 			if(2)
-				playsound(loc, 'sound/effects/footsteps/grass/grass2.wav', 100, 1)
+				playsound(src, get_sfx("grassfootsteps"), 80, 1)
 			if(3)
-				playsound(loc, 'sound/effects/footsteps/grass/grass3.wav', 100, 1)
+				playsound(src, get_sfx("grassfootsteps"), 80, 1)
 			if(4)
-				playsound(loc, 'sound/effects/footsteps/grass/grass4.wav', 100, 1)
+				playsound(src, get_sfx("grassfootsteps"), 80, 1)
 
 /obj/structure/stalker/listva/listva2
 	icon_state = "leafs2"
