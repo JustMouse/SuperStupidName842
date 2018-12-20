@@ -53,9 +53,8 @@
 	icon_state = "luzha"
 
 /obj/structure/stalker/water/luzha/Entered(atom/movable/A)
-	..()
 	if(istype(A, /mob/living))
-		playsound(src, get_sfx("waterfootsteps"), 80, 1)
+		playsound(src, get_sfx("waterfootsteps"), 100, 1)
 
 /obj/structure/stalker/water/luzha/kap
 	name = "puddle"
@@ -195,17 +194,8 @@
 	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/listva/Entered(atom/movable/A)
-	..()
 	if(istype(A, /mob/living))
-		switch(rand(1,4))
-			if(1)
-				playsound(src, get_sfx("grassfootsteps"), 80, 1)
-			if(2)
-				playsound(src, get_sfx("grassfootsteps"), 80, 1)
-			if(3)
-				playsound(src, get_sfx("grassfootsteps"), 80, 1)
-			if(4)
-				playsound(src, get_sfx("grassfootsteps"), 80, 1)
+		playsound(src, get_sfx("grassfootsteps"), 100, 1)
 
 /obj/structure/stalker/listva/listva2
 	icon_state = "leafs2"

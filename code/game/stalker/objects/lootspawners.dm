@@ -33,7 +33,7 @@
 
 		var/turf/T = get_turf(src)
 		new lootspawn(T) //var/obj/O =
-		"SPAWNLOOT1 [src]"
+		world << "SPAWNLOOT1"
 //		RandomMove(O)
 
 	sleep(rand(cooldown, cooldown + cooldown/2)) //Рандом кулдауна
