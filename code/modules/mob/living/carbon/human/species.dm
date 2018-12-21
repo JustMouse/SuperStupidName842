@@ -974,6 +974,13 @@
 			else
 				H.grabbedby(M)
 				return 1
+			world << "[M] [H]"
+			if(B.netralzone)
+				src << "<span class='warning'>Вы схватили кого-то в нейтральной зоне!</span>"
+				src << "<span class='warning'>-30 репутации</span>"
+				var/datum/data/record/sk = find_record("sid", M.sid, data_core.stalkers)
+				if(sk)
+					sk.fields["reputation"] -= 30
 
 		if("harm")
 			var/area/B = get_area(H.loc)
@@ -999,6 +1006,12 @@
 				H.visible_message("<span class='warning'>[M] has attempted to [atk_verb] [H]!</span>")
 				return 0
 
+			if(B.netralzone)
+				src << "<span class='warning'>Вы ударили кого-то в нейтральной зоне!</span>"
+				src << "<span class='warning'>-100 репутации</span>"
+				var/datum/data/record/sk = find_record("sid", M.sid, data_core.stalkers)
+				if(sk)
+					sk.fields["reputation"] -= 100
 
 			var/obj/item/organ/limb/affecting = H.get_organ(ran_zone(M.zone_sel.selecting))
 			var/armor_block = H.run_armor_check(affecting, "melee")
@@ -1032,6 +1045,13 @@
 			else
 				M.do_attack_animation(H)
 				add_logs(M, H, "disarmed")
+
+			if(B.netralzone)
+				src << "<span class='warning'>Вы пытались разоружить кого-то в нейтральной зоне!</span>"
+				src << "<span class='warning'>-50 репутации</span>"
+				var/datum/data/record/sk = find_record("sid", M.sid, data_core.stalkers)
+				if(sk)
+					sk.fields["reputation"] -= 0
 
 			if(H.w_uniform)
 				H.w_uniform.add_fingerprint(M)

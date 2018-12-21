@@ -63,6 +63,7 @@
 
 	var/server
 	var/banappeals
+	var/discordinvite = "https://discord.gg/EBfmC6Z"
 	var/wikiurl = "http://www.tgstation13.org/wiki" // Default wiki link.
 	var/forumurl = "http://tgstation13.org/phpBB/index.php" //default forums
 	var/rulesurl = "http://www.tgstation13.org/wiki/Rules" // default rules
@@ -236,6 +237,8 @@
 
 		if(type == "config")
 			switch(name)
+				if("discordinvite")
+					config.discordinvite = value
 				if("admin_legacy_system")
 					config.admin_legacy_system = 1
 				if("ban_legacy_system")

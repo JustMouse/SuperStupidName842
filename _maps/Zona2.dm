@@ -2,6 +2,7 @@
 
 		#include "map_files\Stalker\Zona2\underground1.dmm"
 		#include "map_files\Stalker\Zona2\backwater.dmm"
+		#inclide "map_files\Stalker\Zona2\swamp.dmm"
 
 		#define MAP_FILE "ungerground1.dmm"
 		#define MAP_NAME "Backwater"

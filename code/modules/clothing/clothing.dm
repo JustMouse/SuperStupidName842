@@ -274,10 +274,10 @@ BLIND     // can't see anything
 	slot_flags = SLOT_ICLOTHING
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
-	var/has_sensor = 1//For the crew computer 2 = unable to change mode
+	var/has_sensor = 0//For the crew computer 2 = unable to change mode
 	var/random_sensor = 1
 	var/sensor_mode = 0	/* 1 = Report living/dead, 2 = Report detailed damages, 3 = Report location */
-	var/can_adjust = 1
+	var/can_adjust = 0
 	var/adjusted = 0
 	var/alt_covers_chest = 0 // for adjusted/rolled-down jumpsuits, 0 = exposes chest and arms, 1 = exposes arms only
 	var/suit_color = null

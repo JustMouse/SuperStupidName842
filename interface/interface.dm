@@ -1,4 +1,17 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
+/client/verb/discord()
+	set name = "discord"
+//	set desc = "Discord invite"
+	set hidden = 1
+	if (config.discordinvite)
+		if(alert("Вы хотите перейти в дискорд группу, сталкер?",,"Да", "Нет")=="Нет")
+			return
+		src << link(config.discordinvite)
+	else
+		src << "<span class='danger'>Упс, не получается!</span>"
+	return
+
+/*
 /client/verb/wiki()
 	set name = "wiki"
 	set desc = "Visit the wiki."
@@ -58,7 +71,7 @@
 	else
 		src << "<span class='danger'>The Github URL is not set in the server configuration.</span>"
 	return
-
+*/
 /client/verb/hotkeys_help()
 	set name = "hotkeys-help"
 	set category = "OOC"

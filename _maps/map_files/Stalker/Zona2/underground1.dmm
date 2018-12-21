@@ -776,7 +776,7 @@
 "oV" = (/turf/stalker/floor/gryaz/gryaz3,/area/stalker/buildings/backwater/bunker)
 "oW" = (/obj/structure/grille/stalker{density = 0; icon_state = "fence5"; pixel_x = 0},/turf/stalker/floor/agroprom/beton,/area/stalker)
 "oX" = (/turf/stalker/floor/plasteel/plitka,/area/stalker)
-"oY" = (/obj/structure/stalker/cacheable/body,/obj/effect/spawner/lootdrop/stalker/weapon/pistols,/turf/stalker/floor/gryaz/gryaz3,/area/stalker/buildings/backwater/bunker)
+"oY" = (/obj/structure/stalker/cacheable/body,/obj/effect/spawner/lootdrop/stalker/cooldown_enable/weapon/pistols,/turf/stalker/floor/gryaz/gryaz3,/area/stalker/buildings/backwater/bunker)
 "oZ" = (/obj/effect/spawner/lootdrop/stalker/cooldown_enable/mobspawner/snork_spawner,/turf/stalker/floor/gryaz/gryaz3,/area/stalker/buildings/backwater/bunker)
 "pb" = (/obj/structure/stalker/cacheable/polka{cache_quality = 0; pixel_y = 15},/obj/effect/decal/cleanable/cobweb2,/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/bunker)
 "pc" = (/obj/effect/spawner/lootdrop/stalker/cooldown_enable/food,/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/bunker)

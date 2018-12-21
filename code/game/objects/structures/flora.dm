@@ -261,6 +261,10 @@
 	anchored = 1
 	opacity = 1
 
+/obj/structure/flora/stalker/bush/Crossed(atom/movable/A)
+	if(istype(A, /mob/living))
+		playsound(src, get_sfx("bushfootsteps"), 40, 1)
+
 /obj/structure/flora/stalker/bush/initialize()
 	..()
 	icon_state = "very_tall_grass_[rand(5,8)]"

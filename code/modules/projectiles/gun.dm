@@ -228,15 +228,23 @@
 
 
 /obj/item/weapon/gun/proc/can_trigger_gun(mob/living/carbon/user)
-//	var/area/B = get_area(user.loc)
-//	if(B.safezone)
-//		if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
-//			user << "<span class='warning'>You can't shoot in the safezone!</span>"
-//		else
-//			user << "<span class='warning'>¬ы не можете стрел&#255;ть в этой зоне!</span>"
-//		return 0
-//	if(!handle_pins(user))
-//		return 0
+	var/area/B = get_area(user.loc)
+	if(B.safezone)
+		if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			user << "<span class='warning'>You can't shoot in the safezone!</span>"
+		else
+			user << "<span class='warning'>¬ы не можете стрел&#255;ть в этой зоне!</span>"
+		return 0
+	if(!handle_pins(user))
+		return 0
+
+	if(B.netralzone)
+		var/mob/living/carbon/human/H = user
+		src << "<span class='warning'>¬ы пытались стрел€ть в нейтральной зоне!</span>"
+		src << "<span class='warning'>-10 репутации</span>"
+		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+		if(sk)
+			sk.fields["reputation"] -= 10
 
 
 	if(trigger_guard)

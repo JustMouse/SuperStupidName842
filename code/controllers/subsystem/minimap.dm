@@ -15,7 +15,7 @@ var/datum/subsystem/minimap/SSminimap
 
 /datum/subsystem/minimap/New()
 	NEW_SS_GLOBAL(SSminimap)
-
+/*
 /datum/subsystem/minimap/Initialize(timeofday, zlevel)
 	if (zlevel)
 		return ..()
@@ -168,7 +168,7 @@ var/datum/subsystem/minimap/SSminimap
 
 		fcopy(result_icon, result_path)
 		text2file(hash, hash_path)
-
+*/
 /datum/subsystem/minimap/proc/getMinimapFile(zlevel)
 	return "data/minimaps/[MAP_NAME]_[zlevel]"
 

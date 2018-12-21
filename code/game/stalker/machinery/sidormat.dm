@@ -6,7 +6,7 @@ var/list/real_sidormat_items = list()
 
 var/list/global_sidormat_list = list(
 		///////////////////////////////  Оружие  /////////////////////////////////////////
-	"Handguns" = list(
+	"Пистолеты" = list(
 		///////////////////////////// **Пистолеты** /////////////////////////////////////
 		new /datum/data/stalker_equipment("PMm",			"ПМм",				/obj/item/weapon/gun/projectile/automatic/pistol/pm,				3000,	ROOKIE),
 		new /datum/data/stalker_equipment("TT",				"ТТ",				/obj/item/weapon/gun/projectile/automatic/pistol/tt,				3000,	ROOKIE),
@@ -20,7 +20,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Desert Eagle",	"Дёзерт Игл",		/obj/item/weapon/gun/projectile/automatic/pistol/desert,			30000,	EXPERIENCED)
 		),
 
-	"Automatic Weapons" = list(
+	"Автоматическое оружие и ПП" = list(
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Beretta M38",	"Беретта М38",		/obj/item/weapon/gun/projectile/automatic/berettam38,				10000,	ROOKIE),
 		new /datum/data/stalker_equipment("Kiparis",		"Кипарис",			/obj/item/weapon/gun/projectile/automatic/kiparis,					10000,	ROOKIE),
@@ -40,7 +40,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("PKM",			"ПКМ",				/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm,				200000,	EXPERT)
 		),
 
-	"Shotguns" = list(
+	"Дробовики" = list(
 		/////////////////////////////// **Дробовики** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Sawn off",		"Обрез",			/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,				6000,	ROOKIE),
 		new /datum/data/stalker_equipment("BM-16",			"БМ-16",			/obj/item/weapon/gun/projectile/revolver/bm16,						10000,	ROOKIE),
@@ -50,13 +50,13 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("SPAS-12",		"СПАС-12",			/obj/item/weapon/gun/projectile/shotgun/spsa,						50000,	VETERAN)
 		),
 
-	"Rifles" = list(
+	"Винтовки" = list(
 		/////////////////////////////// **Винтовки** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Lee Enfield",	"Ли Энфилд",		/obj/item/weapon/gun/projectile/shotgun/boltaction/enfield,			15000,	ROOKIE),
 		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					60000,	EXPERT)
 		),
 
-	"Melee Weapons" = list(
+	"Оружие ближнего боя" = list(
 		/////////////////////////////// **Другое** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Kitchen Knife",		"Кухонный нож",				/obj/item/weapon/kitchen/knife,												1500,	ROOKIE),
 		new /datum/data/stalker_equipment("Tourist Knife",		"Нож туриста",				/obj/item/weapon/kitchen/knife/tourist,										4000,	ROOKIE),
@@ -64,7 +64,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Butcher's Cleaver",	"Тесак м&#x44F;сника",		/obj/item/weapon/kitchen/knife/butcher,										10000,	ROOKIE)
 		),
 
-	"Ammo Boxes" = list(
+	"Коробки с патронами" = list(
 		////////////////////////////////  Патроны  /////////////////////////////////////////
 		new /datum/data/stalker_equipment("9x18mm Box",				"Коробка 9х18мм",							/obj/item/ammo_box/stalker/b9x18,						1500,	ROOKIE, sale_price = 750),
 		new /datum/data/stalker_equipment("9x18mm AP Box",			"Коробка 9x18мм Бронебойные",				/obj/item/ammo_box/stalker/b9x18P,						2500,	EXPERIENCED, sale_price = 12500),
@@ -86,7 +86,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("9x39 PAB-9 Box",			"Коробка 9x39мм ПАБ-9",						/obj/item/ammo_box/stalker/b939,						10000,	EXPERIENCED, sale_price = 5000)
 		),
 
-	"Ammo Magazines and Clips" = list(
+	"Магазины и обоймы" = list(
 		new /datum/data/stalker_equipment("PMm; PB1s Magazine",						"Магазин к ПМм; ПБ1с",			/obj/item/ammo_box/magazine/stalker/m9x18pm,			700,	ROOKIE, sale_price = 350),
 		new /datum/data/stalker_equipment("TT Magazine",							"Магазин к ТТ",					/obj/item/ammo_box/magazine/stalker/tt,					600,	ROOKIE, sale_price = 300),
 		new /datum/data/stalker_equipment("Fort-12 Magazine",						"Магазин к Форт-12",			/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000,	ROOKIE, sale_price = 500),
@@ -107,7 +107,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("7.62x51 Clip",							"Обойма 7.62х51",				/obj/item/ammo_box/stalker/cl762x51,					800,	ROOKIE, sale_price = 400)
 		),
 
-	"Suits" = list(
+	"Верхняя одежда" = list(
 		///////////////////////////////  Броня  /////////////////////////////////////////
 		new /datum/data/stalker_equipment("Leather jacket",				"Кожанка",							/obj/item/clothing/suit/hooded/kozhanka,					5000,	ROOKIE, sale_price = 1000),
 		new /datum/data/stalker_equipment("White leather jacket",		"Бела&#x44F; кожанка",				/obj/item/clothing/suit/hooded/kozhanka/white,				5000,	ROOKIE, sale_price = 1000),
@@ -134,7 +134,7 @@ var/list/global_sidormat_list = list(
 		new	/datum/data/stalker_equipment("Exoskeleton",				"Экзоскелет",						/obj/item/clothing/suit/hooded/sealed/exoskelet,			150000,	EXPERT,		assortment_level = 500)
 		),
 
-	"Masks and Helmets" = list(
+	"Маски и шлемы" = list(
 		////////////////////////////	Маски, Шлемы	/////////////////////////////////////
 		new /datum/data/stalker_equipment("Gasmask",					"Противогаз",					/obj/item/clothing/mask/gas/stalker,							7500,	ROOKIE, sale_price = 1000),
 		new /datum/data/stalker_equipment("Merc gasmask",				"Противогаз наемников",			/obj/item/clothing/mask/gas/stalker/mercenary,					7500,	ROOKIE, sale_price = 1000),
@@ -146,7 +146,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("SKAT-9M (helmet)",			"СКАТ-9М (шлем)",				/obj/item/clothing/head/skathelmet,								40000,	VETERAN)
 		),
 
-	"Medicine" = list(
+	"Медицина" = list(
 		///////////////////////////////	Медикаменты	/////////////////////////////////////////
 		new /datum/data/stalker_equipment("Medkit",						"Аптечка",							/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian,			1000,	ROOKIE),
 		new /datum/data/stalker_equipment("Army medkit",				"Армейска&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army,				2500,	EXPERIENCED),
@@ -155,7 +155,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Anti-rad",					"Анти-рад препараты",				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,		3500,	ROOKIE)
 		),
 
-	"Food" = list(
+	"Еда" = list(
 		/////////////////////////////////	Еда	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Canned stew",				"Тушенка",					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,				550,	ROOKIE),
 		new /datum/data/stalker_equipment("Canned fish",				"Шпроты",					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti,		750,	ROOKIE),
@@ -166,14 +166,14 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Bread",						"Батон",					/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					400,	ROOKIE)
 		),
 
-	"Bacpacks" = list(
+	"Рюкзаки" = list(
 		new /datum/data/stalker_equipment("Cheap satchel",					"Дешева&#x44F; сумка",		/obj/item/weapon/storage/backpack/satchel/stalker/civilian,					2500,	ROOKIE),
 		new /datum/data/stalker_equipment("Cheap backpack",					"Дешевый рюкзак",			/obj/item/weapon/storage/backpack/stalker/civilian,							2500,	ROOKIE),
 		new /datum/data/stalker_equipment("Tourist backpack",				"Рюкзак туриста",			/obj/item/weapon/storage/backpack/stalker/tourist,							6000,	ROOKIE),
 		new /datum/data/stalker_equipment("Professional backpack",			"Рюкзак профессионала",		/obj/item/weapon/storage/backpack/stalker/professional,						11000,	ROOKIE)
 		),
 
-	"Misc" = list(
+	"Разное" = list(
 		/////////////////////////////////	Другое	/////////////////////////////////////////////
 		new /datum/data/stalker_equipment/stalker_pda("PDA",					"КПК",													/obj/item/device/stalker_pda,								4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Repair-kit for suits and helmets",	"Рем. комплект дл&#x44F; бронекостюмов и шлемов",		/obj/item/device/repair_kit/clothing,						10000,	ROOKIE),
@@ -190,7 +190,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Cigars",								"Сигары",												/obj/item/weapon/storage/fancy/cigarettes/cigars,			10000,	ROOKIE)
 		),
 
-	"Clothing" = list(
+	"Другая одежда" = list(
 		new /datum/data/stalker_equipment("Under",								"Бабушкин свитер",										/obj/item/clothing/under/color/switer,						1000,	ROOKIE),
 		new /datum/data/stalker_equipment("Dark under",							"Тёмный бабушкин свитер",								/obj/item/clothing/under/color/switer/dark,					1500,	ROOKIE),
 		new /datum/data/stalker_equipment("Telnyashka",							"Тельн&#x44F;шка",										/obj/item/clothing/under/color/switer/lolg,					1500,	ROOKIE),
@@ -200,14 +200,14 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Balaclava",							"Балаклава",											/obj/item/clothing/mask/balaclava,							700,	ROOKIE)
 		),
 
-	"Detectors" = list(
+	"Детекторы артефактов" = list(
 		/////////////////////////////////	Детекторы	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Blink", 		"Отклик",					/obj/item/device/detector/blink,				4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Bear",		"Медведь",					/obj/item/device/detector/bear,					12000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("Veles",		"Велес",					/obj/item/device/detector/veles,				36000,	VETERAN),
 		),
 
-	"Attachments" = list(
+	"Модификации" = list(
 		/////////////////////////////////	Аттачменты	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Universl suppressor",	"Универсальный глушитель",					/obj/item/weapon/attachment/suppressor,				2000,	ROOKIE),
 		new /datum/data/stalker_equipment("SUSAT",					"СУСАТ",									/obj/item/weapon/attachment/scope/SUSAT,			8000,	EXPERIENCED),
@@ -441,7 +441,7 @@ var/list/global_sidormat_list = list(
 
 		dat +="<div class='statusDisplay'>"
 		dat += "На счету: [num2text(balance, 8)] RU<br>"
-		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
+		dat += "<br><br>ИНСТРУКЦИя: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
 		if(switches & BUY_STUFF)
 			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар</b></A><br>"
 		if(door_device && sk.fields["degree"])
@@ -529,6 +529,8 @@ var/list/global_sidormat_list = list(
 	//updateUsrDialog()
 	return
 
+/obj/machinery/stalker/sidormat/proc/Items_raiting()
+
 
 /obj/machinery/stalker/sidormat/proc/SellItems()
 	var/mob/living/carbon/human/H = usr
@@ -560,7 +562,12 @@ var/list/global_sidormat_list = list(
 		sk.fields["money"] += GetCost(I)
 		balance = sk.fields["money"]
 
-		say("[I] был продан за [GetCost(I)].")
+		if(istype(I, /obj/item/ammo_box))
+			var/obj/item/ammo_box/AB = I
+			if(AB.stored_ammo.len < AB.max_ammo)
+				say("[I] был продан за [GetCost(I)/2].")
+		else
+			say("[I] был продан за [GetCost(I)].")
 
 		PlaceInPool(I)
 		CHECK_TICK
@@ -580,13 +587,21 @@ var/list/global_sidormat_list = list(
 		if(istype(AM, /obj/item/clothing))
 			var/obj/item/clothing/C = AM
 			if((C.durability / initial(C.durability)) * 100 < 80)
-				say("[AM] is too broken for sale.")
+				say("[AM] слишком испорчен(а) для продажи")
 				continue
 
 		if(istype(AM, /obj/item/weapon/storage/backpack) && AM.contents.len)
-			say("Empty [AM] before selling.")
+			say("Опустошите [AM] перед продажей.")
 			continue
-
+		world << "[AM]"
+		if(istype(AM, /obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad))
+			world << "1"
+			var/obj/item/weapon/reagent_containers/C = AM
+			world << "[C] [C.list_reagents] [/datum/reagent/medicine/pen_acid]"
+			if(C.reagents.total_volume == 0)
+				say("Вы не можете продавать пустой антирад.")
+				continue
+//is empty!
 //		if(istype(AM, /obj/item/ammo_box))
 //			var/obj/item/ammo_box/AB = AM
 //			if(AB.stored_ammo.len < AB.max_ammo)

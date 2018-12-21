@@ -250,6 +250,14 @@
 			src << "<span class='warning'>Вы не можете кидатьc&#255; в этой зоне!</span>"
 		return
 
+	if(B.netralzone)
+		var/mob/living/carbon/human/H = src
+		src << "<span class='warning'>Вы бросили предмет в нейтральной зоне!</span>"
+		src << "<span class='warning'>-5 репутации</span>"
+		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+		if(sk)
+			sk.fields["reputation"] -= 5
+
 	if(!target || !isturf(loc))
 		return
 	if(istype(target, /obj/screen)) return

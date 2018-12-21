@@ -86,8 +86,8 @@ var/global/datum/crewmonitor/crewmonitor = new
 	return ..()
 
 /datum/crewmonitor/proc/show(mob/mob, z)
-	if (mob.client)
-		sendResources(mob.client)
+//	if (mob.client)
+//		sendResources(mob.client)
 	if (!z) z = mob.z
 
 	if (z > 0 && src.interfaces)
@@ -252,8 +252,9 @@ var/global/datum/crewmonitor/crewmonitor = new
 
 /datum/crewmonitor/proc/queueUpdate(z)
 	addtimer(crewmonitor, "update", 5, TRUE, z)
-
+/*
 /datum/crewmonitor/proc/sendResources(var/client/client)
 	send_asset(client, "crewmonitor.js")
 	send_asset(client, "crewmonitor.css")
 	SSminimap.sendMinimaps(client)
+*/

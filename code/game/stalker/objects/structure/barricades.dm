@@ -28,14 +28,14 @@
 		qdel(src)
 
 /obj/structure/barricade/stalker/wood
-	name = "wooden barricade"
+	name = "дерев&#255;нна€ барикада"
 	desc = "«абарикадированный досками проход."
 	eng_desc = "Planks."
 	icon_state = "zabitiy_proxod"
 	debriss_type = /obj/structure/stalker/doski
 
 /obj/structure/barricade/stalker/box
-	name = "wooden box"
+	name = "дерев&#255;нный €щик"
 	desc = "«аколоченный дерев&#255;нный &#255;щик.  то знает, что может быть внутри."
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "yashik"

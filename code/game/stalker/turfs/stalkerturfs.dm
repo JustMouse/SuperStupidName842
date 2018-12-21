@@ -4,7 +4,7 @@
 #define WEST_EDGING		"west"
 
 /turf/simulated/floor/plating/asteroid/snow/lite
-	name = "snow"
+	name = "снег"
 	desc = "Выгл&#255;дит холодным."
 	icon = 'icons/turf/snow.dmi'
 	baseturf = /turf/simulated/floor/plating/asteroid/snow
@@ -312,7 +312,7 @@ var/global/list/GryazEdgeCache
 	icon = 'icons/stalker/water.dmi'
 	icon_state = "water"
 	layer = TURF_LAYER
-	overlay_priority = 5
+//	overlay_priority = 5
 	var/busy = 0
 
 /turf/stalker/floor/water/attack_hand(mob/living/user)

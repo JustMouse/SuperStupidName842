@@ -15,11 +15,10 @@
 	SpawnLoot()
 
 /obj/effect/spawner/lootdrop/stalker/cooldown_enable/proc/SpawnLoot()
-	world << "SPAWNLOOT [src]"
 	if(!loot || !loot.len) //Если пустой
 		return
 
-	for(var/i = 0, i < CanSpawn(), i++) //Создаём объекты
+	for(var/i = 0, i < CanSpawn(spawned_loot), i++) //Создаём объекты
 
 		if(!loot.len)
 			return
@@ -29,11 +28,10 @@
 		if(!lootspawn || lootspawn == "") //Если объект - ничего
 			continue
 
-		spawned_loot.Add(lootspawn) //Заполняем список лутом
+//		spawned_loot.Add(lootspawn) //Заполняем список лутом
 
 		var/turf/T = get_turf(src)
-		new lootspawn(T) //var/obj/O =
-		"SPAWNLOOT1 [src]"
+		spawned_loot.Add(new lootspawn(T))
 //		RandomMove(O)
 
 	sleep(rand(cooldown, cooldown + cooldown/2)) //Рандом кулдауна
@@ -44,16 +42,17 @@
 
 /obj/effect/spawner/lootdrop/stalker/cooldown_enable/proc/CanSpawn() //Проверяем на спавн
 	var/count = 0
-	world << "CANSPAWN [src]"
 	for(var/I in spawned_loot)
-
-		var/obj/O = I
-		if(!(O.loc in range(7, src)))
-			count++
+		if(istype(I, /mob))
+			if(I in range(7, src))
+				count++
+			else
+				spawned_loot.Remove(I)
 		else
-			spawned_loot.Remove(I)
-		world << "CANSPAWN1 [src]"
-
+			if(I in range(1, src))
+			else
+				spawned_loot.Remove(I)
+	world << "4"
 	return Clamp(lootcount - count, 0, lootcount) //define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
 
 
@@ -68,7 +67,12 @@
 
 	return spawned
 */
-/obj/effect/spawner/lootdrop/stalker/weapon/pistols
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/weapon/test
+	cooldown = 500
+	lootcount = 2
+	loot = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm = 1)
+
+/obj/effect/spawner/lootdrop/stalker/cooldown_enable/weapon/pistols
 	name = "stalker pistols"
 	loot = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm = 25,
 				/obj/item/weapon/gun/projectile/automatic/pistol/pb1s = 15,
@@ -79,7 +83,7 @@
 				/obj/item/weapon/gun/projectile/automatic/pistol/marta = 5,
 				"" = 30)
 
-/obj/effect/spawner/lootdrop/stalker/weapon/rifles_and_shotguns
+/obj/effect/spawner/lootdrop/stalker/weapon/cooldown_enable/rifles_and_shotguns
 	name = "stalker rifles_and_shotguns"
 	loot = list(/obj/item/weapon/gun/projectile/revolver/bm16 = 25,
 				/obj/item/weapon/gun/projectile/automatic/ak74 = 25,
@@ -147,4 +151,4 @@
 
 obj/nothing/New()
 	qdel(src)
-*/cooldown_enable/
+*/

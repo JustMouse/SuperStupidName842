@@ -1,5 +1,6 @@
 <!-- Most valid html will work in here, excluding images. -->
 
-<h1>Welcome to O.B.O.S.R.A.L.K.E.R.!</h1>
+<h1>Добро пожаловать на O.B.O.S.R.A.L.K.E.R.!</h1>
 
-<i>Have a fun!</i>
+<i>Получайте удовольствие! :)</i>
+<i>Это аркадный сталкер, если вы думаете иначе, напишите нам об этом.</i>

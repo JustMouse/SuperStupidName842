@@ -80,7 +80,8 @@ var/global/global_lentahtml = ""
 	assets = list(
 		"kpk_background.png"	= 'icons/stalker/images/kpk.png',
 		"nodata.png"			= 'icons/stalker/images/nodata.png',
-		"photo_0"				= 'icons/stalker/images/sidor.png'
+		"photo_0"				= 'icons/stalker/images/sidor.png',
+		"backwater.png"			= 'icons/stalker/images/backwater.png'
 		//Курсоры
 	)
 
@@ -159,8 +160,8 @@ var/global/global_lentahtml = ""
 	html {cursor: url('cursor_normal.ani');}\
 	body {\
 		background-image: url('kpk_background.png');\
-		padding-top: 18px;\
-		padding-left: 35px;\
+//		padding-top: 18px;\
+//		padding-left: 35px;\
 	}\
 	table {\
 		background: #131416;\
@@ -560,7 +561,7 @@ var/global/global_lentahtml = ""
 					<div id=\"lenta\">\
 					<div class=\"main\">"
 					if(user.z != 1)
-						mainhtml += "<img id=\"map\" height=415 width=415 src=minimap_[user.z].png>"
+						mainhtml += "<img id=\"map\" height=415 width=415 src=backwater.png>"
 					else
 						mainhtml += "<img id=\"map\" height=415 width=415 src=nodata.png>"
 					mainhtml +="\

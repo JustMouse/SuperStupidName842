@@ -751,9 +751,13 @@ Sorry Giacom. Please don't be mad :(
 			src << "<span class='warning'>Вы не можете раздевать людей в этой зоне!</span>"
 		return
 
-//	if(B.netralzone)
-//		src << "<span class='warning'>Вы пытаете раздеть человека в нейтральной зоне!</span>"
-//		src << "<span class='warning'>-70 репутации</span>"
+	if(B.netralzone)
+		var/mob/living/carbon/human/H = src
+		src << "<span class='warning'>Вы пытаете раздеть человека в нейтральной зоне!</span>"
+		src << "<span class='warning'>-100 репутации</span>"
+		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+		if(sk)
+			sk.fields["reputation"] -= 100
 
 	if(what.flags & NODROP)
 		src << "<span class='warning'>You can't remove \the [what.name], it appears to be stuck!</span>"
