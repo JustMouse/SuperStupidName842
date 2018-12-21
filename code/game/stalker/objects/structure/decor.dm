@@ -529,7 +529,7 @@
 	icon_state = "shitok2"
 	cache_size = 1
 	density = 0
-	layer = 4.1
+	layer = 3.89
 
 /obj/structure/stalker/broke_table
 	name = "стол"

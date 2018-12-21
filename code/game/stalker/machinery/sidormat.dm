@@ -283,7 +283,7 @@ var/list/global_sidormat_list = list(
 /obj/machinery/stalker/sidormat
 	name = "SYCHEMAT"
 	desc = "An equipment vendor for beginning stalkers."
-	icon_state = "radio"
+	icon_state = "sidormat"
 	density = 1
 	anchored = 1
 	var/itemloc = null
