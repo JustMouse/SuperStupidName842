@@ -54,7 +54,7 @@
 
 /obj/structure/stalker/water/luzha/Crossed(atom/movable/A)
 	if(istype(A, /mob/living))
-		playsound(src, get_sfx("waterfootsteps"), 20, 1)
+		playsound(src, get_sfx("waterfootsteps"), 40, 1)
 
 /obj/structure/stalker/water/luzha/kap
 	name = "лужа"
@@ -688,15 +688,15 @@
 /obj/structure/stalker/cacheable/attack_hand(mob/user)
 	..()
 
-	user.visible_message("<span class='notice'>[user] начал исследовать </span><span class='info'> [src]...</span>", "<span class='notice'>Вы начали исследовать </span><span class='info'> [src]...</span>")
+	user.visible_message("<span class='notice'>[user] начал исследовать [src]...</span>", "<span class='notice'>Вы начали исследовать [src]...</span>")
 	if(!do_after(user, 30, 1, src))
 		return
 
 	if(!internal_cache)
-		user.visible_message("<span class='notice'>[user] ничего не нашёл в </span><span class='info'> [src].</span>", "<span class='notice'>Вы ничего не нашли в </span><span class='info'> [src].</span>")
+		user.visible_message("<span class='notice'>[user] ничего не нашёл в [src].</span>", "<span class='notice'>Вы ничего не нашли в [src].</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] нашёл хабар в </span><span class='info'> [src].</span>", "<span class='notice'>Вы нашли спр&#255;танный лут в </span><span class='info'> [src].</span>")
+	user.visible_message("<span class='notice'>[user] нашёл хабар в [src].</span>", "<span class='notice'>Вы нашли спр&#255;танный лут в [src].</span>")
 
 	playsound(loc, "rustle", 50, 1, -5)
 	if(user.s_active)

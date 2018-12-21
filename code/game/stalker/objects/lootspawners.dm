@@ -50,9 +50,9 @@
 				spawned_loot.Remove(I)
 		else
 			if(I in range(1, src))
+				count++
 			else
 				spawned_loot.Remove(I)
-	world << "4"
 	return Clamp(lootcount - count, 0, lootcount) //define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
 
 
