@@ -376,7 +376,7 @@
 	cache_size = 0
 
 /obj/structure/stalker/cacheable/televizor/broken
-	icon_state = "телевизор"
+	icon_state = "TV_b"
 	name =  "—тарый разбитый телевизор"
 	desc = "—тарый разбитый советский телевизор."
 	density = 1
