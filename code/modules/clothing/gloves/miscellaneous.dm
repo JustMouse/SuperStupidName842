@@ -1,15 +1,18 @@
 
 /obj/item/clothing/gloves/fingerless
 	name = "fingerless gloves"
-	desc = "Plain black gloves without fingertips for the hard working."
-	icon_state = "fingerless"
-	item_state = "fingerless"
+	desc = "Plain gloves without fingertips for the hard working."
+	icon_state = "fingerless1"
+	item_state = "fingerless1"
 	item_color = null	//So they don't wash.
 	transfer_prints = TRUE
 	strip_delay = 40
 	put_on_delay = 20
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	New()
+	 icon_state = "fingerless[rand(1, 2)]"
+	 item_state = "fingerless[rand(1, 2)]"
 
 /obj/item/clothing/gloves/botanic_leather
 	name = "botanist's leather gloves"
