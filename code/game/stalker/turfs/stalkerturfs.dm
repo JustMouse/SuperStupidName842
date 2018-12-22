@@ -444,6 +444,10 @@ var/global/list/WaterEdgeCache
 					T.overlays += WaterEdgeCache[2**i]
 	return
 
+/turf/stalker/floor/wood/doski
+	icon_state = "dosochki"
+	name = "planks"
+
 /turf/stalker/floor/wood
 	icon = 'icons/stalker/floor.dmi'
 	name = "floor"
