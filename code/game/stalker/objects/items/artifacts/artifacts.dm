@@ -267,9 +267,10 @@
 /obj/item/weapon/storage/belt/stalker
 	name = "artifact belt"
 	desc = "Специальный по&#255;с дл&#255; артефактов."
+	eng_desc = "Special belt for artefacts."
 	icon = 'icons/obj/clothing/belts.dmi'
-	icon_state = "utilitybelt"
-	item_state = "utility"
+	icon_state = "artefact2"
+	item_state = "artefact_high"
 	max_w_class = 3
 	storage_slots = 5
 
@@ -277,8 +278,8 @@
 	name = "small artifact belt"
 	desc = "Специальный по&#255;с дл&#255; артефактов."
 	icon = 'icons/obj/clothing/belts.dmi'
-	icon_state = "fannypack_black"
-	item_state = "artifacts"
+	icon_state = "artefact1"
+	item_state = "artefact_low"
 	storage_slots = 2
 
 /obj/item/weapon/storage/belt/stalker/artifact_belt
