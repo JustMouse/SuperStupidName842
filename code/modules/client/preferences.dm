@@ -329,7 +329,6 @@ var/list/preferences_datums = list()
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>General Settings</h2>"
-			dat += "<b>UI Style:</b> <a href='?_src_=prefs;preference=ui'>[UI_style]</a><br>"
 			dat += "<b>tgui Style:</b> <a href='?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy" : "No Frills"]</a><br>"
 			dat += "<b>Play admin midis:</b> <a href='?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? "Yes" : "No"]</a><br>"
 			dat += "<b>Play lobby music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Yes" : "No"]</a><br>"
@@ -1008,15 +1007,6 @@ var/list/preferences_datums = list()
 					socks = random_socks()
 					facial_hair_style = random_facial_hair_style(gender)
 					hair_style = random_hair_style(gender)
-
-				if("ui")
-					switch(UI_style)
-						if("Midnight")
-							UI_style = "Plasmafire"
-						if("Plasmafire")
-							UI_style = "Retro"
-						else
-							UI_style = "Midnight"
 
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy

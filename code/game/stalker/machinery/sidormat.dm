@@ -494,39 +494,6 @@ var/list/global_sidormat_list = list(
 		for(var/L in global_sidormat_list)
 			if(L == "Unbuyable" && !(switches & SELL_UNBUYABLE))
 				continue
-/*			switch(L)
-				if("Пистолеты")
-					list_for_show = "Пистолеты"
-				if("Автоматическое оружие и ПП")
-					list_for_show = "Автоматическое оружие и ПП"
-				if("Дробовики")
-					list_for_show = "Дробовики"
-				if("Винтовки")
-					list_for_show = "Винтовки"
-				if("Оружие ближнего боя")
-					list_for_show = "Оружие ближнего боя"
-				if("Коробки с патронами")
-					list_for_show = "Коробки с патронами"
-				if("Магазины и обоймы")
-					list_for_show = "Магазины и обоймыы"
-				if("Верхняя одежда")
-					list_for_show = "Верхняя одежда"
-				if("Маски и шлемы")
-					list_for_show = "Маски и шлемы"
-				if("Медицина")
-					list_for_show = "Медицина"
-				if("Еда")
-					list_for_show = "Еда"
-				if("Рюкзаки")
-					list_for_show = "Рюкзаки"
-				if("Разное")
-					list_for_show = "Разное"
-				if("Другая одежда")
-					list_for_show = "Другая одежда"
-				if("Детекторы артефактов")
-					list_for_show = "Детекторы артефактов"
-				if("Модификации")
-					list_for_show = "Модификации"*/
 			dat += "<tr><td><center><b>[L]</b></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/O in global_sidormat_list[L])
 				if((sk.fields["faction_s"] == O.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || O.faction == "Everyone")
