@@ -111,6 +111,7 @@ proc/slur(phrase)
 			if(findtext(phrase, ";", i))
 				letter = copytext(phrase, i, findtext(phrase, ";", i))
 				i = findtext(phrase, ";", i)
+				continue
 		if(prob(33))
 			if(lowerrustext(letter)=="î")	letter="ó"
 			if(lowerrustext(letter)=="û")	letter="i"

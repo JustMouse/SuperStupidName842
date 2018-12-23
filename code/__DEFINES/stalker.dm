@@ -25,7 +25,9 @@
 #define TRASH_TIER_COST						4000
 #define LOW_TIER_COST						9000
 #define MEDIUM_TIER_COST					36000
-#define HIGH_TIER_COST						72000
+#define HIGH_TIER_COST						65000
+#define SUPREME_TIER_COST					75000
+#define LEGENDARY_TIER_COST					200000
 
 ///////////////STAKLER_PDA
 #define FEED_SOUND							1

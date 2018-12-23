@@ -1,9 +1,20 @@
+//SIDORMAT
+//cost_tier
 var/list/trash_tier_sidormatitems = list()
 var/list/low_tier_sidormatitems = list()
 var/list/medium_tier_sidormatitems = list()
 var/list/high_tier_sidormatitems = list()
 var/list/real_sidormat_items = list()
+var/list/legendary_tier_sidormatitems = list()
+//rating_tier
+var/list/rookie_sidormatitems = list()
+var/list/beginner_sidormatitem = list()
+var/list/experienced_sidormatitems = list()
+var/list/veteran_sidormatitems = list()
+var/list/expert_sidormatitems = list()
+var/list/legend_sidormatitems = list()
 
+//SIDORMATITEMS
 var/list/global_sidormat_list = list(
 		///////////////////////////////  Оружие  /////////////////////////////////////////
 	"Пистолеты" = list(
@@ -175,7 +186,7 @@ var/list/global_sidormat_list = list(
 
 	"Разное" = list(
 		/////////////////////////////////	Другое	/////////////////////////////////////////////
-		new /datum/data/stalker_equipment/stalker_pda("PDA",					"КПК",													/obj/item/device/stalker_pda,								4000,	ROOKIE),
+//		new /datum/data/stalker_equipment/stalker_pda("PDA",					"КПК",													/obj/item/device/stalker_pda,								4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Repair-kit for suits and helmets",	"Рем. комплект дл&#x44F; бронекостюмов и шлемов",		/obj/item/device/repair_kit/clothing,						10000,	ROOKIE),
 		new /datum/data/stalker_equipment("Repair-kit for guns",				"Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",	/obj/item/device/repair_kit/gun,							4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Guitar",								"Гитара",												/obj/item/device/instrument/guitar,							3000,	ROOKIE),
@@ -329,9 +340,27 @@ var/list/global_sidormat_list = list(
 		if(0 to MEDIUM_TIER_COST)
 			medium_tier_sidormatitems += src
 
-		if(LOW_TIER_COST to HIGH_TIER_COST)
+		if(TRASH_TIER_COST to HIGH_TIER_COST)
 			high_tier_sidormatitems += src
+
+		if(LOW_TIER_COST to LEGENDARY_TIER_COST)
+			legendary_tier_sidormatitems += src
+
 	real_sidormat_items += src
+
+	switch(rating)
+		if(0 to ROOKIE)
+			rookie_sidormatitems += src
+		if(0 to BEGINNER)
+			beginner_sidormatitem += src
+		if(0 to EXPERIENCED)
+			experienced_sidormatitems += src
+		if(0 to VETERAN)
+			veteran_sidormatitems += src
+		if(0 to EXPERT)
+			expert_sidormatitems += src
+		if(0 to ZONE_LEGEND)
+			legend_sidormatitems += src
 
 /datum/data/stalker_equipment/proc/GetCost()
 	return src.sale_price
@@ -384,7 +413,6 @@ var/list/global_sidormat_list = list(
 
 	interact(H)
 
-
 /obj/machinery/stalker/sidormat/interact(mob/living/carbon/human/H)
 
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
@@ -422,9 +450,23 @@ var/list/global_sidormat_list = list(
 		dat += "</div>"
 		dat += "<div class='lenta_scroll'>"
 		dat += "<BR><table border='0' width='400'>" //<b>Item list:</b>
+		world << "A!A"
 		for(var/L in global_sidormat_list)
 			if(L == "Unbuyable" && !(switches & SELL_UNBUYABLE))
 				continue
+			switch(rating)
+				if(ROOKIE to BEGINNER)
+					L &= trash_tier_sidormatitems
+				if(BEGINNER to EXPERIENCED)
+					L &= low_tier_sidormatitems
+				if(EXPERIENCED to VETERAN)
+					L &= medium_tier_sidormatitems
+				if(VETERAN to EXPERT)
+					L &= high_tier_sidormatitems
+				if(EXPERT to ZONE_LEGEND)
+					L &= legendary_tier_sidormatitems
+				if(ZONE_LEGEND to INFINITY)
+					L &= real_sidormat_items
 			dat += "<tr><td><center><big><b>[L]</b></big></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
 				if((sk.fields["faction_s"] == prize.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
@@ -441,7 +483,7 @@ var/list/global_sidormat_list = list(
 
 		dat +="<div class='statusDisplay'>"
 		dat += "На счету: [num2text(balance, 8)] RU<br>"
-		dat += "<br><br>ИНСТРУКЦИя: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
+		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
 		if(switches & BUY_STUFF)
 			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар</b></A><br>"
 		if(door_device && sk.fields["degree"])
@@ -452,12 +494,45 @@ var/list/global_sidormat_list = list(
 		for(var/L in global_sidormat_list)
 			if(L == "Unbuyable" && !(switches & SELL_UNBUYABLE))
 				continue
+/*			switch(L)
+				if("Пистолеты")
+					list_for_show = "Пистолеты"
+				if("Автоматическое оружие и ПП")
+					list_for_show = "Автоматическое оружие и ПП"
+				if("Дробовики")
+					list_for_show = "Дробовики"
+				if("Винтовки")
+					list_for_show = "Винтовки"
+				if("Оружие ближнего боя")
+					list_for_show = "Оружие ближнего боя"
+				if("Коробки с патронами")
+					list_for_show = "Коробки с патронами"
+				if("Магазины и обоймы")
+					list_for_show = "Магазины и обоймыы"
+				if("Верхняя одежда")
+					list_for_show = "Верхняя одежда"
+				if("Маски и шлемы")
+					list_for_show = "Маски и шлемы"
+				if("Медицина")
+					list_for_show = "Медицина"
+				if("Еда")
+					list_for_show = "Еда"
+				if("Рюкзаки")
+					list_for_show = "Рюкзаки"
+				if("Разное")
+					list_for_show = "Разное"
+				if("Другая одежда")
+					list_for_show = "Другая одежда"
+				if("Детекторы артефактов")
+					list_for_show = "Детекторы артефактов"
+				if("Модификации")
+					list_for_show = "Модификации"*/
 			dat += "<tr><td><center><b>[L]</b></center></td><td></td><td></td></tr>"
-			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
-				if((sk.fields["faction_s"] == prize.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
-					//if(rating >= prize.rating)
-					if(get_assortment_level(H) >= prize.assortment_level)
-						dat += "<tr><td>[prize.name_ru]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+			for(var/datum/data/stalker_equipment/O in global_sidormat_list[L])
+				if((sk.fields["faction_s"] == O.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || O.faction == "Everyone")
+					if(rating >= O.rating)
+						if(get_assortment_level(H) >= O.assortment_level)
+							dat += "<tr><td>[O.name_ru]</td><td>[O.cost]</td><td><A href='?src=\ref[src];purchase=\ref[O]'>Купить</A></td></tr>"
 		dat += "</table>"
 		dat += "</div>"
 
@@ -507,30 +582,27 @@ var/list/global_sidormat_list = list(
 			SellItems()
 
 	if(href_list["purchase"])
-		var/datum/data/stalker_equipment/prize = locate(href_list["purchase"])
+		var/datum/data/stalker_equipment/O = locate(href_list["purchase"])
 
-		if (!prize)
+		if (!O)
 			updateUsrDialog()
 			return
 
-		if(prize.cost > sk.fields["money"])
-			say("You don't have enough money to buy [prize.name].")
+		if(O.cost > sk.fields["money"])
+			say("You don't have enough money to buy [O.name].")
 			updateUsrDialog()
 			return
 
-		sk.fields["money"] -= prize.cost
+		sk.fields["money"] -= O.cost
 		balance = sk.fields["money"]
 		//PoolOrNew(prize.equipment_path, itemloc2)
-		new prize.equipment_path(itemloc2)
+		new O.equipment_path(itemloc2)
 
 	if(href_list["basement_toggle"])
 		door_device.pulsed()
 
 	//updateUsrDialog()
 	return
-
-/obj/machinery/stalker/sidormat/proc/Items_raiting()
-
 
 /obj/machinery/stalker/sidormat/proc/SellItems()
 	var/mob/living/carbon/human/H = usr

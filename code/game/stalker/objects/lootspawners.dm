@@ -44,7 +44,7 @@
 	var/count = 0
 	for(var/I in spawned_loot)
 		if(istype(I, /mob))
-			if(I in range(7, src))
+			if(I in range(20, src))
 				count++
 			else
 				spawned_loot.Remove(I)

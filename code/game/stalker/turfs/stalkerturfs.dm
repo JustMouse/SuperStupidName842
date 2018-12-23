@@ -312,7 +312,7 @@ var/global/list/GryazEdgeCache
 	icon = 'icons/stalker/water.dmi'
 	icon_state = "water"
 	layer = TURF_LAYER
-//	overlay_priority = 5
+	overlay_priority = 5
 	var/busy = 0
 
 /turf/stalker/floor/water/attack_hand(mob/living/user)
@@ -431,6 +431,8 @@ var/global/list/WaterEdgeCache
 		WaterEdgeCache[NORTH] = image('icons/stalker/water.dmi', "water_north", layer = 2.01)
 		WaterEdgeCache[SOUTH] = image('icons/stalker/water.dmi', "water_south", layer = 2.01)
 		WaterEdgeCache[EAST] = image('icons/stalker/water.dmi', "water_east", layer = 2.01)
+		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
+		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
 		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
 
 	spawn(1)
