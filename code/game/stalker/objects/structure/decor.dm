@@ -368,7 +368,7 @@
 
 /obj/structure/stalker/cacheable/intercom
 	name = "интерком"
-	desc = "панель для св&#255;зи."
+	desc = "панель дл&#255; св&#255;зи."
 	eng_desc = "Soviet intercom."
 	icon = 'icons/stalker/backwater.dmi'
 	icon_state = "intercom"

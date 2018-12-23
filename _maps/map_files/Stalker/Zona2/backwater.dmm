@@ -1659,8 +1659,8 @@
 "FX" = (/obj/structure/stalker/doski/doski3,/obj/machinery/door/poddoor/shutters/preopen,/obj/rad,/turf/stalker/floor/road,/area/stalker/blowout/outdoor/backwater/waste)
 "FY" = (/obj/structure/stalker/listva/listva3,/obj/rad,/turf/stalker/floor/road,/area/stalker/blowout/outdoor/backwater/waste)
 "FZ" = (/obj/rad,/turf/stalker/floor/road,/area/stalker/blowout/outdoor/backwater/waste)
-"Ga" = (/turf/stalker/floor/water,/turf/stalker/floor/wood/doski,/area/stalker/blowout/outdoor/backwater)
-"Gb" = (/turf/stalker/floor/water,/turf/stalker/floor/wood/doski{dir = 4},/area/stalker/blowout/outdoor/backwater)
+"Ga" = (/turf/stalker/floor/water,/obj/structure/stalker/doski,/area/stalker/blowout/outdoor/backwater)
+"Gb" = (/turf/stalker/floor/water,/obj/structure/stalker/doski{dir = 4},/area/stalker/blowout/outdoor/backwater)
 
 (1,1,1) = {"
 atatatatatatatatatatatatafafadimaeaeaeadadatatatatatatatctatatjqatatatatatatcdatatatatbOatatjqatatatatatatatadadabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaoatatatatatatatatbOatatatatatatatatatataoabaaaaaaaaaaaaaaaaaaaaaa
