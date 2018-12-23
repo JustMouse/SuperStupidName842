@@ -450,6 +450,9 @@ var/global/list/WaterEdgeCache
 	icon = 'icons/stalker/floor.dmi'
 	name = "floor"
 
+/turf/stalker/floor/wood/doski
+	icon_state = "dosochki"
+
 /turf/stalker/floor/wood/brown
 	icon_state = "wooden_floor"
 
