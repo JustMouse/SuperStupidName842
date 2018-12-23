@@ -4,11 +4,11 @@
 //	set desc = "Discord invite"
 	set hidden = 1
 	if (config.discordinvite)
-		if(alert("Вы хотите перейти в дискорд группу, сталкер?",,"Да", "Нет")=="Нет")
+		if(alert("Do you want to join our discord channel?",,"Yes", "No")=="No")
 			return
 		src << link(config.discordinvite)
 	else
-		src << "<span class='danger'>Упс, не получается!</span>"
+		src << "<span class='danger'>Oops, it's not working!</span>"
 	return
 
 /*
