@@ -454,25 +454,12 @@ var/list/global_sidormat_list = list(
 		for(var/L in global_sidormat_list)
 			if(L == "Unbuyable" && !(switches & SELL_UNBUYABLE))
 				continue
-			switch(rating)
-				if(ROOKIE to BEGINNER)
-					L &= trash_tier_sidormatitems
-				if(BEGINNER to EXPERIENCED)
-					L &= low_tier_sidormatitems
-				if(EXPERIENCED to VETERAN)
-					L &= medium_tier_sidormatitems
-				if(VETERAN to EXPERT)
-					L &= high_tier_sidormatitems
-				if(EXPERT to ZONE_LEGEND)
-					L &= legendary_tier_sidormatitems
-				if(ZONE_LEGEND to INFINITY)
-					L &= real_sidormat_items
 			dat += "<tr><td><center><big><b>[L]</b></big></center></td><td></td><td></td></tr>"
-			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
-				if((sk.fields["faction_s"] == prize.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
-					//if(rating >= prize.rating)
-					if(get_assortment_level(H) >= prize.assortment_level)
-						dat += "<tr><td>[prize.name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
+			for(var/datum/data/stalker_equipment/O in global_sidormat_list[L])
+				if((sk.fields["faction_s"] == O.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || O.faction == "Everyone")
+					if(rating >= O.rating)
+						if(get_assortment_level(H) >= O.assortment_level)
+							dat += "<tr><td>[O.name]</td><td>[O.cost]</td><td><A href='?src=\ref[src];purchase=\ref[O]'>Buy</A></td></tr>"
 
 		dat += "</table>"
 		dat += "</div>"
@@ -562,7 +549,7 @@ var/list/global_sidormat_list = list(
 
 		sk.fields["money"] -= O.cost
 		balance = sk.fields["money"]
-		//PoolOrNew(prize.equipment_path, itemloc2)
+		//PoolOrNew(O.equipment_path, itemloc2)
 		new O.equipment_path(itemloc2)
 
 	if(href_list["basement_toggle"])
