@@ -450,7 +450,6 @@ var/list/global_sidormat_list = list(
 		dat += "</div>"
 		dat += "<div class='lenta_scroll'>"
 		dat += "<BR><table border='0' width='400'>" //<b>Item list:</b>
-		world << "A!A"
 		for(var/L in global_sidormat_list)
 			if(L == "Unbuyable" && !(switches & SELL_UNBUYABLE))
 				continue

@@ -109,8 +109,12 @@ proc/slur(phrase)
 			continue
 		if(letter == "&")
 			if(findtext(phrase, ";", i))
-				letter = copytext(phrase, i, findtext(phrase, ";", i))
-				i = findtext(phrase, ";", i)
+				letter = copytext(phrase, i, findtext(phrase, ";", i) + 1) //stalkerfixs
+				world << "[letter]"
+				i = (findtext(phrase, ";", i))
+				world << "[i] [findtext(phrase, ";", i) + 1] [findtext(phrase, ";", i)]"
+
+				output += letter
 				continue
 		if(prob(33))
 			if(lowerrustext(letter)=="î")	letter="ó"

@@ -368,7 +368,7 @@
 
 /obj/structure/stalker/cacheable/intercom
 	name = "интерком"
-	desc = "панель для св&#255;зи."
+	desc = "панель дл&#255; св&#255;зи."
 	eng_desc = "Soviet intercom."
 	icon = 'icons/stalker/backwater.dmi'
 	icon_state = "intercom"
@@ -655,16 +655,16 @@
 
 	switch(cache_quality)
 		if(3)
-			cache_chance -= 2
+			cache_chance -= 1
 
 		if(2)
-			cache_chance += 5
+			cache_chance += 3
 
 		if(1)
-			cache_chance += 10
+			cache_chance += 6
 
 		if(0)
-			cache_chance += 30
+			cache_chance += 10
 
 	if(!prob(cache_chance))
 		//internal_cache = null

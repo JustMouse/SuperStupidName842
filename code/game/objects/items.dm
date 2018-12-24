@@ -272,6 +272,9 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 			return
 
 	pickup(user)
+
+	layer = OBJ_LAYER //stalkerfixs
+
 	add_fingerprint(user)
 	if(!user.put_in_active_hand(src))
 		dropped(user)
