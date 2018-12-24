@@ -191,6 +191,9 @@
 	if(!(I.flags & ABSTRACT)) //rip more parems rip in peace ;_;
 		if(user.drop_item())
 			I.Move(loc)
+
+			I.layer = 4.01 //stalkerfixs
+
 			var/list/click_params = params2list(params)
 			//Center the icon where the user clicked.
 			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])

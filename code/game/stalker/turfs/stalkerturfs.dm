@@ -23,8 +23,13 @@
 	density = 1
 	anchored = 1
 	flags = CONDUCT
-	layer = 4.01
+	layer = 4.02
 	health = 10000000
+
+/obj/structure/grille/stalker/fence5
+	icon_state = "fence5"
+	layer = 4.02
+	density = 0
 
 /obj/structure/grille/stalker/CanPass(atom/movable/mover, turf/target, height=0)
 	if(istype(mover, /obj/item/projectile) && density)
@@ -37,8 +42,8 @@
 				return !density
 			else
 				return 1
-		if("fence5")
-			return 1
+//		if("fence5")
+//			return 1
 		if("fence3","fence2")
 			return 0
 		else
@@ -52,8 +57,8 @@
 	if((src.icon_state == "fence0") || (src.icon_state == "fence1"))
 		if(get_dir(loc, target) == dir)
 			return 0
-	if(src.icon_state == "fence5")
-		return 1
+//	if(src.icon_state == "fence5")
+//		return 1
 	return 1
 
 /obj/structure/grille/stalker/ex_act(severity, target)
@@ -452,6 +457,17 @@ var/global/list/WaterEdgeCache
 
 /turf/stalker/floor/wood/doski
 	icon_state = "dosochki"
+
+/turf/stalker/floor/wood/doski/Entered(atom/movable/A)
+	if(istype(A, /mob/living))
+		playsound(src, get_sfx("woodfootsteps"), 50, 1)
+		A.pixel_y += 10
+		A.layer = 4.02
+
+/turf/stalker/floor/wood/doski/Exited(atom/movable/A)
+	if(istype(A, /mob/living))
+		A.pixel_y -= 10
+		A.layer = MOB_LAYER
 
 /turf/stalker/floor/wood/brown
 	icon_state = "wooden_floor"

@@ -3,6 +3,16 @@
 	canSmoothWith = list(/obj/structure/table/stalker)
 	pass_flags = LETPASSTHROW
 
+/obj/structure/table/stalker/Crossed(atom/movable/O)
+	world << "cross [src] [O]"
+	O.layer = 9
+	..()
+
+/obj/structure/table/stalker/Uncrossed(atom/movable/O)
+	world << "ucross [src] [O]"
+	O.layer = 3
+	..()
+
 /obj/structure/table/stalker/wood
 	desc = "Обычный дерев&#255;нный слегка пошарпанный стол."
 	eng_desc = "Simple table."
@@ -11,6 +21,7 @@
 	deconstructable = 0
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/obj/structure/table/stalker/wood)
+
 
 /obj/structure/table/stalker/wood/bar
 	desc = "Самодельна&#255; барна&#255; стойка"

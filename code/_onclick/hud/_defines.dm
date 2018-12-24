@@ -17,6 +17,9 @@
 	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
 */
 
+//Center
+#define ui_kpk "CENTER: 1 ,CENTER: 1"
+
 //Lower left, persistant menu
 #define ui_inventory "WEST:6,SOUTH:5"
 
