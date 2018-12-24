@@ -91,6 +91,14 @@
 	density = 1
 	opacity = 0
 
+/obj/structure/grille/stalker/koluchka
+	name = "barbed wire"
+	desc = "Опасно, колюча&#255; проволка."
+	eng_desc = "Beware the barbed wire!"
+	icon_state = "koluchka_horizontalcenter"
+	density = 1
+	opacity = 0
+
 /obj/structure/grille/stalker/beton
 	icon = 'icons/stalker/beton_zabor.dmi'
 	desc = "Слишком крепкий."
