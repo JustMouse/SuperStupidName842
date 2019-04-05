@@ -136,6 +136,8 @@ var/list/global_huds = list(
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
 
+	var/obj/screen/sprint_intent
+
 	var/list/adding
 	var/list/other
 	var/list/obj/screen/hotkeybuttons
@@ -277,7 +279,7 @@ var/list/global_huds = list(
 			mymob.client.screen += mymob.internals
 			mymob.client.screen += lingstingdisplay
 			mymob.client.screen += lingchemdisplay
-			mymob.client.screen += mymob.staminas
+			mymob.client.screen += mymob.stamina_hud
 
 			hidden_inventory_update()
 			persistant_inventory_update()
@@ -323,7 +325,7 @@ var/list/global_huds = list(
 			mymob.client.screen -= mymob.internals
 			mymob.client.screen -= lingstingdisplay
 			mymob.client.screen -= lingchemdisplay
-			mymob.client.screen -= mymob.staminas
+			mymob.client.screen -= mymob.stamina
 
 			hidden_inventory_update()
 			persistant_inventory_update()

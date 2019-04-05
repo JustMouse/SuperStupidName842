@@ -34,9 +34,10 @@
 		Entered(AM)
 
 	spawn(100)
-		if(locate(/obj/structure/stalker/okno) in  contents)
+		if(locate(/obj/structure/stalker/window) in contents)  //stalkerfixs
 			opacity = 0
 			windowed = 1
+			density = 0
 
 /turf/Destroy()
 	// Adds the adjacent turfs to the current atmos processing
@@ -46,6 +47,7 @@
 			if(istype(T))
 				SSair.add_to_active(T)
 	..()
+
 	return QDEL_HINT_HARDDEL_NOW
 
 /turf/attack_hand(mob/user)

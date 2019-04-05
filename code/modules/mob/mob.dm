@@ -231,6 +231,12 @@ var/next_mob_id = 0
 /mob/proc/movement_delay()
 	return 0
 
+/mob/proc/stamina_restore()
+	return 0
+
+/mob/proc/stamina_capacity()
+	return 0
+
 /mob/proc/Life()
 	set waitfor = 0
 	return

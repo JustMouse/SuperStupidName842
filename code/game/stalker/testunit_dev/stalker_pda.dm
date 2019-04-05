@@ -40,6 +40,7 @@ var/global/global_lentahtml = ""
 	var/eng_rank_name_s = "Rookie"
 	var/eng_faction_s = "Loners"
 	var/degree = 0
+	var/image/background //stalkerfixs
 
 	//À≈Õ“¿
 	var/lentahtml = ""
@@ -67,7 +68,7 @@ var/global/global_lentahtml = ""
 	var/article_img = "nodata.gif"
 	var/article_img_width = 179
 	var/article_img_height = 128
-
+/*
 /datum/asset/simple/encyclopedia
 	assets = list(
 		//‘ÓÚÓ ‰Îˇ ˝ÌˆËÍÎÓÔÂ‰ËË
@@ -75,10 +76,10 @@ var/global/global_lentahtml = ""
 		"backwater"				= 'icons/stalker/images/backwater.jpg',
 		"nodata.gif"			= 'icons/stalker/images/nodata.gif'
 	)
-
+*/
 /datum/asset/simple/basics
 	assets = list(
-		"kpk_background.png"	= 'icons/stalker/images/kpk.png',
+//"kpk_background"	= 'icons/stalker/images/kpk.png',
 		"nodata.png"			= 'icons/stalker/images/nodata.png',
 		"photo_0"				= 'icons/stalker/images/sidor.png',
 		"backwater.png"			= 'icons/stalker/images/backwater.png'
@@ -145,6 +146,8 @@ var/global/global_lentahtml = ""
 	icon_state = "kpk_on"
 	H.set_machine(src)
 
+//#2e2e38 t-b
+
 	//user.set_machine(src)
 	mainhtml ="<html> \
 	\
@@ -157,29 +160,36 @@ var/global/global_lentahtml = ""
 	cursor: url('cursor_green.ani');\
 	}\
 	a {text-decoration: none;}\
-	html {cursor: url('cursor_normal.ani');}\
+	html {\
+		cursor: url('cursor_normal.ani');\
+		height: 100%;\
+		weight: 100%;\
+	}\
 	body {\
-		background-image: url('kpk_background.png');\
 //		padding-top: 18px;\
 //		padding-left: 35px;\
+		height: 100%;\
+		weight: 100%;\
+		background: #070808;\
 	}\
 	table {\
-		background: #131416;\
-		padding: 15px;\
-		margin-bottom: 10px;\
+		background: #070808;\
+//		padding: 15px;\
+//		margin-bottom: 10px;\
 		color: #afb2a1;\
 	}\
 	\
 	#table-bottom1 {\
-		background: #2e2e38;\
+		background: #3d2417;\
+
 		padding-top: 5px;\
 		padding-bottom: 5px;\
 	}\
 	#table-center1 {\
 		position: relative;\
 		background: #2e2e38;\
-		padding-top: 5px;\
-		padding-bottom: 5px;\
+//		padding-top: 5px;\
+//		padding-bottom: 5px;\
 		bottom: 100px;\
 	}\
 	#table-center2 {\
@@ -297,7 +307,7 @@ var/global/global_lentahtml = ""
 	</style>"
 	if (!owner || !password)
 		mainhtml +="<body>\
-		<table border=0 height=\"314\" width=\"455\">\
+		<table border=0 height=\"100%\" width=\"100%\">\
 		<tr>\
 		<td valign=\"top\" align=\"center\">\
 		<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div><br>\
@@ -324,7 +334,7 @@ var/global/global_lentahtml = ""
 		if (user != owner && hacked == 0)
 			mainhtml +="<body>\
 			\
-			<table border=0 height=\"314\" width=\"455\">\
+			<table border=0 height=\"100%\" width=\"100%\">\
 			<tr>\
 			<td align=\"left\" width=200>\
 			<div style=\"overflow: hidden; height: 200px; width: 180px;\" ><img height=80 width=80 border=4 src=photo_front><img height=80 width=80 border=4 background src=photo_side></div>\
@@ -373,7 +383,7 @@ var/global/global_lentahtml = ""
 					\
 					<table border=0 height=\"314\" width=\"455\">\
 						<tr>\
-							<td valign=\"top\" align=\"left\">"
+							<td bgcolor=\"#3d2417\"valign=\"top\" align=\"left\">"
 					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						mainhtml +="\
 						<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=load_cache'>\[LOAD CACHE\]</a><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[EXIT\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
@@ -606,37 +616,46 @@ var/global/global_lentahtml = ""
 	\
 	</html>"
 	if(show_title)
-		user << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=1")
+		user << browse(mainhtml, "window=pda_html;titlebar=1") //384,384
 	else
-		user << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
+		user << browse(mainhtml, "window=pda_html;titlebar=0") //568x388
+	winshow(usr, "pda", 1)
+	winset(usr, "pda", "border=0;can_minimize=0;can_resize=0;can_close=0;titlebar=0;")
+	usr << browse(mainhtml, "window=pda_html;border=0;can_minimize=0;can_resize=0;can_close=0;titlebar=0;")
+
+
+//stalkerfixs
+//H.back.screen_loc = ui_back
+//	var/obj/screen/S = H.damageoverlay
+//	S.icon = I
 
 /obj/item/device/stalker_pda/Topic(href, href_list)
-	..()
-
+	//..()
 	//var/mob/living/U = usr
 	var/mob/living/carbon/human/H = usr
 	if(!usr.canUseTopic(src))
 		hacked = 0
 		H.unset_machine()
-		H << browse(null, "window=mainhtml")
+		H << browse(mainhtml, "window=pda_html")
 		return
 	//add_fingerprint(H)
 	//get_asset_datum(/datum/asset/simple/basics).send(H)
 
 	switch(href_list["choice"])
-		if("title")
-			if(show_title)
-				H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
-				show_title = 0
-			else
-				H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=1")
-				show_title = 1
+//		if("title")
+//			if(show_title)
+//				H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
+//				show_title = 0
+//			else
+//				H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=1")
+//				show_title = 1
 
 		if("close")
 			icon_state = "kpk_off"
 			H.unset_machine()
 			hacked = 0
-			H << browse(null, "window=mainhtml")
+			winshow(usr, "pda", 0) //stalkerfixs
+			del(background)
 			return
 
 		if("password_input")
@@ -748,6 +767,9 @@ var/global/global_lentahtml = ""
 			hacked = 0
 			password = null
 			profile = null
+
+			del(background)
+			winshow(usr, "pda", 0)
 
 			KPKs -= src
 
@@ -868,6 +890,7 @@ var/global/global_lentahtml = ""
 			set_owner_photo()
 			mode = 1
 
+/*
 		if("2")			//›Õ÷» ÀŒœ≈ƒ»ﬂ
 			mode = 2
 			get_asset_datum(/datum/asset/simple/encyclopedia).send(H)
@@ -1020,12 +1043,7 @@ var/global/global_lentahtml = ""
 							article_img_width = 179
 							article_img_height = 128
 							article_text = ""
-
-
-
-
-
-
+*/
 		if("3")			//–≈…“»Õ√
 			if(data_core.stalkers.len)
 				refresh_rating(H)
@@ -1111,6 +1129,8 @@ var/global/global_lentahtml = ""
 
 	//usr.set_machine(src)
 	updateSelfDialog()
+//	updateDialog()
+//	updateUsrDialog()
 	return
 
 /obj/item/device/stalker_pda/proc/message_input(mob/living/U = usr, msg_name, max_length)

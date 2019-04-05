@@ -51,91 +51,6 @@
 	walltype = "rrust"
 	hardness = 15
 
-/turf/simulated/wall/stalker
-	canSmoothWith = list(
-	/turf/simulated/wall/stalker/beton,
-	/turf/simulated/wall/stalker/bricks,
-	/turf/simulated/wall/stalker/bricks_yellow,
-	/turf/simulated/wall/stalker/bricks_white,
-	/turf/simulated/wall/stalker/beton_agro
-	///obj/structure/stalker/okno/whitebrick/odin,
-	///obj/structure/stalker/okno/whitebrick/dva,
-	///obj/structure/stalker/okno/whitebrick/tri,
-	///obj/structure/stalker/okno/whitebrick/double1,
-	///obj/structure/stalker/okno/whitebrick/double2,
-	///obj/structure/stalker/okno/redbrick/odin,
-	///obj/structure/stalker/okno/redbrick/dva,
-	///obj/structure/stalker/okno/redbrick/double1,
-	///obj/structure/stalker/okno/redbrick/double2)
-	)
-	smooth = SMOOTH_TRUE
-
-/turf/simulated/wall/stalker/beton
-	name = "wall"
-	desc = "A huge chunk of wall"
-	icon = 'icons/turf/walls/beton_tg.dmi'
-	icon_state = "beton"
-	walltype = "beton"
-	canSmoothWith = list(
-	/turf/simulated/wall/stalker/beton,
-	/turf/simulated/wall/stalker/beton_agro
-	)
-
-/turf/simulated/wall/stalker/bricks
-	name = "wall"
-	desc = "A huge chunk of wall"
-	icon = 'icons/turf/walls/bricks_tg.dmi'
-	icon_state = "bricks"
-	walltype = "brick"
-	canSmoothWith = list(
-	/turf/simulated/wall/stalker/bricks
-	)
-
-/turf/simulated/wall/stalker/bricks_yellow
-	name = "wall"
-	desc = "A huge chunk of wall"
-	icon = 'icons/turf/walls/bricks_tg_yellow.dmi'
-	icon_state = "bricks"
-	walltype = "yellowbrick"
-	canSmoothWith = list(
-	/turf/simulated/wall/stalker/bricks_yellow
-	)
-
-/turf/simulated/wall/stalker/bricks_white
-	name = "wall"
-	desc = "A huge chunk of wall"
-	icon = 'icons/turf/walls/bricks_tg_white.dmi'
-	icon_state = "bricks"
-	walltype = "whitebrick"
-	canSmoothWith = list(
-	/turf/simulated/wall/stalker/bricks_white
-	)
-
-/turf/simulated/wall/stalker/beton_agro
-	name = "wall"
-	desc = "A huge chunk of wall"
-	icon = 'icons/turf/walls/beton_w_tg.dmi'
-	icon_state = "beton"
-	walltype = "betonagro"
-	canSmoothWith = list(
-	/turf/simulated/wall/stalker/beton_agro
-	)
-
-/turf/simulated/wall/shuttle
-	name = "wall"
-	icon = 'icons/turf/shuttle.dmi'
-	icon_state = "wall1"
-	walltype = "shuttle"
-	smooth = SMOOTH_FALSE
-
-/turf/simulated/wall/stalker/ship
-	name = "hull"
-	desc = "A huge chunk of hull"
-	icon = 'icons/stalker/barzha.dmi'
-	icon_state = "hull"
-	walltype = "barzha"
-	canSmoothWith = list(/turf/simulated/wall/stalker/ship)
-
 //sub-type to be used for interior shuttle walls
 //won't get an underlay of the destination turf on shuttle move
 /turf/simulated/wall/shuttle/interior/copyTurf(turf/T)
@@ -153,6 +68,13 @@
 		T.dir = dir
 	T.transform = transform
 	return T
+
+/turf/simulated/wall/shuttle
+	name = "wall"
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "wall1"
+	walltype = "shuttle"
+	smooth = SMOOTH_FALSE
 
 /turf/simulated/wall/shuttle/copyTurf(turf/T)
 	. = ..()

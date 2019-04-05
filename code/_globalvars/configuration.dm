@@ -4,7 +4,7 @@ var/datum/protected_configuration/protected_config = null
 var/host = null
 var/join_motd = null
 var/station_name = null
-var/game_version = "Stalker Station 13"
+var/game_version = "O.B.O.S.R.A.L.K.E.R."
 var/changelog_hash = ""
 var/fps = 50
 

@@ -467,11 +467,11 @@ var/list/binary = list("0","1")
 		rep = "&#x44F;"
 	else
 		rep = "&#255;"
-	var/list/c = text2list(msg, "&#255;")
+	var/list/c = text2list(msg, "&#255;") //ß - &#223; OR &#x42F; ÿ - &#x44F; OR &#255;
 	if(c.len == 1)
 		c = text2list(msg, "&#255;")
 		if(c.len == 1)
-			c = text2list(msg, "&#x4FF")
+			c = text2list(msg, "&#x44F")
 			if(c.len == 1)
 				return html_decode(msg)
 	var/out = ""

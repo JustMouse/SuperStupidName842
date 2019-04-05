@@ -17,8 +17,8 @@
 	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
 */
 
-//Center
-#define ui_kpk "CENTER: 1 ,CENTER: 1"
+//Stalker
+#define ui_kpk "WEST+1, CENTER-4"
 
 //Lower left, persistant menu
 #define ui_inventory "WEST:6,SOUTH:5"
@@ -68,7 +68,8 @@
 #define ui_drop_throw "EAST-1:28, SOUTH+1:26"
 #define ui_bolt "EAST-1:28, SOUTH+3"
 #define ui_pull_resist "EAST-2:26,SOUTH+1:26"
-#define ui_movi "EAST-4:22,SOUTH:5"
+#define ui_movi "EAST-4:22,SOUTH:6"
+#define ui_sprint_t "EAST-4:22,SOUTH+1:4" //stalker
 #define ui_acti "EAST-3:24,SOUTH:5"
 #define ui_zonesel "EAST-1,SOUTH:5"
 #define ui_acti_alt "EAST-1:28,SOUTH:5"	//alternative intent switcher for when the interface is hidden (F12)

@@ -776,7 +776,7 @@
 						if(20 to 40)			H.healths.icon_state = "health4"
 						if(0 to 20)				H.healths.icon_state = "health5"
 						else					H.healths.icon_state = "health6"
-
+/*
 	if(H.staminas)
 		if(H.stat == DEAD)
 			H.staminas.icon_state = "stamina0"
@@ -799,7 +799,7 @@
 						if(10 to 20)			H.staminas.icon_state = "stamina9"
 						if(1 to 10)				H.staminas.icon_state = "stamina10"
 						else					H.staminas.icon_state = "stamina11"
-
+*/
 
 	if(H.healthdoll)
 		H.healthdoll.overlays.Cut()

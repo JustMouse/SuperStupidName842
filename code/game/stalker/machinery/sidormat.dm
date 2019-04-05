@@ -618,11 +618,8 @@ var/list/global_sidormat_list = list(
 		if(istype(AM, /obj/item/weapon/storage/backpack) && AM.contents.len)
 			say("Опустошите [AM] перед продажей.")
 			continue
-		world << "[AM]"
 		if(istype(AM, /obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad))
-			world << "1"
 			var/obj/item/weapon/reagent_containers/C = AM
-			world << "[C] [C.list_reagents] [/datum/reagent/medicine/pen_acid]"
 			if(C.reagents.total_volume == 0)
 				say("Вы не можете продавать пустой антирад.")
 				continue

@@ -598,6 +598,64 @@ Sorry Giacom. Please don't be mad :(
 			. += config.run_speed
 		if("walk")
 			. += config.walk_speed
+		if("sprint")
+			. += config.sprint_speed
+
+/mob/living/handle_hud_icons_stamina()
+	switch(stamina)
+		if(100 to INFINITY)
+			stamina_hud.icon_state = "stamina11"
+		if(90 to 100)
+			stamina_hud.icon_state = "stamina10"
+		if(80 to 90)
+			stamina_hud.icon_state = "stamina9"
+		if(70 to 80)
+			stamina_hud.icon_state = "stamina8"
+		if(60 to 70)
+			stamina_hud.icon_state = "stamina7"
+		if(50 to 60)
+			stamina_hud.icon_state = "stamina6"
+		if(40 to 50)
+			stamina_hud.icon_state = "stamina5"
+		if(30 to 40)
+			stamina_hud.icon_state = "stamina4"
+		if(20 to 30)
+			stamina_hud.icon_state = "stamina3"
+		if(10 to 20)
+			stamina_hud.icon_state = "stamina2"
+		if(1 to 10)
+			stamina_hud.icon_state = "stamina1"
+		else
+			stamina_hud.icon_state = "stamina0"
+
+
+/mob/living/stamina_restore(restore=2)
+	if((stamina += restore)>100)
+		stamina=100
+	else
+		stamina += restore
+		spawn(30) stamina_restore(restore)
+	handle_hud_icons_stamina()
+
+/mob/living/stamina_capacity(cost=5) //stalker
+	if(stamina==100)
+		spawn stamina_restore()
+	if(stamina<=100 && (stamina-cost)>0)
+		stamina -= cost
+	else
+		stamina = 0
+		m_intent = "run"
+		hud_used.move_intent.icon_state="running"
+		hud_used.sprint_intent.icon_state="sprint"
+		switch(rand(1,3))
+			if(1)
+				playsound(src, 'sound/stalker/character/dyspnea1.ogg', 50, 1)
+			if(2)
+				playsound(src, 'sound/stalker/character/dyspnea2.ogg', 50, 1)
+			else
+				playsound(src, 'sound/stalker/character/dyspnea3.ogg', 50, 1)
+	handle_hud_icons_stamina()
+
 
 /mob/living/proc/makeTrail(turf/T, mob/living/M)
 	if(!has_gravity(M))

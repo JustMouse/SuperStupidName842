@@ -109,13 +109,17 @@ proc/slur(phrase)
 			continue
 		if(letter == "&")
 			if(findtext(phrase, ";", i))
-				letter = copytext(phrase, i, findtext(phrase, ";", i) + 1) //stalkerfixs
-				world << "[letter]"
+				letter = copytext(phrase, i, findtext(phrase, ";", i) + 1) //stalkerfixs &#255;
 				i = (findtext(phrase, ";", i))
-				world << "[i] [findtext(phrase, ";", i) + 1] [findtext(phrase, ";", i)]"
-
+				if(prob(50))
+					letter = "<b>[letter]</b>"
 				output += letter
 				continue
+		if(letter == "ß")
+			if(prob(50))
+				letter = "<b>[letter]</b>"
+			output += letter
+			continue
 		if(prob(33))
 			if(lowerrustext(letter)=="î")	letter="ó"
 			if(lowerrustext(letter)=="û")	letter="i"

@@ -96,6 +96,9 @@
 	density = 1
 	opacity = 0
 
+/obj/structure/grille/stalker/wood/hitby(AM as mob|obj)
+	playsound(loc, 'sound/effects/woodhit2.ogg', 80, 1)
+
 /obj/structure/grille/stalker/beton
 	icon = 'icons/stalker/beton_zabor.dmi'
 	desc = "Слишком крепкий."
@@ -103,7 +106,10 @@
 	density = 1
 	opacity = 0
 
-/obj/structure/grille/stalker/beton/green
+/obj/structure/grille/stalker/beton/hitby(AM as mob|obj)
+	playsound(loc, 'sound/effects/concrethit.ogg', 80, 1)
+
+/obj/structure/grille/stalker/wood/green
 	icon = 'icons/stalker/green_zabor.dmi'
 	desc = "Зелённый забор. Лучше, чем серый."
 	icon_state = "1"

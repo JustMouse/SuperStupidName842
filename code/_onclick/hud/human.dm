@@ -61,6 +61,13 @@
 	adding += using
 	move_intent = using
 
+	using = new /obj/screen/sprint_intent()
+	using.icon = ui_style
+	using.icon_state = "sprint"
+	using.screen_loc = ui_sprint_t
+	adding += using
+	sprint_intent = using
+
 	using = new /obj/screen/drop()
 	using.icon = ui_style
 	using.screen_loc = ui_drop_throw
@@ -275,11 +282,11 @@
 	mymob.healths.name = "health"
 	mymob.healths.screen_loc = ui_health
 
-	mymob.staminas = new /obj/screen()
-	mymob.staminas.icon = 'icons/mob/screen_new.dmi'
-	mymob.staminas.icon_state = "stamina0"
-	mymob.staminas.name = "stamina"
-	mymob.staminas.screen_loc = ui_stamina
+	mymob.stamina_hud = new /obj/screen()
+	mymob.stamina_hud.icon = 'icons/mob/screen_new.dmi'
+	mymob.stamina_hud.icon_state = "stamina0"
+	mymob.stamina_hud.name = "stamina"
+	mymob.stamina_hud.screen_loc = ui_stamina
 
 	mymob.healthdoll = new /obj/screen()
 	mymob.healthdoll.name = "health doll"
@@ -305,6 +312,12 @@
 	mymob.blind.mouse_opacity = 0
 	mymob.blind.layer = 0
 	mymob.blind.alpha = 0
+
+//	mymob.kpk = new /obj/screen() //stalkerfixs
+//	mymob.kpk.name = "PDA shell"
+//	mymob.kpk.screen_loc = ui_kpk
+//	mymob.kpk.mouse_opacity = 0
+//	mymob.kpk.layer = 20
 
 	mymob.damageoverlay = new /obj/screen()
 	mymob.damageoverlay.icon = 'icons/mob/screen_full.dmi'
@@ -398,7 +411,8 @@
 
 	mymob.client.screen = list()
 
-	mymob.client.screen += list( mymob.zone_sel, mymob.healths, mymob.healthdoll, mymob.blind, mymob.flash, mymob.damageoverlay, mymob.nightvision, mymob.whitenoise, mymob.pulseimage, lingchemdisplay, lingstingdisplay, mymob.staminas) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
+	mymob.client.screen += list( mymob.zone_sel, mymob.healths, mymob.healthdoll, mymob.blind, mymob.flash, mymob.damageoverlay, mymob.nightvision, mymob.whitenoise, mymob.pulseimage, lingchemdisplay, lingstingdisplay, mymob.stamina_hud) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
+//mymob.client.screen += mymob.kpk //stalkerfixs
 	mymob.client.screen += adding + hotkeybuttons
 	mymob.client.screen += mymob.client.void
 

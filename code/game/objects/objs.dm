@@ -118,7 +118,9 @@
 
 /obj/item/proc/updateSelfDialog()
 	var/mob/M = src.loc
+	world << "[src]  [src.loc]  [M]  [istype(M)]  [M.client]  [M.machine]"
 	if(istype(M) && M.client && M.machine == src)
+		world << "[M] [src]"
 		src.attack_self(M)
 
 

@@ -49,7 +49,7 @@
 		if(istype(mover) && mover.checkpass(PASSTABLE))
 			return 1
 
-		if(locate(/obj/structure/stalker/okno) in get_turf(mover))
+		if(locate(/obj/structure/stalker/window) in target) //stalkerfixs
 			return 1
 
 		return 0

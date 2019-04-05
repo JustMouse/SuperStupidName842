@@ -25,7 +25,7 @@
 	  "auto_format" = 0
 	)
 	var/atom/ref = null // An extra ref to call when the window is closed.
-	var/style = "nanotrasen" // The style to be used for this UI.
+	var/style = "stalker" // The style to be used for this UI.
 	var/interface // The interface (template) to be used for this UI.
 	var/auto_update = 1 // Update the UI every MC tick.
 	var/list/initial_data // The data (and datastructure) used to initialize the UI.

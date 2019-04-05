@@ -18,7 +18,7 @@
 	var/obj/screen/i_select = null
 	var/obj/screen/m_select = null
 	var/obj/screen/healths = null
-	var/obj/screen/staminas = null
+	var/obj/screen/stamina_hud = null
 	var/obj/screen/throw_icon = null
 	var/obj/screen/damageoverlay = null
 	var/obj/screen/whitenoise = null
@@ -88,6 +88,9 @@
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
 	var/paralysis = 0
 	var/stunned = 0
+
+	var/stamina = 100 //Living stalker
+
 	var/weakened = 0
 	var/losebreath = 0//Carbon
 	var/a_intent = "help"//Living

@@ -1,3 +1,4 @@
+
 var/datum/subsystem/shuttle/SSshuttle
 
 /datum/subsystem/shuttle
@@ -41,7 +42,7 @@ var/datum/subsystem/shuttle/SSshuttle
 /datum/subsystem/shuttle/New()
 	NEW_SS_GLOBAL(SSshuttle)
 
-
+/*
 /datum/subsystem/shuttle/Initialize(timeofday, zlevel)
 	if (zlevel)
 		return ..()
@@ -58,7 +59,7 @@ var/datum/subsystem/shuttle/SSshuttle
 		supply_packs["[P.type]"] = P
 	initial_move()
 	..()
-
+*/
 
 /datum/subsystem/shuttle/fire()
 	points += points_per_decisecond * wait
@@ -332,4 +333,3 @@ var/datum/subsystem/shuttle/SSshuttle
 	requestlist += O
 
 	return O
-

@@ -3,16 +3,6 @@
 	canSmoothWith = list(/obj/structure/table/stalker)
 	pass_flags = LETPASSTHROW
 
-/obj/structure/table/stalker/Crossed(atom/movable/O)
-	world << "cross [src] [O]"
-	O.layer = 9
-	..()
-
-/obj/structure/table/stalker/Uncrossed(atom/movable/O)
-	world << "ucross [src] [O]"
-	O.layer = 3
-	..()
-
 /obj/structure/table/stalker/wood
 	desc = "Обычный дерев&#255;нный слегка пошарпанный стол."
 	eng_desc = "Simple table."
@@ -36,24 +26,29 @@
 	icon_state = "table"
 	smooth = SMOOTH_FALSE
 
-/obj/structure/stalker/okno
+/obj/structure/stalker/window
 	name = "Window"
 	desc = "Старое дерев&#255;нное окно."
 	eng_desc = "Old wooden window."
 	icon = 'icons/stalker/decor2.dmi'
 	pass_flags = LETPASSTHROW
-	density = 0
+	density = 1
 	opacity = 0
-	var/unpassable = 0
+	layer = 3
+	var/climb_time = 20
+	var/can_climb_over = 1
 
-/obj/structure/stalker/okno/window1
-	icon_state = "okno1"
+/obj/structure/stalker/window/wood //window1
+	icon_state = "w_wood"
 
-/obj/structure/stalker/okno/window2
-	icon_state = "okno2"
+/obj/structure/stalker/window/medium //window2
+	icon_state = "w_medium"
 
-/obj/structure/stalker/okno/window3
-	icon_state = "okno3"
+/obj/structure/stalker/window/big //window3
+	icon_state = "w_big"
 
-/obj/structure/stalker/okno/window4
-	icon_state = "okno4"
+/obj/structure/stalker/window/big/b
+	icon_state = "w_big_b"
+
+/obj/structure/stalker/window/small //window4
+	icon_state = "w_small"

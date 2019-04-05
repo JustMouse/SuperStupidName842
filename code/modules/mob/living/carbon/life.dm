@@ -541,38 +541,6 @@
 		else
 			healths.icon_state = "health7"
 
-/mob/living/carbon/handle_hud_icons_stamina()
-	if(staminas)
-		if (stat != DEAD)
-			switch(staminaloss)
-				if(100 to INFINITY)
-					staminas.icon_state = "stamina0"
-				if(90 to 100)
-					staminas.icon_state = "stamina1"
-				if(80 to 90)
-					staminas.icon_state = "stamina2"
-				if(70 to 80)
-					staminas.icon_state = "stamina3"
-				if(60 to 70)
-					staminas.icon_state = "stamina4"
-				if(50 to 60)
-					staminas.icon_state = "stamina5"
-				if(40 to 50)
-					staminas.icon_state = "stamina6"
-				if(30 to 40)
-					staminas.icon_state = "stamina7"
-				if(20 to 30)
-					staminas.icon_state = "stamina8"
-				if(10 to 20)
-					staminas.icon_state = "stamina9"
-				if(1 to 10)
-					staminas.icon_state = "stamina10"
-				else
-					staminas.icon_state = "stamina11"
-		else
-			staminas.icon_state = "stamina0"
-
-
 //used in human and monkey handle_environment()
 /mob/living/carbon/proc/natural_bodytemperature_stabilization()
 	var/body_temperature_difference = 310.15 - bodytemperature

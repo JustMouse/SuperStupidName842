@@ -89,6 +89,10 @@ Works together with spawning an observer, noted above.
 
 /mob/proc/ghostize(can_reenter_corpse = 1)
 	if(key)
+
+		winshow(usr, "pda_html", 0) //stalkerfixs
+
+
 		if(!cmptext(copytext(key,1,2),"@")) // Skip aghosts.
 			var/mob/dead/observer/ghost = new(src)	// Transfer safety to observer spawning proc.
 			SStgui.on_transfer(src, ghost) // Transfer NanoUIs.

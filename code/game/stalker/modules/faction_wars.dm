@@ -87,12 +87,12 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 	return 0
 
 /obj/machinery/stalker/sidorpoint/attack_hand(mob/user)
-	if(..())
-		return
+//	if(..())
+//		return
 
-	if(!blowout_count)
-		say("Psy emission damaged relay. Come after next blowout.")
-		return
+//	if(!blowout_count)
+//		say("Psy emission damaged relay. Come after next blowout.")  //stalkerfixs
+//		return
 
 	if(!istype(user,/mob/living/carbon/human))
 		say("You are not a human.")
@@ -118,6 +118,11 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 	//if(sk.fields["faction_s"] == "Loners" || sk.fields["faction_s"] == "Bandits")
 	//	say("No access.")
 	//	return
+
+//
+	if(!isnull(controlled_by))
+		if(sk.fields["faction_s"] == controlled_by)
+			usr << browse("AAAAAAAAAAAAAA", "window=sidorpoint,display=1")
 
 	if(control_percent == 100 && controlled_by == sk.fields["faction_s"])
 		say("[get_area(src).name] is already captured!")

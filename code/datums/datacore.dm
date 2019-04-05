@@ -278,7 +278,7 @@ var/record_id_num = 1001
 		locked += L
 
 
-		//Разработка сталкера
+		//stalkerfixs
 		var/datum/data/record/sk = new()
 
 		sk.fields["reputation"]		= NEUTRAL

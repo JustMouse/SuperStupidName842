@@ -51,6 +51,7 @@
 	desc = "Обыкновенна&#255; лужа. Вода, вроде бы, не сама&#255; чиста&#255;, но умытьс&#255; или смыть остатки гр&#255;зи с одежды в ней можно."
 	eng_desc = "Water in this puddle is not very clean. But you can still wash your face or clothes with it."
 	icon_state = "luzha"
+	layer=2.9
 
 /obj/structure/stalker/water/luzha/Crossed(atom/movable/A)
 	if(istype(A, /mob/living))
@@ -631,6 +632,8 @@
 	var/cache_chance = 0	//percent
 	var/cache_quality = -1	//from 0 to 3, -1 for random
 	var/cache_size = 0		//from 0 to 3
+	var/cache_enable = 1
+	var/amount_cash = 0
 	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
 
 
@@ -640,6 +643,21 @@
 
 //	if(!cache_chance)
 //		cache_chance = rand(6,8)
+
+	switch(cache_size)
+		if(0)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/tiny(src)
+		if(1)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/small(src)
+		if(2)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/medium(src)
+		if(3)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/big(src)
+		if(4)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/large(src)
+
+	if(!cache_enable)
+		return
 
 	if(cache_quality == -1)
 		switch(rand(1,3))
@@ -673,31 +691,28 @@
 	if(get_area(src).controlled_by && get_area(src))
 		return
 
-	switch(cache_size)
-		if(0)
-			internal_cache = new /obj/item/weapon/storage/stalker/cache/small(src)
-		if(1)
-			internal_cache = new /obj/item/weapon/storage/stalker/cache/medium(src)
-		if(2)
-			internal_cache = new /obj/item/weapon/storage/stalker/cache/big(src)
-		if(3)
-			internal_cache = new /obj/item/weapon/storage/stalker/cache/large(src)
-
-	internal_cache.CreateContents(src)
+	internal_cache.CreateContents(src) //Наполняем контейнер
+	amount_cash = internal_cache.amount_cash
 
 /obj/structure/stalker/cacheable/attack_hand(mob/user)
 	..()
 
-	user.visible_message("<span class='notice'>[user] начал исследовать [src]...</span>", "<span class='notice'>Вы начали исследовать [src]...</span>")
+	var/is_used = 0
+	if(is_used)
+		return
+	is_used = 1
+
+	user.visible_message("<span class='notice'>[user] начал обыскивать [src]...</span>", "<span class='notice'>Вы начали обыскивать [src]...</span>")
 	if(!do_after(user, 30, 1, src))
+		is_used = 0
 		return
 
-	if(!internal_cache)
-		user.visible_message("<span class='notice'>[user] ничего не нашёл в [src].</span>", "<span class='notice'>Вы ничего не нашли в [src].</span>")
-		return
+	user.visible_message("<span class='notice'>[user] закончил обыскивать [src].</span>", "<span class='notice'>Вы нашли хабар в [src].</span>")
 
-	user.visible_message("<span class='notice'>[user] нашёл хабар в [src].</span>", "<span class='notice'>Вы нашли спр&#255;танный лут в [src].</span>")
+//	if(!amount_cash)
+//		user.visible_message("<span class='notice'>[user] ничего не нашёл в [src].</span>", "<span class='notice'>Вы ничего не нашли в [src].</span>")
 
+	is_used = 0
 	playsound(loc, "rustle", 50, 1, -5)
 	if(user.s_active)
 		user.s_active.close(user)
@@ -706,16 +721,17 @@
 	if(internal_cache.waspicked || !istype(usr, /mob/living/carbon/human))
 		return
 
-	var/mob/living/carbon/human/H = usr
+//	var/mob/living/carbon/human/H = usr
 	internal_cache.waspicked = 1
 
-	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
-		return
 
-	var/obj/item/device/stalker_pda/KPK = H.wear_id
+//	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+//		return
 
-	if(!KPK.owner || KPK.owner != H)
-		return
+//	var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+//	if(!KPK.owner || KPK.owner != H)
+//		return
 
 //	show_lenta_message(null, KPK, null, "PDA", "OS", "You discovered a stash in the [src]!", selfsound = 1)
 
@@ -726,8 +742,8 @@
 
 //	sk.fields["rating"] +=  25 * (2 ** cache_quality)
 
-	if(!internal_cache.cached_cash)
-		return
+//	if(!internal_cache.cached_cash)
+//		return
 
 //	sk.fields["money"] += internal_cache.cached_cash
 //	show_lenta_message(null, KPK, null, "PDA", "OS", "You found a bitRU key that gave you access to [internal_cache.cached_cash] RU on your account!", selfsound = 1)
@@ -741,6 +757,7 @@
 	display_contents_with_number = 1
 	var/waspicked = 0
 	var/cached_cash = 0
+	var/amount_cash = 0
 
 /obj/item/weapon/storage/stalker/cache/attack_hand(mob/user)
 	playsound(loc, "rustle", 50, 1, -5)
@@ -795,6 +812,7 @@
 			continue
 
 		combined_cost += SE.cost
+		amount_cash += 1
 
 		//if(I.w_class >= w_class && (istype(I, /obj/item/weapon/storage)))
 		//	continue
@@ -804,6 +822,10 @@
 
 	if(max_cost - combined_cost > 0)
 		cached_cash = round((max_cost - combined_cost)/2)
+
+/obj/item/weapon/storage/stalker/cache/tiny
+	max_w_class = 1
+	max_combined_w_class = 1
 
 /obj/item/weapon/storage/stalker/cache/small
 	max_w_class = 2

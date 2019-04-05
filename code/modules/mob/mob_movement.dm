@@ -149,6 +149,9 @@
 	moving = 1
 	move_delay = mob.movement_delay() + world.time
 
+	if(mob.m_intent=="sprint") //stalkerfixs
+		mob.stamina_capacity()
+
 	//Something with pulling things
 	if(locate(/obj/item/weapon/grab, mob))
 		move_delay = max(move_delay, world.time + 7)

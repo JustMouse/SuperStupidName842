@@ -145,6 +145,26 @@
 					else
 						C << "<span class='warning'>You don't have an oxygen tank!</span>"
 
+/obj/screen/sprint_intent
+	name = "sprint toggle"
+	icon = 'icons/mob/screen_midnight.dmi'
+	icon_state = "sprint"
+
+/obj/screen/sprint_intent/Click(max_stamina=30)
+	if(usr.stamina>max_stamina)
+		switch(usr.m_intent)
+			if("run", "walk")
+				usr.m_intent = "sprint"
+				icon_state = "sprint_on"
+				usr.hud_used.move_intent.icon_state="running"
+			if("sprint")
+				usr.m_intent = "run"
+				icon_state = "sprint"
+				usr.hud_used.move_intent.icon_state="running"
+	else
+		usr << "<span>Вы ещё не отдышались</span>"
+	usr.update_icons()
+
 /obj/screen/mov_intent
 	name = "run/walk toggle"
 	icon = 'icons/mob/screen_midnight.dmi'
@@ -155,9 +175,11 @@
 		if("run")
 			usr.m_intent = "walk"
 			icon_state = "walking"
-		if("walk")
+			usr.hud_used.sprint_intent.icon_state="sprint"
+		if("walk", "sprint")
 			usr.m_intent = "run"
 			icon_state = "running"
+			usr.hud_used.sprint_intent.icon_state="sprint"
 	usr.update_icons()
 
 /obj/screen/pull

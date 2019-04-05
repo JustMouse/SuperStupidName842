@@ -1,7 +1,7 @@
 /mob/living/carbon/alien/humanoid/death(gibbed)
 	if(stat == DEAD)	return
 	if(healths)			healths.icon_state = "health6"
-	if(staminas)		staminas.icon_state = "stamina0"
+	if(stamina)		stamina_hud.icon_state = "stamina0"
 	stat = DEAD
 
 	if(!gibbed)
