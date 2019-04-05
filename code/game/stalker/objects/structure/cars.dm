@@ -55,3 +55,9 @@
 /obj/structure/stalker/car/gryzovik_army/north
 	icon = 'icons/stalker/cars/gruzovik_army_north.dmi'
 	icon_state = "1"
+
+/obj/structure/stalker/car/buhanka
+	name = "UAZ"
+	desc = "Знаменита&#255; машина 'буханка'."
+	eng_desc = "Famous car 'buhanka'."
+	icon = 'icons/stalker/cars/uaz-452.dmi'

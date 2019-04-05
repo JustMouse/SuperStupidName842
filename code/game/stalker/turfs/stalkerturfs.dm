@@ -96,8 +96,18 @@
 	density = 1
 	opacity = 0
 
+<<<<<<< HEAD
 /obj/structure/grille/stalker/wood/hitby(AM as mob|obj)
 	playsound(loc, 'sound/effects/woodhit2.ogg', 80, 1)
+=======
+/obj/structure/grille/stalker/koluchka
+	name = "barbed wire"
+	desc = "Опасно, колюча&#255; проволка."
+	eng_desc = "Beware the barbed wire!"
+	icon_state = "koluchka_horizontalcenter"
+	density = 1
+	opacity = 0
+>>>>>>> dd0c6f5d8ad2d28c6085064e6d91509e8d0afeb8
 
 /obj/structure/grille/stalker/beton
 	icon = 'icons/stalker/beton_zabor.dmi'
