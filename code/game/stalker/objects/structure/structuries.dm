@@ -52,3 +52,4 @@
 
 /obj/structure/stalker/window/small //window4
 	icon_state = "w_small"
+	can_climb_over = 0

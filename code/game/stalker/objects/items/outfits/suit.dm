@@ -620,6 +620,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	flags = NODROP|BLOCKHAIR|BLOCKFACIALHAIR
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HEAD
 	icon_state = "monolith_scientific_helmet"
 	burn_state = FIRE_PROOF
 

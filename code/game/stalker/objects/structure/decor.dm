@@ -707,7 +707,7 @@
 		is_used = 0
 		return
 
-	user.visible_message("<span class='notice'>[user] закончил обыскивать [src].</span>", "<span class='notice'>Вы нашли хабар в [src].</span>")
+	user.visible_message("<span class='notice'>[user] закончили обыскивать [src].</span>", "<span class='notice'>Вы закончили обыскивать [src].</span>")
 
 //	if(!amount_cash)
 //		user.visible_message("<span class='notice'>[user] ничего не нашёл в [src].</span>", "<span class='notice'>Вы ничего не нашли в [src].</span>")

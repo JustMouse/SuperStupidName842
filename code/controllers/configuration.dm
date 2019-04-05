@@ -144,9 +144,9 @@
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
-	var/sprint_speed = 2.2
-	var/run_speed = 3
-	var/walk_speed = 4
+	var/sprint_speed = 2.5
+	var/run_speed = 3.5
+	var/walk_speed = 4.5
 
 	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
 	var/human_delay = 0
