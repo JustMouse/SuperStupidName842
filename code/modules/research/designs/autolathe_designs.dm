@@ -146,14 +146,6 @@
 	build_path = /obj/item/weapon/electronics/firealarm
 	category = list("initial", "Electronics")
 
-/datum/design/pipe_painter
-	name = "Pipe painter"
-	id = "pipe_painter"
-	build_type = AUTOLATHE
-	materials = list(MAT_METAL = 5000, MAT_GLASS = 2000)
-	build_path = /obj/item/device/pipe_painter
-	category = list("initial", "Misc")
-
 /datum/design/metal
 	name = "Metal"
 	id = "metal"
@@ -449,14 +441,6 @@
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 30000)
 	build_path = /obj/item/weapon/rcd
-	category = list("hacked", "Construction")
-
-/datum/design/rpd
-	name = "Rapid pipe dispenser (RPD)"
-	id = "rpd"
-	build_type = AUTOLATHE
-	materials = list(MAT_METAL = 75000, MAT_GLASS = 37500)
-	build_path = /obj/item/weapon/pipe_dispenser
 	category = list("hacked", "Construction")
 
 /datum/design/electropack

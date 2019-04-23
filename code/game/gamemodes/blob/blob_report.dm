@@ -13,7 +13,6 @@
 			intercepttext += " 2. If found, use any neccesary means to contain and destroy the organism.<BR>"
 			intercepttext += " 3. Avoid damage to the capital infrastructure of the station.<BR>"
 			intercepttext += "<BR>Note in the event of a quarantine breach or uncontrolled spread of the biohazard, <b>Biohazard Response Procedure 5-12</b> may be issued.<BR>"
-			print_command_report(intercepttext,"Level 5-6 Biohazard Response Procedures")
 			priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", 'sound/AI/outbreak5.ogg')
 		if(2)
 			var/nukecode = rand(10000, 99999)
@@ -29,8 +28,6 @@
 			intercepttext += "1. Secure the Nuclear Authentication Disk.<BR>"
 			intercepttext += "2. Detonate the Nuke located in the vault.<BR>"
 			intercepttext += "Nuclear Authentication Code: [nukecode] <BR>"
-			print_command_report(intercepttext,"Classified [command_name()] Update")
-			priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/AI/commandreport.ogg')
 
 			for(var/mob/living/silicon/ai/aiPlayer in player_list)
 				if (aiPlayer.client)

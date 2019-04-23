@@ -27,6 +27,7 @@
 /obj/structure/closet/New()
 	..()
 	update_icon()
+	initialize()
 
 /obj/structure/closet/initialize()
 	..()

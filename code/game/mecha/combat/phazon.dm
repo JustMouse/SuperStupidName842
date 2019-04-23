@@ -34,13 +34,6 @@
 		. = ..()
 	return
 
-/obj/mecha/combat/phazon/get_stats_part()
-	var/output = ..()
-	output += {"<b>Phasing:</b> [phasing?"on":"off"]<br>
-				<b>Damage Type:</b> [damtype]
-					"}
-	return output
-
 /obj/mecha/combat/phazon/click_action(atom/target,mob/user)
 	if(phasing)
 		occupant_message("Unable to interact with objects while phasing")

@@ -18,16 +18,6 @@
 	icon_state = "sign_bar"
 	density = 0
 
-/obj/structure/stalker/cacheable/polka
-	name = "шкаф"
-	desc = "Дерев&#255;нный стеллаж."
-	eng_desc = "Wooden shelf."
-	icon = 'icons/stalker/polka.dmi'
-	icon_state = "polka"
-	density = 1
-	anchored = 1
-	cache_size = 0
-
 /obj/structure/stalker/radiation
 	name = "знак радиации"
 	desc = "Этот знак здесь &#255;вно не дл&#255; красоты."
@@ -51,7 +41,7 @@
 	desc = "Обыкновенна&#255; лужа. Вода, вроде бы, не сама&#255; чиста&#255;, но умытьс&#255; или смыть остатки гр&#255;зи с одежды в ней можно."
 	eng_desc = "Water in this puddle is not very clean. But you can still wash your face or clothes with it."
 	icon_state = "luzha"
-	layer=2.9
+	layer = 2.9
 
 /obj/structure/stalker/water/luzha/Crossed(atom/movable/A)
 	if(istype(A, /mob/living))
@@ -70,6 +60,7 @@
 	icon_state = "truba"
 	density = 0
 	cache_size = 1
+	layer = 4.1
 
 /obj/structure/stalker/cacheable/truba/vert
 	icon_state = "truba_v"
@@ -187,7 +178,7 @@
 /obj/structure/stalker/doski/doski4
 	icon_state = "doski_oblomki4"
 
-/obj/structure/stalker/listva
+/obj/structure/stalker/leafs //leafs
 	name = "листь&#255;"
 	desc = "Опавш&#255; листва, осень ведь."
 	eng_desc = "Dead leaves."
@@ -195,15 +186,27 @@
 	layer = 2.8
 	pass_flags = LETPASSTHROW
 
-/obj/structure/stalker/listva/Crossed(atom/movable/A)
+/obj/structure/stalker/leafs/Crossed(atom/movable/A)
 	if(istype(A, /mob/living))
 		playsound(src, get_sfx("grassfootsteps"), 50, 1)
 
-/obj/structure/stalker/listva/listva2
-	icon_state = "leafs2"
+/obj/structure/stalker/leafs/pile1
+	icon_state = "leafs_p1"
 
-/obj/structure/stalker/listva/listva3
-	icon_state = "leafs3"
+/obj/structure/stalker/leafs/pile2
+	icon_state = "leafs_p2"
+
+//obj/structure/stalker/leafs/rare
+
+
+/obj/structure/stalker/leafs/rare/pile1
+	icon_state = "leafs_r1"
+
+/obj/structure/stalker/leafs/rare/pile2
+	icon_state = "leafs_r2"
+
+/obj/structure/stalker/leafs/rare/pile3
+	icon_state = "leafs_r3"
 
 /obj/structure/stalker/cacheable/battery
 	name = "батаре&#255;"
@@ -262,13 +265,13 @@
 	icon_state = "propane"
 	density = 1
 
-/obj/structure/stalker/stolb
+/obj/structure/stalker/pole
 	name = "столб"
 	icon = 'icons/stalker/decorations_32x64.dmi'
-	icon_state = "stolb"
+	icon_state = "pole"
 	desc = "Столб с вис&#255;щими остатками проводов."
 	eng_desc = "Old pillar."
-	layer = 9
+	layer = 4.8
 	density = 0
 
 /obj/structure/stalker/propane/dual
@@ -389,6 +392,19 @@
 	icon_state = "bigyashik 0.0"
 	density = 1
 	opacity = 1
+
+/obj/structure/stalker/cacheable/shelf
+	name = "Шкаф"
+	desc = "Дерев&#255;нный стеллаж."
+	eng_desc = "Wooden shelf."
+	icon = 'icons/stalker/polka.dmi'
+	icon_state = "polka"
+	density = 1
+	anchored = 1
+	cache_size = 0
+
+/obj/structure/stalker/cacheable/shelf
+
 
 /obj/structure/stalker/bigyashik/melkiy
 	icon = 'icons/stalker/yashiki/decorations_32x64.dmi'
@@ -530,7 +546,7 @@
 	icon_state = "shitok2"
 	cache_size = 1
 	density = 0
-	layer = 3.89
+	layer = 4.9
 
 /obj/structure/stalker/broke_table
 	name = "стол"
@@ -622,24 +638,114 @@
 	anchored = 1
 	cache_size = 3
 
+/obj/structure/stalker/cacheable/shelf
+	name = "шкаф"
+	desc = "Дерев&#255;нный стеллаж. я  яя  Я  ЯЯ &#255;"
+	eng_desc = "Wooden shelf."
+	icon = 'icons/stalker/polka.dmi'
+	icon_state = "polka"
+	density = 1
+	anchored = 1
+	cache_size = 2.1
+	cache_chance = 10
+	allowed_cash = list(/obj/item/weapon/gun/projectile/automatic/pistol, \
+				/obj/item/ammo_box/stalker/b9x18, \
+				/obj/item/ammo_box/stalker/b9x18P, \
+				/obj/item/ammo_box/stalker/b9x19, \
+				/obj/item/ammo_box/stalker/b9x19P, \
+				/obj/item/ammo_box/stalker/b545, \
+				/obj/item/ammo_box/stalker/b545ap, \
+				/obj/item/ammo_box/stalker/b12x70, \
+				/obj/item/ammo_box/stalker/b12x70P, \
+				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army, \
+				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian, \
+				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific, \
+				/obj/item/stack/medical/gauze/bint, \
+				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad, \
+				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva, \
+				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti, \
+				/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki, \
+				/obj/item/weapon/reagent_containers/food/drinks/soda_cans/energetic, \
+				/obj/item/weapon/lighter, \
+				/obj/item/device/geiger_counter)
+
+/obj/structure/stalker/cacheable/shelf/update_icon()
+	overlays = list()
+	for(var/obj/item/I in internal_cache.contents)
+		if(istype(I,/obj/item/weapon/reagent_containers/food))
+			overlays |= "food"
+		if(istype(I,/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army))
+			overlays |= "army"
+		if(istype(I,/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian))
+			overlays |= "firstaid"
+		if(istype(I,/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific))
+			overlays |= "science"
+		if(istype(I,/obj/item/stack/medical/gauze/bint))
+			overlays |= "med"
+		if(istype(I,/obj/item/weapon/reagent_containers/food/drinks))
+			overlays |= "drinks"
+		if((istype(I,/obj/item/ammo_box/stalker/b9x18)) | (istype(I,/obj/item/ammo_box/stalker/b9x18P)))
+			overlays |= "9x18"
+		if((istype(I,/obj/item/ammo_box/stalker/b9x19)) | (istype(I,/obj/item/ammo_box/stalker/b9x19P)))
+			overlays |= "9x19"
+		if((istype(I,/obj/item/ammo_box/stalker/b545)) | (istype(I,/obj/item/ammo_box/stalker/b545ap)))
+			overlays |= "5x45"
+		if((istype(I,/obj/item/ammo_box/stalker/b12x70)) | (istype(I,/obj/item/ammo_box/stalker/b12x70P)))
+			overlays |= "drob"
+		if((istype(I,/obj/item/weapon/lighter)) | (istype(I,/obj/item/device)))
+			overlays |= "other"
+
+/obj/structure/stalker/cacheable/shelf/New()
+	..()
+	update_icon()
+
+/*
+/obj/item/weapon/gun/projectile/automatic/pistol
+/obj/item/ammo_box/stalker/b9x18
+/obj/item/ammo_box/stalker/b9x18P
+/obj/item/ammo_box/stalker/b9x19
+/obj/item/ammo_box/stalker/b9x19P
+/obj/item/ammo_box/stalker/b545
+/obj/item/ammo_box/stalker/b545ap
+/obj/item/ammo_box/stalker/b12x70
+/obj/item/ammo_box/stalker/b12x70P
+/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army
+/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian
+/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific
+/obj/item/stack/medical/gauze/bint
+/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad
+/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva
+/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki
+/obj/item/weapon/reagent_containers/food/drinks/soda_cans/energetic
+/obj/item/weapon/lighter
+/obj/item/device/geiger_counter
+*/
 //////////////////////////////Новый лут////////////////////////////////
 
 /obj/structure/stalker/cacheable
-	name = "тайник"
-	desc = "Генерирует тайник с определенным шансом в начале раунда."
+	name = "Лут"
+	desc = "Генерирует лут с определенным шансом в начале раунда."
 	eng_desc = "Generates a stash with a certain chance at the start of the round."
 	density = 1
 	var/cache_chance = 0	//percent
 	var/cache_quality = -1	//from 0 to 3, -1 for random
-	var/cache_size = 0		//from 0 to 3
+	var/cache_size = 0
 	var/cache_enable = 1
 	var/amount_cash = 0
+	var/list/allowed_cash
 	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
-
-
 
 /obj/structure/stalker/cacheable/New()
 	..()
+
+	if(allowed_cash)
+		var/list/items_list = allowed_cash
+		allowed_cash = list()
+		for(var/i in items_list)
+			for(var/datum/data/stalker_equipment/SE in real_sidormat_items)
+				if(SE.equipment_path == i)
+					allowed_cash |= SE
 
 //	if(!cache_chance)
 //		cache_chance = rand(6,8)
@@ -651,6 +757,8 @@
 			internal_cache = new /obj/item/weapon/storage/stalker/cache/small(src)
 		if(2)
 			internal_cache = new /obj/item/weapon/storage/stalker/cache/medium(src)
+		if(2.1)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/medium/volume(src)
 		if(3)
 			internal_cache = new /obj/item/weapon/storage/stalker/cache/big(src)
 		if(4)
@@ -660,29 +768,25 @@
 		return
 
 	if(cache_quality == -1)
-		switch(rand(1,3))
-			if(3)
-				cache_quality = rand(2, 3)
-			if(2)
-				cache_quality = rand(0, 1)
-			if(1)
-				cache_quality = 0
+		cache_quality = rand(0, 3)
 //			if(0)
 //				cache_quality = rand(1, 2)//0
 //				cache_chance -= 4
 
-	switch(cache_quality)
-		if(3)
-			cache_chance -= 1
+	if(!cache_chance)
+		switch(cache_quality)
 
-		if(2)
-			cache_chance += 3
+			if(3)
+				cache_chance += 0.5
 
-		if(1)
-			cache_chance += 6
+			if(2)
+				cache_chance += 3
 
-		if(0)
-			cache_chance += 10
+			if(1)
+				cache_chance += 6
+
+			if(0)
+				cache_chance += 10
 
 	if(!prob(cache_chance))
 		//internal_cache = null
@@ -691,39 +795,40 @@
 	if(get_area(src).controlled_by && get_area(src))
 		return
 
+	internal_cache.allowed_cash = allowed_cash
 	internal_cache.CreateContents(src) //Наполняем контейнер
 	amount_cash = internal_cache.amount_cash
 
 /obj/structure/stalker/cacheable/attack_hand(mob/user)
 	..()
 
-	var/is_used = 0
-	if(is_used)
+	if(user.busy)
 		return
-	is_used = 1
+
+	user.busy = 1
 
 	user.visible_message("<span class='notice'>[user] начал обыскивать [src]...</span>", "<span class='notice'>Вы начали обыскивать [src]...</span>")
 	if(!do_after(user, 30, 1, src))
-		is_used = 0
+		user.busy = 0
 		return
 
-	user.visible_message("<span class='notice'>[user] закончили обыскивать [src].</span>", "<span class='notice'>Вы закончили обыскивать [src].</span>")
+	user.visible_message("<span class='notice'>[user] закончил обыскивать [src].</span>", "<span class='notice'>Вы закончили обыскивать [src].</span>")
 
 //	if(!amount_cash)
 //		user.visible_message("<span class='notice'>[user] ничего не нашёл в [src].</span>", "<span class='notice'>Вы ничего не нашли в [src].</span>")
 
-	is_used = 0
 	playsound(loc, "rustle", 50, 1, -5)
 	if(user.s_active)
 		user.s_active.close(user)
 	internal_cache.attack_hand(user)
 
 	if(internal_cache.waspicked || !istype(usr, /mob/living/carbon/human))
+		user.busy = 0
 		return
 
 //	var/mob/living/carbon/human/H = usr
 	internal_cache.waspicked = 1
-
+	user.busy = 0
 
 //	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
 //		return
@@ -758,6 +863,7 @@
 	var/waspicked = 0
 	var/cached_cash = 0
 	var/amount_cash = 0
+	var/allowed_cash = list()
 
 /obj/item/weapon/storage/stalker/cache/attack_hand(mob/user)
 	playsound(loc, "rustle", 50, 1, -5)
@@ -766,6 +872,11 @@
 		user.s_active.close(user)
 	show_to(user)
 	add_fingerprint(user)
+
+/obj/item/weapon/storage/stalker/cache/update_icon()
+	..()
+	var/obj/structure/stalker/cacheable/is_in = loc
+	is_in.update_icon()
 
 /obj/item/weapon/storage/stalker/cache/proc/CreateContents(var/obj/structure/stalker/cacheable/C)
 	var/list/lootspawn = list()
@@ -784,10 +895,14 @@
 		if(3)
 			lootspawn = high_tier_sidormatitems
 			max_cost = HIGH_TIER_COST
+		if(4)
+			lootspawn = legendary_tier_sidormatitems
+			max_cost = LEGENDARY_TIER_COST
 
 	var/combined_w_class = 0
 	var/combined_cost = 0
-
+	if(allowed_cash)
+		lootspawn &= allowed_cash
 	for(var/i = 0, i <= storage_slots, i++)
 		if(combined_w_class > max_combined_w_class)
 			break
@@ -806,7 +921,6 @@
 			continue
 
 		var/obj/item/I = new A(src)
-
 		if(I.w_class > max_w_class)
 			PlaceInPool(I)
 			continue
@@ -826,19 +940,29 @@
 /obj/item/weapon/storage/stalker/cache/tiny
 	max_w_class = 1
 	max_combined_w_class = 1
+	storage_slots = 2
 
 /obj/item/weapon/storage/stalker/cache/small
 	max_w_class = 2
 	max_combined_w_class = 3
+	storage_slots = 3
 
 /obj/item/weapon/storage/stalker/cache/medium
 	max_w_class = 3
 	max_combined_w_class = 6
+	storage_slots = 4
+
+/obj/item/weapon/storage/stalker/cache/medium/volume
+	max_w_class = 3
+	max_combined_w_class = 12
+	storage_slots = 12
 
 /obj/item/weapon/storage/stalker/cache/big
 	max_w_class = 4
 	max_combined_w_class = 8
+	storage_slots = 5
 
 /obj/item/weapon/storage/stalker/cache/large
 	max_w_class = 4
 	max_combined_w_class = 12
+	storage_slots = 7

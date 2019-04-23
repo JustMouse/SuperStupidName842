@@ -241,7 +241,7 @@ Doesn't work on other aliens/AI.*/
 		user << "<span class='danger'>There is already a resin structure there.</span>"
 		return 0
 	var/choice = input("Choose what you wish to shape.","Resin building") as null|anything in structures
-	if(!choice) 
+	if(!choice)
 		return 0
 	if (!cost_check(check_turf,user))
 		return 0
@@ -263,7 +263,6 @@ Doesn't work on other aliens/AI.*/
 		for(var/atom/movable/A in user.stomach_contents)
 			user.stomach_contents.Remove(A)
 			A.loc = user.loc
-			A.update_pipe_vision()
 		user.visible_message("<span class='alertealien'>[user] hurls out the contents of their stomach!</span>")
 	return
 

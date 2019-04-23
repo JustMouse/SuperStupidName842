@@ -182,8 +182,8 @@ var/global/global_lentahtml = ""
 	#table-bottom1 {\
 		background: #3d2417;\
 
-		padding-top: 5px;\
-		padding-bottom: 5px;\
+//		padding-top: 5px;\
+//		padding-bottom: 5px;\
 	}\
 	#table-center1 {\
 		position: relative;\
@@ -620,8 +620,8 @@ var/global/global_lentahtml = ""
 	else
 		user << browse(mainhtml, "window=pda_html;titlebar=0") //568x388
 	winshow(usr, "pda", 1)
-	winset(usr, "pda", "border=0;can_minimize=0;can_resize=0;can_close=0;titlebar=0;")
-	usr << browse(mainhtml, "window=pda_html;border=0;can_minimize=0;can_resize=0;can_close=0;titlebar=0;")
+	winset(usr, "pda", "border=0;can_minimize=0;can_resize=0;can_close=0;titlebar=0")
+	usr << browse(mainhtml, "window=pda_html;border=0;can_minimize=0;can_resize=0;can_close=0;titlebar=0;display=1")
 
 
 //stalkerfixs
@@ -768,7 +768,6 @@ var/global/global_lentahtml = ""
 			password = null
 			profile = null
 
-			del(background)
 			winshow(usr, "pda", 0)
 
 			KPKs -= src
@@ -1127,10 +1126,7 @@ var/global/global_lentahtml = ""
 			profile.fields["faction_s"] = J.faction_s
 			set_owner_info(profile)
 
-	//usr.set_machine(src)
 	updateSelfDialog()
-//	updateDialog()
-//	updateUsrDialog()
 	return
 
 /obj/item/device/stalker_pda/proc/message_input(mob/living/U = usr, msg_name, max_length)

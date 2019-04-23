@@ -206,7 +206,7 @@
 		return
 
 	var/event = pick(/datum/round_event/meteor_wave, /datum/round_event/communications_blackout, /datum/round_event/radiation_storm, /datum/round_event/carp_migration,
-	/datum/round_event/spacevine, /datum/round_event/vent_clog, /datum/round_event/wormholes)
+	/datum/round_event/spacevine, /datum/round_event/wormholes)
 	if(event)
 		new event()
 		add_faith(-300)

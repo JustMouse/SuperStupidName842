@@ -88,7 +88,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		/obj/structure/closet,
 		/obj/item/weapon/storage,
 		/obj/structure/safe,
-		/obj/machinery/disposal,
 		/obj/machinery/r_n_d/destructive_analyzer,
 		/obj/machinery/r_n_d/experimentor,
 		/obj/machinery/autolathe

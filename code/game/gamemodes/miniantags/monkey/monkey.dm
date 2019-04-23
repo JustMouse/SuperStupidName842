@@ -66,8 +66,6 @@
 	..()
 
 /datum/game_mode/monkey/check_finished()
-	if(SSshuttle.emergency.mode >= SHUTTLE_ENDGAME || station_was_nuked)
-		return 1
 
 	if(!round_converted)
 		for(var/datum/mind/monkey_mind in ape_infectees)
@@ -84,8 +82,6 @@
 	..()
 
 /datum/game_mode/monkey/proc/check_monkey_victory()
-	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
-		return 0
 	var/datum/disease/D = new /datum/disease/transformation/jungle_fever()
 	for(var/mob/living/carbon/monkey/M in living_mob_list)
 		if (M.HasDisease(D))

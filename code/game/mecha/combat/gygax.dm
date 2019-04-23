@@ -63,17 +63,6 @@
 			step_energy_drain = initial(step_energy_drain)
 			occupant_message("<span class='danger'>Leg actuators damage threshold exceded. Disabling overload.</span>")
 
-
-/obj/mecha/combat/gygax/get_stats_part()
-	var/output = ..()
-	output += "<b>Leg actuators overload:</b> [overload?"on":"off"]"
-	return output
-
-/obj/mecha/combat/gygax/dark/get_stats_part()
-	var/output = ..()
-	output += "<br><b>Thrusters:</b> [thrusters?"on":"off"]"
-	return output
-
 /obj/mecha/combat/gygax/GrantActions(var/mob/living/user, var/human_occupant = 0)
 	..()
 	overload_action.chassis = src

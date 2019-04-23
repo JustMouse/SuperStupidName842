@@ -67,9 +67,6 @@
 		atmosanalyzer_scan(parent.air, user)
 		return
 
-	if(istype(W,/obj/item/device/pipe_painter) || istype(W,/obj/item/weapon/pipe_dispenser))
-		return
-
 	return ..()
 
 /obj/machinery/atmospherics/pipe/returnPipenet()

@@ -132,6 +132,8 @@ var/blowout_count = 0
 /datum/subsystem/blowout/proc/PreStopBlowout()
 	blowoutphase = 2
 	world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 201, volume = 70)
+	for(var/obj/effect/spawner/I in cooldown_spawners_blowout)
+		I.SpawnLoot()
 
 /datum/subsystem/blowout/proc/BlowoutClean()
 	for(var/obj/item/ammo_casing/AC in ACs)

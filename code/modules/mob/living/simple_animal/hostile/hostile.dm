@@ -188,15 +188,6 @@
 			if(isturf(loc) && target.Adjacent(src))	//If they're next to us, attack
 				AttackingTarget()
 		return 1
-	if(environment_smash)
-		if(target.loc != null && get_dist(src, target.loc) <= vision_range)//We can't see our target, but he's in our vision range still
-			if(environment_smash >= 2)//If we're capable of smashing through walls, forget about vision completely after finding our target
-				Goto(target,move_to_delay,minimum_distance)
-				FindHidden()
-				return 1
-			else
-				if(FindHidden())
-					return 1
 	LoseTarget()
 	return 0
 
@@ -318,14 +309,6 @@
 		var/atom/A = src.loc
 		A.attack_animal(src)//Bang on it till we get out
 	return
-
-/mob/living/simple_animal/hostile/proc/FindHidden()
-	if(istype(target.loc, /obj/structure/closet) || istype(target.loc, /obj/machinery/disposal) || istype(target.loc, /obj/machinery/sleeper))
-		var/atom/A = target.loc
-		Goto(A,move_to_delay,minimum_distance)
-		if(A.Adjacent(src))
-			A.attack_animal(src)
-		return 1
 
 /mob/living/simple_animal/hostile/RangedAttack(atom/A, params) //Player firing
 	if(ranged && ranged_cooldown <= 0)

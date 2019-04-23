@@ -64,16 +64,6 @@
 	..()
 	return
 
-
-/obj/mecha/combat/marauder/get_stats_part()
-	var/output = ..()
-	output += {"<b>Smoke:</b> [smoke]<br>
-				<b>Thrusters:</b> [thrusters?"on":"off"]<br>
-				<b>Zoom:</b> [zoom?"on":"off"]
-					"}
-	return output
-
-
 /obj/mecha/combat/marauder/loaded/New()
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse(src)

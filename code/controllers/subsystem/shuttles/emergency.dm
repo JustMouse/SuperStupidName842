@@ -1,7 +1,6 @@
 /obj/docking_port/mobile/emergency
 	name = "emergency shuttle"
 	id = "emergency"
-
 	dwidth = 9
 	width = 22
 	height = 11
@@ -71,72 +70,6 @@
 	if(.)	return .
 	return ..()
 */
-
-
-/obj/docking_port/mobile/emergency/check()
-	if(!timer)
-		return
-
-	var/time_left = timeLeft(1)
-	switch(mode)
-		if(SHUTTLE_RECALL)
-			if(time_left <= 0)
-				mode = SHUTTLE_IDLE
-				timer = 0
-		if(SHUTTLE_CALL)
-			if(time_left <= 0)
-				//move emergency shuttle to station
-				if(dock(SSshuttle.getDock("emergency_home")))
-					setTimer(20)
-					return
-				mode = SHUTTLE_DOCKED
-				timer = world.time
-				send2irc("Server", "The Emergency Shuttle has docked with the station.")
-				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
-
-				//Gangs only have one attempt left if the shuttle has docked with the station to prevent suffering from dominator delays
-				for(var/datum/gang/G in ticker.mode.gangs)
-					if(isnum(G.dom_timer))
-						G.dom_attempts = 0
-					else
-						G.dom_attempts = min(1,G.dom_attempts)
-
-		if(SHUTTLE_DOCKED)
-
-			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
-				sound_played = 1 //Only rev them up once.
-				for(var/area/shuttle/escape/E in world)
-					E << 'sound/effects/hyperspace_begin.ogg'
-
-			if(time_left <= 0 && SSshuttle.emergencyNoEscape)
-				priority_announce("Hostile environment detected. Departure has been postponed indefinitely pending conflict resolution.", null, 'sound/misc/notice1.ogg', "Priority")
-				sound_played = 0 //Since we didn't launch, we will need to rev up the engines again next pass.
-				mode = SHUTTLE_STRANDED
-
-			if(time_left <= 0 && !SSshuttle.emergencyNoEscape)
-				//move each escape pod to its corresponding transit dock
-				for(var/obj/docking_port/mobile/pod/M in SSshuttle.mobile)
-					if(M.z == ZLEVEL_STATION) //Will not launch from the mine/planet(for some reason)
-						M.enterTransit()
-				//now move the actual emergency shuttle to its transit dock
-				for(var/area/shuttle/escape/E in world)
-					E << 'sound/effects/hyperspace_progress.ogg'
-				enterTransit()
-				mode = SHUTTLE_ESCAPE
-				timer = world.time
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
-		if(SHUTTLE_ESCAPE)
-			if(time_left <= 0)
-				//move each escape pod to its corresponding escape dock
-				for(var/obj/docking_port/mobile/pod/M in SSshuttle.mobile)
-					M.dock(SSshuttle.getDock("[M.id]_away"))
-				//now move the actual emergency shuttle to centcomm
-				for(var/area/shuttle/escape/E in world)
-					E << 'sound/effects/hyperspace_end.ogg'
-				dock(SSshuttle.getDock("emergency_away"))
-				mode = SHUTTLE_ENDGAME
-				timer = 0
-				open_dock()
 
 /obj/docking_port/mobile/emergency/proc/open_dock()
 	for(var/obj/machinery/door/poddoor/shuttledock/D in airlocks)

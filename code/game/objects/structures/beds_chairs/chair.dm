@@ -174,6 +174,7 @@
 	eng_desc = "A simple log."
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "log1"
+	layer = 4.8
 
 /obj/structure/bed/chair/brevno/log2
 	icon_state = "log2"

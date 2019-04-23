@@ -160,11 +160,6 @@
 	uses = 10
 	icon_state = "spider"
 
-/obj/item/organ/internal/gland/spiderman/activate()
-	owner << "<span class='warning'>You feel something crawling in your skin.</span>"
-	owner.faction |= "spiders"
-	new /obj/effect/spider/spiderling(owner.loc)
-
 /obj/item/organ/internal/gland/egg
 	origin_tech = "materials=4;biotech=6"
 	cooldown_low = 300

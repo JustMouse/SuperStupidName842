@@ -34,10 +34,6 @@
 
 	narsie_spawn_animation()
 
-	sleep(70)
-	SSshuttle.emergency.request(null, 0.3) // Cannot recall
-
-
 /obj/singularity/narsie/large/attack_ghost(mob/dead/observer/user as mob)
 	makeNewConstruct(/mob/living/simple_animal/hostile/construct/harvester, user, null, 0, loc_override = src.loc)
 	PoolOrNew(/obj/effect/particle_effect/smoke/sleeping, src.loc)

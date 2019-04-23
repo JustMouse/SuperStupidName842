@@ -40,7 +40,6 @@ var/bomb_set
 	core = new /obj/item/nuke_core(src)
 	SSobj.processing -= core
 	update_icon()
-	previous_level = get_security_level()
 
 /obj/machinery/nuclearbomb/selfdestruct
 	name = "station self-destruct terminal"
@@ -284,55 +283,10 @@ var/bomb_set
 				var/time = text2num(href_list["time"])
 				timeleft += time
 				timeleft = min(max(round(timeleft), 60), 600)
-			if (href_list["timer"])
-				set_active()
-			if (href_list["safety"])
-				set_safety()
-			if (href_list["anchor"])
-				set_anchor()
 	add_fingerprint(usr)
 	for(var/mob/M in viewers(1, src))
 		if ((M.client && M.machine == src))
 			attack_hand(M)
-
-/obj/machinery/nuclearbomb/proc/set_anchor()
-	if(!isinspace())
-		anchored = !anchored
-	else
-		usr << "<span class='warning'>There is nothing to anchor to!</span>"
-
-/obj/machinery/nuclearbomb/proc/set_safety()
-	safety = !safety
-	if(safety)
-		timing = 0
-		bomb_set = 0
-		set_security_level(previous_level)
-	update_icon()
-
-/obj/machinery/nuclearbomb/proc/set_active()
-	if(safety)
-		usr << "<span class='danger'>The safety is still on.</span>"
-		return
-	timing = !timing
-	previous_level = get_security_level()
-	if(timing)
-		bomb_set = 1
-		set_security_level("delta")
-	else
-		bomb_set = 0
-		set_security_level(previous_level)
-	update_icon()
-
-/obj/machinery/nuclearbomb/ex_act(severity, target)
-	return
-
-/obj/machinery/nuclearbomb/blob_act()
-	if (timing == -1)
-		return
-	else
-		return ..()
-	return
-
 
 #define NUKERANGE 80
 /obj/machinery/nuclearbomb/proc/explode()
@@ -366,14 +320,11 @@ var/bomb_set
 		off_station = 2
 
 	if(ticker.mode && ticker.mode.name == "nuclear emergency")
-		var/obj/docking_port/mobile/Shuttle = SSshuttle.getShuttle("syndicate")
-		ticker.mode:syndies_didnt_escape = (Shuttle && Shuttle.z == ZLEVEL_CENTCOM) ? 0 : 1
 		ticker.mode:nuke_off_station = off_station
 	ticker.station_explosion_cinematic(off_station,null)
 	if(ticker.mode)
 		ticker.mode.explosion_in_progress = 0
 		if(ticker.mode.name == "nuclear emergency")
-			ticker.mode:nukes_left --
 		else
 			world << "<B>The station was destoyed by the nuclear blast!</B>"
 		ticker.mode.station_was_nuked = (off_station<2)	//offstation==1 is a draw. the station becomes irradiated and needs to be evacuated.
@@ -393,13 +344,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 	if(loc == initial(loc))
 		for(var/turf/simulated/floor/bluegrid/T in orange(src, 1))
 			T.icon_state = (timing ? "rcircuitanim" : "bcircuit")
-
-/obj/machinery/nuclearbomb/selfdestruct/set_anchor()
 	return
-
-/obj/machinery/nuclearbomb/selfdestruct/set_active()
-	..()
-	SetTurfs()
 
 //==========DAT FUKKEN DISK===============
 /obj/item/weapon/disk/nuclear

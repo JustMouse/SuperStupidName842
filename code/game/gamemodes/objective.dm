@@ -284,14 +284,10 @@
 /datum/objective/escape_obj/hijack/check_completion()
 	if(!owner.current || owner.current.stat)
 		return 0
-	if(SSshuttle.emergency.mode < SHUTTLE_ENDGAME)
-		return 0
 	if(issilicon(owner.current))
 		return 0
 
 	var/area/A = get_area(owner.current)
-	if(SSshuttle.emergency.areaInstance != A)
-		return 0
 
 	for(var/mob/living/player in player_list)
 		if(player.mind && player.mind != owner)
@@ -308,33 +304,6 @@
 	dangerrating = 25
 	martyr_compatible = 0
 
-/datum/objective/hijackclone/check_completion()
-	if(!owner.current)
-		return 0
-	if(SSshuttle.emergency.mode < SHUTTLE_ENDGAME)
-		return 0
-
-	var/area/A = SSshuttle.emergency.areaInstance
-
-	for(var/mob/living/player in player_list) //Make sure nobody else is onboard
-		if(player.mind && player.mind != owner)
-			if(player.stat != DEAD)
-				if(istype(player, /mob/living/silicon))
-					continue
-				if(get_area(player) == A)
-					if(player.real_name != owner.current.real_name && !istype(get_turf(player.mind.current), /turf/simulated/floor/plasteel/shuttle/red))
-						return 0
-
-	for(var/mob/living/player in player_list) //Make sure at least one of you is onboard
-		if(player.mind && player.mind != owner)
-			if(player.stat != DEAD)
-				if(istype(player, /mob/living/silicon))
-					continue
-				if(get_area(player) == A)
-					if(player.real_name == owner.current.real_name && !istype(get_turf(player.mind.current), /turf/simulated/floor/plasteel/shuttle/red))
-						return 1
-	return 0
-
 /datum/objective/escape_obj/block
 	explanation_text = "Do not allow any organic lifeforms to escape on the shuttle alive."
 	dangerrating = 25
@@ -344,19 +313,6 @@
 /datum/objective/escape_obj/block/check_completion()
 	if(!istype(owner.current, /mob/living/silicon))
 		return 0
-	if(SSshuttle.emergency.mode < SHUTTLE_ENDGAME)
-		return 1
-
-	var/area/A = SSshuttle.emergency.areaInstance
-
-	for(var/mob/living/player in player_list)
-		if(istype(player, /mob/living/silicon))
-			continue
-		if(player.mind)
-			if(player.stat != DEAD)
-				if(get_area(player) == A)
-					return 0
-
 	return 1
 
 
@@ -375,8 +331,6 @@
 		return 1
 	if(ticker.mode.station_was_nuked) //If they escaped the blast somehow, let them win
 		return 1
-	if(SSshuttle.emergency.mode < SHUTTLE_ENDGAME)
-		return 0
 	var/turf/location = get_turf(owner.current)
 	if(!location)
 		return 0

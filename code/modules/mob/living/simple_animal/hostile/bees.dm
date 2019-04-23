@@ -47,7 +47,6 @@
 			overlays.Add(I)
 		if(overlays.len > health-1)
 			overlays.Remove(I)
-	poison_per_bite = health * 0.5 //each bee is half a toxin reagent
 	if(health > 1)
 		desc = "A buzzy swarm of [health] poisonous space bees, renowned for their aggressiveness"
 	else

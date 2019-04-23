@@ -37,8 +37,6 @@
 
 	src << "<span class='notice'>Nuclear device armed.</span>"
 	priority_announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", "Anomaly Alert", 'sound/AI/aimalf.ogg')
-	set_security_level("delta")
-	SSshuttle.emergencyNoEscape = 1
 	nuking = 1
 	var/obj/machinery/doomsday_device/DOOM = new /obj/machinery/doomsday_device(src)
 	doomsday_device = DOOM
@@ -162,10 +160,6 @@
 					AL.secondsElectrified = -1  //Shock it!
 			else if(!D.stat) //So that only powered doors are closed.
 				D.close() //Close ALL the doors!
-
-	var/obj/machinery/computer/communications/C = locate() in machines
-	if(C)
-		C.post_status("alert", "lockdown")
 
 	verbs -= /mob/living/silicon/ai/proc/lockdown
 	minor_announce("Hostile runtime detected in door controllers. Isolation Lockdown protocols are now in effect. Please remain calm.","Network Alert:", 1)

@@ -33,11 +33,6 @@
 	..()
 	defense_action.Remove(user)
 
-/obj/mecha/combat/durand/get_stats_part()
-	var/output = ..()
-	output += "<b>Defence mode:</b> [defence?"on":"off"]"
-	return output
-
 /datum/action/innate/mecha/mech_defence_mode
 	name = "Toggle Defense Mode"
 	button_icon_state = "mech_defense_mode_off"

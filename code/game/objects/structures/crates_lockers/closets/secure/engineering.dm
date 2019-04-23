@@ -82,7 +82,6 @@
 /obj/structure/closet/secure_closet/atmospherics/New()
 	..()
 	new /obj/item/device/radio/headset/headset_eng(src)
-	new /obj/item/weapon/pipe_dispenser(src)
 	new /obj/item/weapon/storage/toolbox/mechanical(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/device/analyzer(src)

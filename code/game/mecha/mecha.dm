@@ -75,7 +75,6 @@
 	var/datum/action/innate/mecha/mech_toggle_internals/internals_action = new
 	var/datum/action/innate/mecha/mech_cycle_equip/cycle_action = new
 	var/datum/action/innate/mecha/mech_toggle_lights/lights_action = new
-	var/datum/action/innate/mecha/mech_view_stats/stats_action = new
 
 	hud_possible = list (DIAG_STAT_HUD, DIAG_BATT_HUD, DIAG_MECH_HUD)
 
@@ -85,7 +84,6 @@
 	icon_state += "-open"
 	add_radio()
 	add_cabin()
-	add_airtank()
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 	add_cell()
@@ -160,10 +158,6 @@
 ////// Helpers /////////
 ////////////////////////
 
-/obj/mecha/proc/add_airtank()
-	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
-	return internal_tank
-
 /obj/mecha/proc/add_cell(var/obj/item/weapon/stock_parts/cell/C=null)
 	if(C)
 		C.forceMove(src)
@@ -229,16 +223,6 @@
 		if(internal_damage & MECHA_INT_FIRE)
 			if(!(internal_damage & MECHA_INT_TEMP_CONTROL) && prob(5))
 				clearInternalDamage(MECHA_INT_FIRE)
-			if(internal_tank)
-				if(internal_tank.return_pressure() > internal_tank.maximum_pressure && !(internal_damage & MECHA_INT_TANK_BREACH))
-					setInternalDamage(MECHA_INT_TANK_BREACH)
-				var/datum/gas_mixture/int_tank_air = internal_tank.return_air()
-				if(int_tank_air && int_tank_air.return_volume()>0) //heat the air_contents
-					int_tank_air.temperature = min(6000+T0C, int_tank_air.temperature+rand(10,15))
-			if(cabin_air && cabin_air.return_volume()>0)
-				cabin_air.temperature = min(6000+T0C, cabin_air.return_temperature()+rand(10,15))
-				if(cabin_air.return_temperature() > max_temperature/2)
-					take_damage(4/round(max_temperature/cabin_air.return_temperature(),0.1),"fire")
 
 		if(internal_damage & MECHA_INT_TEMP_CONTROL)
 			internal_temp_regulation = 0
@@ -416,11 +400,6 @@
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.
 		user.forceMove(get_turf(src))
 		user << "<span class='notice'>You climb out from [src].</span>"
-		return 0
-	if(connected_port)
-		if(world.time - last_message > 20)
-			src.occupant_message("<span class='warning'>Unable to move while connected to the air system port!</span>")
-			last_message = world.time
 		return 0
 	if(state)
 		occupant_message("<span class='danger'>Maintenance protocols in effect.</span>")
@@ -633,37 +612,6 @@
 	if(t_air)
 		. = t_air.return_temperature()
 	return
-
-/obj/mecha/proc/connect(obj/machinery/atmospherics/components/unary/portables_connector/new_port)
-	//Make sure not already connected to something else
-	if(connected_port || !new_port || new_port.connected_device)
-		return 0
-
-	//Make sure are close enough for a valid connection
-	if(new_port.loc != src.loc)
-		return 0
-
-	//Perform the connection
-	connected_port = new_port
-	connected_port.connected_device = src
-	var/datum/pipeline/connected_port_parent = connected_port.PARENT1
-	connected_port_parent.reconcile_air()
-
-	log_message("Connected to gas port.")
-	return 1
-
-/obj/mecha/proc/disconnect()
-	if(!connected_port)
-		return 0
-
-	connected_port.connected_device = null
-	connected_port = null
-	src.log_message("Disconnected from gas port.")
-	return 1
-
-/obj/mecha/portableConnectorReturnAir()
-	return internal_tank.return_air()
-
 
 /obj/mecha/MouseDrop_T(mob/M, mob/user)
 	if (!user.canUseTopic(src) || (user != M))
@@ -917,9 +865,6 @@ var/year_integer = text2num(year) // = 2013???
 	lights_action.chassis = src
 	lights_action.Grant(user)
 
-	stats_action.chassis = src
-	stats_action.Grant(user)
-
 
 /obj/mecha/proc/RemoveActions(var/mob/living/user, var/human_occupant = 0)
 	if(human_occupant)
@@ -927,7 +872,6 @@ var/year_integer = text2num(year) // = 2013???
 	internals_action.Remove(user)
 	cycle_action.Remove(user)
 	lights_action.Remove(user)
-	stats_action.Remove(user)
 
 
 /datum/action/innate/mecha
@@ -1008,13 +952,3 @@ var/year_integer = text2num(year) // = 2013???
 		button_icon_state = "mech_lights_off"
 	chassis.occupant_message("Toggled lights [chassis.lights?"on":"off"].")
 	chassis.log_message("Toggled lights [chassis.lights?"on":"off"].")
-
-
-/datum/action/innate/mecha/mech_view_stats
-	name = "View Stats"
-	button_icon_state = "mech_view_stats"
-
-/datum/action/innate/mecha/mech_view_stats/Activate()
-	if(!owner || !chassis || chassis.occupant != owner)
-		return
-	chassis.occupant << browse(chassis.get_stats_html(), "window=exosuit")

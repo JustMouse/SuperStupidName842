@@ -95,30 +95,6 @@
 			if(href_list["choice"] == "station")
 				if(!alone_in_area(get_area(src), usr))
 					usr << "<span class='warning'>Prisoners are only allowed to be released while alone.</span>"
-				else
-					switch(SSshuttle.moveShuttle("laborcamp","laborcamp_home"))
-						if(1)
-							usr << "<span class='notice'>Shuttle not found</span>"
-						if(2)
-							usr << "<span class='notice'>Shuttle already at station</span>"
-						if(3)
-							usr << "<span class='notice'>No permission to dock could be granted.</span>"
-						else
-							Radio.set_frequency(SEC_FREQ)
-							Radio.talk_into(src, "[inserted_id.registered_name] has returned to the station. Minerals and Prisoner ID card ready for retrieval.", SEC_FREQ)
-							usr << "<span class='notice'>Shuttle received message and will be sent shortly.</span>"
-
-			if(href_list["choice"] == "release")
-				if(alone_in_area(get_area(loc), usr))
-					var/obj/docking_port/stationary/S = SSshuttle.getDock("laborcamp_home")
-					if(S && S.get_docked())
-						if(release_door && release_door.density)
-							release_door.open()
-					else
-						usr << "<span class='warning'>Prisoners can only be released while docked with the station.</span>"
-				else
-					usr << "<span class='warning'>Prisoners are only allowed to be released while alone.</span>"
-
 		src.updateUsrDialog()
 	return
 

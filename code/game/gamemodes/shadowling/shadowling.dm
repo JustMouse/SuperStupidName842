@@ -215,20 +215,6 @@ Made by Xhuis
 		success = shadowling_ascended
 	return success
 
-
-/datum/game_mode/shadowling/declare_completion()
-	if(check_shadow_victory() && SSshuttle.emergency.mode >= SHUTTLE_ESCAPE) //Doesn't end instantly - this is hacky and I don't know of a better way ~X
-		world << "<span class='greentext'>The shadowlings have ascended and taken over the station!</span>"
-	else if(shadowling_dead && !check_shadow_victory()) //If the shadowlings have ascended, they can not lose the round
-		world << "<span class='redtext'>The shadowlings have been killed by the crew!</span>"
-	else if(!check_shadow_victory() && SSshuttle.emergency.mode >= SHUTTLE_ESCAPE)
-		world << "<span class='redtext'>The crew escaped the station before the shadowlings could ascend!</span>"
-	else
-		world << "<span class='redtext'>The shadowlings have failed!</span>"
-	..()
-	return 1
-
-
 /datum/game_mode/proc/auto_declare_completion_shadowling()
 	var/text = ""
 	if(shadows.len)

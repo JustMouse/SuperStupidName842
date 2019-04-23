@@ -28,10 +28,7 @@
 	var/list/records = null
 	var/frame_desc = null
 
-/obj/item/weapon/circuitboard/large_tank_control
-	name = "circuit board (Large Tank Control)"
-	build_path = /obj/machinery/computer/general_air_control/large_tank_control
-	origin_tech = "programming=2;engineering=3;materials=2"
+
 /obj/item/weapon/circuitboard/turbine_computer
 	name = "circuit board (Turbine Computer)"
 	build_path = /obj/machinery/computer/turbine_computer
@@ -72,7 +69,6 @@
 	origin_tech = "programming=2;biotech=2"
 /obj/item/weapon/circuitboard/communications
 	name = "circuit board (Communications)"
-	build_path = /obj/machinery/computer/communications
 	origin_tech = "programming=2;magnets=2"
 	var/lastTimeUsed = 0
 /obj/item/weapon/circuitboard/communications/proc/cooldownLeft(deciseconds=600)
@@ -104,12 +100,6 @@
 /*/obj/item/weapon/circuitboard/atmospheresiphonswitch
 	name = "circuit board (Atmosphere siphon control)"
 	build_path = /obj/machinery/computer/atmosphere/siphonswitch*/
-/obj/item/weapon/circuitboard/air_management
-	name = "circuit board (Atmospheric monitor)"
-	build_path = /obj/machinery/computer/general_air_control
-/obj/item/weapon/circuitboard/injector_control
-	name = "circuit board (Injector control)"
-	build_path = /obj/machinery/computer/general_air_control/fuel_injection
 /obj/item/weapon/circuitboard/atmos_alert
 	name = "circuit board (Atmospheric Alert)"
 	build_path = /obj/machinery/computer/atmos_alert
@@ -224,9 +214,9 @@
 	name = "circuit board (AI Integrity Restorer)"
 	build_path = /obj/machinery/computer/aifixer
 	origin_tech = "programming=3;biotech=2"
-/obj/item/weapon/circuitboard/area_atmos
-	name = "circuit board (Area Air Control)"
-	build_path = /obj/machinery/computer/area_atmos
+///obj/item/weapon/circuitboard/area_atmos
+//	name = "circuit board (Area Air Control)"
+//	build_path = /obj/machinery/computer/area_atmos
 /*/obj/item/weapon/circuitboard/prison_shuttle
 	name = "circuit board (Prison Shuttle)"
 	build_path = /obj/machinery/computer/prison_shuttle*/

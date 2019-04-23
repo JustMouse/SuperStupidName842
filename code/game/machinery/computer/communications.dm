@@ -116,24 +116,6 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			else if (src.authenticated==2 && message_cooldown)
 				usr << "Intercomms recharging. Please stand by."
 
-		if("callshuttle")
-			src.state = STATE_DEFAULT
-			if(src.authenticated)
-				src.state = STATE_CALLSHUTTLE
-		if("callshuttle2")
-			if(src.authenticated)
-				SSshuttle.requestEvac(usr, href_list["call"])
-				if(SSshuttle.emergency.timer)
-					post_status("shuttle")
-			src.state = STATE_DEFAULT
-		if("cancelshuttle")
-			src.state = STATE_DEFAULT
-			if(src.authenticated)
-				src.state = STATE_CANCELSHUTTLE
-		if("cancelshuttle2")
-			if(src.authenticated)
-				SSshuttle.cancelEvac(usr)
-			src.state = STATE_DEFAULT
 		if("messagelist")
 			src.currmsg = 0
 			src.state = STATE_MESSAGELIST
@@ -309,16 +291,6 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 
 		if("ai-emergencyaccess")
 			src.aistate = STATE_TOGGLE_EMERGENCY
-		if("ai-enableemergency")
-			make_maint_all_access()
-			log_game("[key_name(usr)] enabled emergency maintenance access.")
-			message_admins("[key_name_admin(usr)] enabled emergency maintenance access.")
-			src.aistate = STATE_DEFAULT
-		if("ai-disableemergency")
-			revoke_maint_all_access()
-			log_game("[key_name(usr)] disabled emergency maintenance access.")
-			message_admins("[key_name_admin(usr)] disabled emergency maintenance access.")
-			src.aistate = STATE_DEFAULT
 
 	src.updateUsrDialog()
 

@@ -15,9 +15,6 @@
 	density = 1
 	use_power = 0
 
-	var/obj/machinery/atmospherics/components/binary/circulator/circ1
-	var/obj/machinery/atmospherics/components/binary/circulator/circ2
-
 	var/lastgen = 0
 	var/lastgenlev = -1
 	var/lastcirc = "00"
@@ -25,23 +22,7 @@
 
 /obj/machinery/power/generator/initialize()
 
-	circ1 = null
-	circ2 = null
-
-	circ1 = locate(/obj/machinery/atmospherics/components/binary/circulator) in get_step(src,WEST)
-	circ2 = locate(/obj/machinery/atmospherics/components/binary/circulator) in get_step(src,EAST)
 	connect_to_network()
-
-	if(circ1)
-		circ1.side = 1
-		circ1.update_icon()
-	if(circ2)
-		circ2.side = 2
-		circ2.update_icon()
-
-	if(!circ1 || !circ2)
-		stat |= BROKEN
-
 	update_icon()
 
 

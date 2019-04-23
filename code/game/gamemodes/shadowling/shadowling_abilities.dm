@@ -605,45 +605,6 @@ datum/reagent/shadowling_blindness_smoke //Reagent used for above spell
 	charge_max = 600
 	action_icon_state = "extend_shuttle"
 
-/obj/effect/proc_holder/spell/targeted/shadowling_extend_shuttle/cast(list/targets, mob/living/carbon/human/user = usr)
-	if(!shadowling_check(user))
-		revert_cast()
-		return
-	for(var/mob/living/carbon/human/target in targets)
-		if(target.stat)
-			revert_cast()
-			return
-		if(!is_thrall(target))
-			user << "<span class='warning'>[target] must be a thrall.</span>"
-			revert_cast()
-			return
-		if(SSshuttle.emergency.mode != SHUTTLE_CALL)
-			user << "<span class='warning'>The shuttle must be inbound only to the station.</span>"
-			revert_cast()
-			return
-		var/mob/living/carbon/human/M = target
-		user.visible_message("<span class='warning'>[user]'s eyes flash a bright red!</span>", \
-						  "<span class='notice'>You begin to draw [M]'s life force.</span>")
-		M.visible_message("<span class='warning'>[M]'s face falls slack, their jaw slightly distending.</span>", \
-						  "<span class='boldannounce'>You are suddenly transported... far, far away...</span>")
-		if(!do_after(user, 50, target = M))
-			M << "<span class='warning'>You are snapped back to reality, your haze dissipating!</span>"
-			user << "<span class='warning'>You have been interrupted. The draw has failed.</span>"
-			return
-		user << "<span class='notice'>You project [M]'s life force toward the approaching shuttle, extending its arrival duration!</span>"
-		M.visible_message("<span class='warning'>[M]'s eyes suddenly flare red. They proceed to collapse on the floor, not breathing.</span>", \
-						  "<span class='warning'><b>...speeding by... ...pretty blue glow... ...touch it... ...no glow now... ...no light... ...nothing at all...</span>")
-		M.death()
-		if(SSshuttle.emergency.mode == SHUTTLE_CALL)
-			var/more_minutes = 9000
-			var/timer = SSshuttle.emergency.timeLeft()
-			timer += more_minutes
-			priority_announce("Major system failure aboard the emergency shuttle. This will extend its arrival time by approximately 15 minutes..", "System Failure", 'sound/misc/notice1.ogg')
-			SSshuttle.emergency.setTimer(timer)
-		user.mind.spell_list.Remove(src) //Can only be used once!
-		qdel(src)
-
-
 // THRALL ABILITIES BEYOND THIS POINT //
 
 

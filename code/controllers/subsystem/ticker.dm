@@ -474,8 +474,6 @@ var/datum/subsystem/ticker/ticker
 /datum/subsystem/ticker/proc/check_maprotate()
 	if (!config.maprotation || !SERVERTOOLS)
 		return
-	if (SSshuttle.emergency.mode != SHUTTLE_ESCAPE || SSshuttle.canRecall())
-		return
 	if (maprotatechecked)
 		return
 

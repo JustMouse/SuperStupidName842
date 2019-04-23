@@ -32,8 +32,6 @@
 	set waitfor = 0
 	can_fire = 0
 
-
-
 #if DM_VERSION >= 510
 /datum/subsystem/proc/pause()
 	. = 1

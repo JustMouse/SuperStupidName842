@@ -149,7 +149,6 @@ var/list/blobs_legit = list() //used for win-score calculations, contains only b
 		greet_blob(blob)
 		var/datum/action/innate/blob_earlyhelp/B = new
 		B.Grant(blob.current)
-	SSshuttle.emergencyNoEscape = 1
 
 	// Disable the blob event for this round.
 	var/datum/round_event_control/blob/B = locate() in SSevent.control

@@ -224,11 +224,6 @@
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		visible_message("<span class='notice'>Authentication Disk Locator mode actived.</span>")
 		return
-	if(!home)
-		home = SSshuttle.getShuttle("syndicate")
-		if(!home)
-			icon_state = "pinonnull"
-			return
 	if(loc.z != home.z)	//If you are on a different z-level from the shuttle
 		icon_state = "pinonnull"
 	else

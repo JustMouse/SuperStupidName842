@@ -70,17 +70,6 @@
 		side = "blue"
 	if(side == "ABORT")
 		return 0
-
-	var/area/A = SSshuttle.emergency.areaInstance
-
-	for(var/mob/living/player in player_list)
-		if(player.mind && player.stat != DEAD && get_area(player) == A)
-			if(side == "red")
-				if(is_handofgod_bluecultist(player))
-					return 0
-			else if(side == "blue")
-				if(is_handofgod_redcultist(player))
-					return 0
 	return 1
 
 

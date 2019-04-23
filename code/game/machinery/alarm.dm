@@ -841,7 +841,6 @@ FIRE ALARM
 		if((stat & BROKEN) || (stat & NOPOWER))
 			return
 
-		overlays += "overlay_[security_level]"
 		return
 
 	if(stat & BROKEN)
@@ -852,8 +851,6 @@ FIRE ALARM
 
 	if(stat & NOPOWER)
 		return
-
-	overlays += "overlay_[security_level]"
 
 	if(!src.detecting)
 		overlays += "overlay_fire"
@@ -990,59 +987,6 @@ FIRE ALARM
 		if(loc)
 			update_icon()
 
-/obj/machinery/firealarm/attack_hand(mob/user)
-	if((user.stat && !IsAdminGhost(user)) || stat & (NOPOWER|BROKEN))
-		return
-
-	if (buildstage != 2)
-		return
-
-	user.set_machine(src)
-	var/area/A = src.loc
-	var/safety_warning
-	var/d1
-	var/d2
-	var/dat = ""
-	if (istype(user, /mob/living/carbon/human) || user.has_unlimited_silicon_privilege)
-		A = A.loc
-		if (src.emagged)
-			safety_warning = text("<font color='red'>NOTICE: Thermal sensors nonfunctional. Device will not report or recognize high temperatures.</font>")
-		else
-			safety_warning = text("Safety measures functioning properly.")
-		if (A.fire)
-			d1 = text("<A href='?src=\ref[];reset=1'>Reset - Lockdown</A>", src)
-		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>Alarm - Lockdown</A>", src)
-		if (src.timing)
-			d2 = text("<A href='?src=\ref[];time=0'>Stop Time Lock</A>", src)
-		else
-			d2 = text("<A href='?src=\ref[];time=1'>Initiate Time Lock</A>", src)
-		var/second = round(src.time) % 60
-		var/minute = (round(src.time) - second) / 60
-		dat = "[safety_warning]<br /><br />[d1]<br /><b>The current alert level is: [get_security_level()]</b><br /><br />Timer System: [d2]<br />Time Left: <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> [(minute ? "[minute]:" : null)][second] <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>"
-		//user << browse(dat, "window=firealarm")
-		//onclose(user, "firealarm")
-	else
-		A = A.loc
-		if (A.fire)
-			d1 = text("<A href='?src=\ref[];reset=1'>[]</A>", src, stars("Reset - Lockdown"))
-		else
-			d1 = text("<A href='?src=\ref[];alarm=1'>[]</A>", src, stars("Alarm - Lockdown"))
-		if (src.timing)
-			d2 = text("<A href='?src=\ref[];time=0'>[]</A>", src, stars("Stop Time Lock"))
-		else
-			d2 = text("<A href='?src=\ref[];time=1'>[]</A>", src, stars("Initiate Time Lock"))
-		var/second = round(src.time) % 60
-		var/minute = (round(src.time) - second) / 60
-		dat = "[d1]<br /><b>The current alert level is: [stars(get_security_level())]</b><br /><br />Timer System: [d2]<br />Time Left: <A href='?src=\ref[src];tp=-30'>-</A> <A href='?src=\ref[src];tp=-1'>-</A> [(minute ? text("[]:", minute) : null)][second] <A href='?src=\ref[src];tp=1'>+</A> <A href='?src=\ref[src];tp=30'>+</A>"
-		//user << browse(dat, "window=firealarm")
-		//onclose(user, "firealarm")
-	var/datum/browser/popup = new(user, "firealarm", "Fire Alarm")
-	popup.set_content(dat)
-	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
-	popup.open()
-	return
-
 /obj/machinery/firealarm/Topic(href, href_list)
 	if(..())
 		return
@@ -1081,26 +1025,6 @@ FIRE ALARM
 		A.firealert(src)
 	//playsound(src.loc, 'sound/ambience/signal.ogg', 75, 0)
 	return
-
-/obj/machinery/firealarm/New(loc, ndir, building)
-	..()
-
-	if(ndir)
-		src.dir = ndir
-
-	if(building)
-		buildstage = 0
-		panel_open = 1
-		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
-		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
-
-	if(z == 1)
-		if(security_level)
-			src.overlays += image('icons/obj/monitors.dmi', "overlay_[get_security_level()]")
-		else
-			src.overlays += image('icons/obj/monitors.dmi', "overlay_green")
-
-	update_icon()
 
 /*
 FIRE ALARM CIRCUIT

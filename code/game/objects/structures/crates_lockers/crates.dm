@@ -23,7 +23,6 @@
 		icon_state = "[icon_crate]open"
 	else
 		icon_state = icon_crate
-	if(manifest)
 		overlays += "manifest"
 
 /obj/structure/closet/crate/internals
@@ -33,7 +32,7 @@
 	icon_state = "o2crate"
 
 /obj/structure/closet/crate/supertrash
-	desc = "Здесь хранится сокровище."
+	desc = "Здесь хранитс&#255; сокровище."
 	eng_desc = "There is some treasure here!"
 	name = "Trashcan"
 	icon_crate = "supertrash"
@@ -205,16 +204,8 @@
 /obj/structure/closet/crate/proc/tear_manifest(mob/user)
 	user << "<span class='notice'>You tear the manifest off of the crate.</span>"
 	playsound(src.loc, 'sound/items/poster_ripped.ogg', 75, 1)
-	manifest.loc = loc
-	if(ishuman(user))
-		user.put_in_hands(manifest)
-	manifest = null
-	overlays-="manifest"
 
 /obj/structure/closet/crate/attack_hand(mob/user)
-	if(manifest)
-		tear_manifest(user)
-		return
 	if(opened)
 		close()
 	else
@@ -230,12 +221,8 @@
 	return
 
 /obj/structure/closet/crate/secure/attack_hand(mob/user)
-	if(manifest)
-		tear_manifest(user)
-		return
 	if(locked && !broken)
 		if (allowed(user))
-			user << "<span class='notice'>You unlock [src].</span>"
 			src.locked = 0
 			update_icon()
 			add_fingerprint(user)

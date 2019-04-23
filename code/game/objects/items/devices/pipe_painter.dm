@@ -22,9 +22,6 @@
 	if(proximity_flag!= 1)
 		return
 
-	if(!istype(A,/obj/machinery/atmospherics/pipe/simple) && !istype(A,/obj/machinery/atmospherics/pipe/manifold) && !istype(A,/obj/machinery/atmospherics/pipe/manifold4w))
-		return
-
 	var/obj/machinery/atmospherics/pipe/P = A
 	P.color = modes[mode]
 	P.pipe_color = modes[mode]

@@ -112,6 +112,8 @@ var/datum/subsystem/garbage_collector/SSgarbage
 		del(A)
 	else if (isnull(A.gc_destroyed))
 		// Let our friend know they're about to get fucked up.
+		if(A == /obj/effect/rain)
+			world << "[A]"
 		var/hint = A.Destroy()
 		if (!A)
 			return

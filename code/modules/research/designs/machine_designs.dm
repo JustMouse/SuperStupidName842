@@ -62,16 +62,6 @@
 	build_path = /obj/item/weapon/circuitboard/power_turbine
 	category = list ("Engineering Machinery")
 
-/datum/design/thermomachine
-	name = "Machine Design (Freezer/Heater Board)"
-	desc = "The circuit board for a freezer/heater."
-	id = "thermomachine"
-	req_tech = list("programming" = 3, "plasmatech" = 3)
-	build_type = IMPRINTER
-	materials = list(MAT_GLASS = 1000, "sacid" = 20)
-	build_path = /obj/item/weapon/circuitboard/thermomachine
-	category = list ("Engineering Machinery")
-
 /datum/design/space_heater
 	name = "Machine Design (Space Heater Board)"
 	desc = "The circuit board for a space heater."
@@ -140,16 +130,6 @@
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, "sacid" = 20)
 	build_path = /obj/item/weapon/circuitboard/sleeper
-	category = list ("Medical Machinery")
-
-/datum/design/cryotube
-	name = "Machine Design (Cryotube Board)"
-	desc = "The circuit board for a cryotube."
-	id = "cryotube"
-	req_tech = list("programming" = 4, "biotech" = 3, "engineering" = 4)
-	build_type = IMPRINTER
-	materials = list(MAT_GLASS = 1000, "sacid" = 20)
-	build_path = /obj/item/weapon/circuitboard/cryo_tube
 	category = list ("Medical Machinery")
 
 /datum/design/chem_dispenser

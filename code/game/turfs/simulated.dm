@@ -62,7 +62,7 @@
 			//shoes
 			if(istype(src, /turf/stalker/floor/digable/grass))
 				footstepsound = "grassfootsteps"
-			else 	if(istype(src, /turf/stalker/floor/tropa))
+//			else 	if(istype(src, /turf/stalker/floor/trail))
 				footstepsound = "sandfootsteps"
 			else 	if(istype(src, /turf/simulated/floor/plating/beach/water))
 				footstepsound = "waterfootsteps"
@@ -70,7 +70,7 @@
 				footstepsound = "woodfootsteps"
 			else 	if(istype(src, /turf/simulated/floor/carpet))
 				footstepsound = "carpetfootsteps"
-			else 	if(istype(src, /turf/stalker/floor/gryaz || /turf/stalker/floor/gryaz/gryaz2 ))
+			else 	if(istype(src, /turf/stalker/floor/dirt || /turf/stalker/floor/dirt/dirt2 ))
 				footstepsound = "dirtfootsteps"
 			else
 				footstepsound = "erikafootsteps"
@@ -144,7 +144,7 @@
 			//shoes
 			if(istype(src, /turf/stalker/floor/digable/grass))
 				footstepsound = "grassfootsteps"
-			else if(istype(src, /turf/stalker/floor/tropa))
+//			else if(istype(src, /turf/stalker/floor/trail))
 				footstepsound = "sandfootsteps"
 			else if(istype(src, /turf/simulated/floor/plating/beach/water))
 				footstepsound = "waterfootsteps"
@@ -152,7 +152,7 @@
 				footstepsound = "woodfootsteps"
 			else if(istype(src, /turf/simulated/floor/carpet))
 				footstepsound = "carpetfootsteps"
-			else if(istype(src, /turf/stalker/floor/gryaz || /turf/stalker/floor/gryaz/gryaz2))
+			else if(istype(src, /turf/stalker/floor/dirt || /turf/stalker/floor/dirt/dirt2))
 				footstepsound = "dirtfootsteps"
 			else if(istype(src, /turf/stalker/floor/water))
 				footstepsound = "waterfootsteps"

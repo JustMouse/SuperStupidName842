@@ -179,30 +179,11 @@
 	if(length(str) > 50)
 		usr << "<span class='warning'>The given name is too long.  The area's name is unchanged.</span>"
 		return
-	set_area_machinery_title(A,str,prevname)
 	for(var/area/RA in A.related)
 		RA.name = str
 	usr << "<span class='notice'>You rename the '[prevname]' to '[str]'.</span>"
 	interact()
 	return 1
-
-
-/obj/item/areaeditor/proc/set_area_machinery_title(area/A,title,oldtitle)
-	if (!oldtitle) // or replacetext goes to infinite loop
-		return
-	for(var/area/RA in A.related)
-		for(var/obj/machinery/alarm/M in RA)
-			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/power/apc/M in RA)
-			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/M in RA)
-			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/atmospherics/components/unary/vent_pump/M in RA)
-			M.name = replacetext(M.name,oldtitle,title)
-		for(var/obj/machinery/door/M in RA)
-			M.name = replacetext(M.name,oldtitle,title)
-	//TODO: much much more. Unnamed airlocks, cameras, etc.
-
 
 /obj/item/areaeditor/proc/check_tile_is_border(turf/T2,dir)
 	if (istype(T2, /turf/space))

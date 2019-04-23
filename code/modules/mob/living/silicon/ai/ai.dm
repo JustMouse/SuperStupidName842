@@ -151,7 +151,6 @@ var/list/ai_list = list()
 /mob/living/silicon/ai/Destroy()
 	ai_list -= src
 	shuttle_caller_list -= src
-	SSshuttle.autoEvac()
 	qdel(eyeobj) // No AI, no Eye
 	return ..()
 
@@ -302,18 +301,6 @@ var/list/ai_list = list()
 		if(AI.control_disabled)
 			usr << "Wireless control is disabled!"
 			return
-
-	var/reason = input(src, "What is the nature of your emergency? ([CALL_SHUTTLE_REASON_LENGTH] characters required.)", "Confirm Shuttle Call") as null|text
-
-	if(trim(reason))
-		SSshuttle.requestEvac(src, reason)
-
-	// hack to display shuttle timer
-	if(SSshuttle.emergency.mode >= SHUTTLE_CALL)
-		var/obj/machinery/computer/communications/C = locate() in machines
-		if(C)
-			C.post_status("shuttle")
-
 	return
 
 /mob/living/silicon/ai/cancel_camera()
@@ -343,7 +330,6 @@ var/list/ai_list = list()
 		if(AI.control_disabled)
 			src	 << "Wireless control is disabled!"
 			return
-	SSshuttle.cancelEvac(src)
 	return
 
 /mob/living/silicon/ai/check_eye(mob/user)
@@ -367,8 +353,6 @@ var/list/ai_list = list()
 		switch(pick(1,2))
 			if(1)
 				view_core()
-			if(2)
-				SSshuttle.requestEvac(src,"ALERT: Energy surge detected in AI core! Station integrity may be compromised! Initiati--%m091#ar-BZZT")
 	..()
 
 /mob/living/silicon/ai/ex_act(severity, target)

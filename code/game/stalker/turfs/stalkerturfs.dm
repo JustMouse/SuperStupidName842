@@ -15,6 +15,7 @@
 	environment_type = "snow"
 	dug = 1
 
+
 /obj/structure/grille/stalker
 	desc = "Хороший, крепкий железный забор."
 	name = "fence"
@@ -26,26 +27,36 @@
 	layer = 4.02
 	health = 10000000
 
-/obj/structure/grille/stalker/fence5
-	icon_state = "fence5"
-	layer = 4.02
-	density = 0
+/obj/structure/grille/stalker/New()
+	if(icon_state == "fence5")
+		density = 0
+	pixel_y = -1
+	..()
+
+/obj/structure/grille/stalker/attack_hand(mob/user)
+	world << "[user]"
+	if(icon_state == "fence4")
+		playsound(user, "rustle")
+		density = 1
+		icon_state = "fence6"
+	if(icon_state == "fence6")
+		playsound(user, "rustle")
+		density = 0
+		icon_state = "fence4"
 
 /obj/structure/grille/stalker/CanPass(atom/movable/mover, turf/target, height=0)
 	if(istype(mover, /obj/item/projectile) && density)
 		if(src == /obj/structure/grille/stalker/beton)
 			return 0
 		return 1
-	if(src.icon_state="fence5")
-		return 0
-	switch(src.icon_state)
-		if("fence0","fence1")
+	switch(icon_state)
+		if("fence0","fence1","fence6","koluchka_horizontalcenter")
 			if(get_dir(loc, target) == dir)
 				return !density
 			else
 				return 1
-//		if("fence5")
-//			return 1
+		if("fence5","fence4")
+			return 1
 		if("fence3","fence2")
 			return 0
 		else
@@ -56,11 +67,9 @@
 		if(src == /obj/structure/grille/stalker/beton)
 			return 0
 		return 1
-	if((src.icon_state == "fence0") || (src.icon_state == "fence1"))
+	if((icon_state == "fence0") || (icon_state == "fence1"))
 		if(get_dir(loc, target) == dir)
 			return 0
-//	if(src.icon_state == "fence5")
-//		return 1
 	return 1
 
 /obj/structure/grille/stalker/ex_act(severity, target)
@@ -108,7 +117,6 @@
 	eng_desc = "Beware the barbed wire!"
 	icon_state = "koluchka_horizontalcenter"
 	density = 1
-	opacity = 0
 
 /obj/structure/grille/stalker/beton
 	icon = 'icons/stalker/beton_zabor.dmi'
@@ -142,11 +150,11 @@
 
 
 /turf/stalker/floor/digable/grass
-	icon = 'icons/stalker/zemlya.dmi'
+	icon = 'icons/stalker/dirt.dmi'
 	icon_state = "grass1"
 
 /turf/stalker/floor/digable/grass/dump
-	icon = 'icons/stalker/zemlya.dmi'
+	icon = 'icons/stalker/dirt.dmi'
 	icon_state = "dump_grass1"
 /*
 /turf/stalker/floor/digable/grass/dump/New()
@@ -171,68 +179,78 @@
 	icon = 'icons/stalker/Prishtina/asphalt.dmi'
 	icon_state = "road1"
 	layer = 2
-	overlay_priority = 1
+	overlay_priority = 4
 
-var/global/list/AsphaltEdgeCache
+/turf/stalker/floor/asphalt/var/list/AsphaltEdgeCache
 
-/turf/stalker/floor/asphalt/New()
+/turf/stalker/floor/asphalt/New() //stalkerturf
 	icon_state = "road[rand(1, 3)]"
 	if(!AsphaltEdgeCache || !AsphaltEdgeCache.len)
 		AsphaltEdgeCache = list()
 		AsphaltEdgeCache.len = 10
-		AsphaltEdgeCache[NORTH] = image('icons/stalker/Prishtina/asphalt.dmi', "roadn", layer = 2.01)
-		AsphaltEdgeCache[SOUTH] = image('icons/stalker/Prishtina/asphalt.dmi', "roads", layer = 2.01)
-		AsphaltEdgeCache[EAST] = image('icons/stalker/Prishtina/asphalt.dmi', "roade", layer = 2.01)
-		AsphaltEdgeCache[WEST] = image('icons/stalker/Prishtina/asphalt.dmi', "roadw", layer = 2.01)
+		AsphaltEdgeCache[NORTH] = image('icons/stalker/Prishtina/asphalt.dmi', "road_n", layer = 2.04)
+		AsphaltEdgeCache[SOUTH] = image('icons/stalker/Prishtina/asphalt.dmi', "road_s", layer = 2.04)
+		AsphaltEdgeCache[EAST] = image('icons/stalker/Prishtina/asphalt.dmi', "road_e", layer = 2.04)
+		AsphaltEdgeCache[WEST] = image('icons/stalker/Prishtina/asphalt.dmi', "road_w", layer = 2.04)
+		AsphaltEdgeCache[NORTHEAST] = image('icons/stalker/Prishtina/asphalt.dmi', "road_ne", layer = 2.04)
+		AsphaltEdgeCache[NORTHWEST] = image('icons/stalker/Prishtina/asphalt.dmi', "road_nw", layer = 2.04)
+		AsphaltEdgeCache[SOUTHEAST] = image('icons/stalker/Prishtina/asphalt.dmi', "road_se", layer = 2.04)
+		AsphaltEdgeCache[SOUTHWEST] = image('icons/stalker/Prishtina/asphalt.dmi', "road_sw", layer = 2.04)
 
-	spawn(1)
+	spawn(4)
 		var/turf/T
-		for(var/i = 0, i <= 3, i++)
-			if(!get_step(src, 2**i))
+		for(var/i in alldirs)
+			world << "[get_step(src, i)] [i]"
+			if(!get_step(src, i))
 				continue
-			if(overlay_priority > get_step(src, 2**i).overlay_priority)
-				T = get_step(src, 2**i)
+			world << "[(overlay_priority > get_step(src, i).overlay_priority)]"
+			if(overlay_priority > get_step(src, i).overlay_priority) //		for(var/i in alldirs)
+				T = get_step(src, i)
+				world << "[T]"
 				if(T)
-					T.overlays += AsphaltEdgeCache[2**i]
+					T.overlays += AsphaltEdgeCache[i]
 	return
 
-/turf/stalker/floor/tropa
+/turf/stalker/floor/trail
 	name = "road"
-	icon = 'icons/stalker/tropa.dmi'
-	icon_state = "tropa"
-	layer = 2
+	icon = 'icons/stalker/trail.dmi'
+	icon_state = "trail"
 	overlay_priority = 2
 
-var/global/list/TropaEdgeCache
+/turf/stalker/floor/trail/var/list/TrailEdgeCache
 
-/turf/stalker/floor/tropa/New()
-	if(!TropaEdgeCache || !TropaEdgeCache.len)
-		TropaEdgeCache = list()
-		TropaEdgeCache.len = 10
-		TropaEdgeCache[NORTH] = image('icons/stalker/tropa.dmi', "tropa_side_n", layer = 2.01)
-		TropaEdgeCache[SOUTH] = image('icons/stalker/tropa.dmi', "tropa_side_s", layer = 2.01)
-		TropaEdgeCache[EAST] = image('icons/stalker/tropa.dmi', "tropa_side_e", layer = 2.01)
-		TropaEdgeCache[WEST] = image('icons/stalker/tropa.dmi', "tropa_side_w", layer = 2.01)
+/turf/stalker/floor/trail/New()
+	if(!TrailEdgeCache || !TrailEdgeCache.len)
+		TrailEdgeCache = list()
+		TrailEdgeCache.len = 10
+		TrailEdgeCache[NORTH] = image('icons/stalker/trail.dmi', "trail_n", layer = 2.02)
+		TrailEdgeCache[SOUTH] = image('icons/stalker/trail.dmi', "trail_s", layer = 2.02)
+		TrailEdgeCache[EAST] = image('icons/stalker/trail.dmi', "trail_e", layer = 2.02)
+		TrailEdgeCache[WEST] = image('icons/stalker/trail.dmi', "trail_w", layer = 2.02)
+		TrailEdgeCache[NORTHEAST] = image('icons/stalker/trail.dmi', "trail_ne", layer = 2.02)
+		TrailEdgeCache[NORTHWEST] = image('icons/stalker/trail.dmi', "trail_nw", layer = 2.02)
+		TrailEdgeCache[SOUTHEAST] = image('icons/stalker/trail.dmi', "trail_se", layer = 2.02)
+		TrailEdgeCache[SOUTHWEST] = image('icons/stalker/trail.dmi', "trail_sw", layer = 2.02)
 
-	spawn(1)
+	spawn(2)
 		var/turf/T
-		for(var/i = 0, i <= 3, i++)
-			if(!get_step(src, 2**i))
+		for(var/i in alldirs)
+			if(!get_step(src, i))
 				continue
-			if(overlay_priority > get_step(src, 2**i).overlay_priority)
-				T = get_step(src, 2**i)
+			if(overlay_priority > get_step(src, i).overlay_priority)
+				T = get_step(src, i)
 				if(T)
-					T.overlays += TropaEdgeCache[2**i]
+					T.overlays += TrailEdgeCache[i]
 	return
 
 /turf/stalker/floor/road
 	name = "road"
-	icon = 'icons/stalker/building_road.dmi'
+	icon = 'icons/stalker/road.dmi'
 	icon_state = "road2"
 	layer = 2
 	overlay_priority = 3
 
-var/global/list/WhiteRoadCache
+/turf/stalker/floor/road/var/list/WhiteRoadCache
 
 /turf/stalker/floor/road/New()
 	switch(rand(1, 100))
@@ -250,53 +268,65 @@ var/global/list/WhiteRoadCache
 	if(!WhiteRoadCache || !WhiteRoadCache.len)
 		WhiteRoadCache = list()
 		WhiteRoadCache.len = 10
-		WhiteRoadCache[NORTH] = image('icons/effects/warning_stripes.dmi', "road_b5", layer = 2.01)
-		WhiteRoadCache[SOUTH] = image('icons/effects/warning_stripes.dmi', "road_b6", layer = 2.01)
-		WhiteRoadCache[EAST] = image('icons/effects/warning_stripes.dmi', "road_b8", layer = 2.01)
-		WhiteRoadCache[WEST] = image('icons/effects/warning_stripes.dmi', "road_b7", layer = 2.01)
+		WhiteRoadCache[NORTH] = image('icons/stalker/road.dmi', "road_n", layer = 2.03)
+		WhiteRoadCache[SOUTH] = image('icons/stalker/road.dmi', "road_s", layer = 2.03)
+		WhiteRoadCache[EAST] = image('icons/stalker/road.dmi', "road_e", layer = 2.03)
+		WhiteRoadCache[WEST] = image('icons/stalker/road.dmi', "road_w", layer = 2.03)
+		WhiteRoadCache[NORTHEAST] = image('icons/stalker/road.dmi', "road_ne", layer = 2.03)
+		WhiteRoadCache[NORTHWEST] = image('icons/stalker/road.dmi', "road_nw", layer = 2.03)
+		WhiteRoadCache[SOUTHEAST] = image('icons/stalker/road.dmi', "road_se", layer = 2.03)
+		WhiteRoadCache[SOUTHWEST] = image('icons/stalker/road.dmi', "road_sw", layer = 2.03)
 
-	spawn(1)
-		for(var/i = 0, i <= 3, i++)
-			if(!get_step(src, 2**i) || (!istype(get_step(src, 2**i), src.type) && !get_step(src, 2**i).overlay_priority))
-				src.overlays += WhiteRoadCache[2**i]
-
+	spawn
+		var/turf/T
+		for(var/i in alldirs)
+			if(!get_step(src, i))
+				continue
+			if(overlay_priority > get_step(src, i).overlay_priority)
+				T = get_step(src, i)
+				if(T)
+					T.overlays += WhiteRoadCache[i]
 	return
 
-/turf/stalker/floor/gryaz
+/turf/stalker/floor/dirt
 	name = "dirt"
-	icon = 'icons/stalker/zemlya.dmi'
-	icon_state = "gryaz1"
+	icon = 'icons/stalker/dirt.dmi'
+	icon_state = "dirt1"
 	layer = 2.01
-	overlay_priority = 4
+	overlay_priority = 1
 
-var/global/list/GryazEdgeCache
+/turf/stalker/floor/dirt/var/list/DirtEdgeCache
 
-/turf/stalker/floor/gryaz/New()
-	icon_state = "gryaz[rand(1, 3)]"
-	if(!GryazEdgeCache || !GryazEdgeCache.len)
-		GryazEdgeCache = list()
-		GryazEdgeCache.len = 10
-		GryazEdgeCache[NORTH] = image('icons/stalker/zemlya.dmi', "gryaz_side_n", layer = 2.01)
-		GryazEdgeCache[SOUTH] = image('icons/stalker/zemlya.dmi', "gryaz_side_s", layer = 2.01)
-		GryazEdgeCache[EAST] = image('icons/stalker/zemlya.dmi', "gryaz_side_e", layer = 2.01)
-		GryazEdgeCache[WEST] = image('icons/stalker/zemlya.dmi', "gryaz_side_w", layer = 2.01)
+/turf/stalker/floor/dirt/New()
+	icon_state = "dirt[rand(1, 3)]"
+	if(!DirtEdgeCache || !DirtEdgeCache.len)
+		DirtEdgeCache = list()
+		DirtEdgeCache.len = 10
+		DirtEdgeCache[NORTH] = image('icons/stalker/dirt.dmi', "dirt_n", layer = 2.01)
+		DirtEdgeCache[SOUTH] = image('icons/stalker/dirt.dmi', "dirt_s", layer = 2.01)
+		DirtEdgeCache[EAST] = image('icons/stalker/dirt.dmi', "dirt_e", layer = 2.01)
+		DirtEdgeCache[WEST] = image('icons/stalker/dirt.dmi', "dirt_w", layer = 2.01)
+		DirtEdgeCache[NORTHEAST] = image('icons/stalker/dirt.dmi', "dirt_ne", layer = 2.01)
+		DirtEdgeCache[NORTHWEST] = image('icons/stalker/dirt.dmi', "dirt_nw", layer = 2.01)
+		DirtEdgeCache[SOUTHEAST] = image('icons/stalker/dirt.dmi', "dirt_se", layer = 2.01)
+		DirtEdgeCache[SOUTHWEST] = image('icons/stalker/dirt.dmi', "dirt_se", layer = 2.01)
 
 	spawn(1)
 		var/turf/T
-		for(var/i = 0, i <= 3, i++)
-			if(!get_step(src, 2**i))
+		for(var/i in alldirs)
+			if(!get_step(src, i))
 				continue
-			if(overlay_priority > get_step(src, 2**i).overlay_priority)
-				T = get_step(src, 2**i)
+			if(overlay_priority > get_step(src, i).overlay_priority)
+				T = get_step(src, i)
 				if(T)
-					T.overlays += GryazEdgeCache[2**i]
+					T.overlays += DirtEdgeCache[i]
 	return
 
-/turf/stalker/floor/gryaz/gryaz2
-	icon_state = "gryaz2"
+/turf/stalker/floor/dirt/dirt2
+	icon_state = "dirt2"
 
-/turf/stalker/floor/gryaz/gryaz3
-	icon_state = "gryaz3"
+/turf/stalker/floor/dirt/dirt3
+	icon_state = "dirt3"
 
 /obj/structure/stalker/rails
 	name = "rails"
@@ -444,28 +474,30 @@ var/global/list/GryazEdgeCache
 		L.update_top_overlay()
 		flick("water_splash_movement", src)
 
-var/global/list/WaterEdgeCache
+/turf/stalker/floor/water/var/list/WaterEdgeCache
 
 /turf/stalker/floor/water/New()
 	if(!WaterEdgeCache || !WaterEdgeCache.len)
 		WaterEdgeCache = list()
 		WaterEdgeCache.len = 10
-		WaterEdgeCache[NORTH] = image('icons/stalker/water.dmi', "water_north", layer = 2.01)
-		WaterEdgeCache[SOUTH] = image('icons/stalker/water.dmi', "water_south", layer = 2.01)
-		WaterEdgeCache[EAST] = image('icons/stalker/water.dmi', "water_east", layer = 2.01)
-		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
-		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
-		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
+		WaterEdgeCache[NORTH] = image('icons/stalker/water.dmi', "water_n", layer = 2.05)
+		WaterEdgeCache[SOUTH] = image('icons/stalker/water.dmi', "water_s", layer = 2.05)
+		WaterEdgeCache[EAST] = image('icons/stalker/water.dmi', "water_e", layer = 2.05)
+		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_w", layer = 2.05)
+		WaterEdgeCache[NORTHEAST] = image('icons/stalker/water.dmi', "water_ne", layer = 2.05)
+		WaterEdgeCache[NORTHWEST] = image('icons/stalker/water.dmi', "water_nw", layer = 2.05)
+		WaterEdgeCache[SOUTHEAST] = image('icons/stalker/water.dmi', "water_se", layer = 2.05)
+		WaterEdgeCache[SOUTHWEST] = image('icons/stalker/water.dmi', "water_sw", layer = 2.05)
 
-	spawn(1)
+	spawn(5)
 		var/turf/T
-		for(var/i = 0, i <= 3, i++)
-			if(!get_step(src, 2**i))
+		for(var/i in alldirs)
+			if(!get_step(src, i))
 				continue
-			if(overlay_priority > get_step(src, 2**i).overlay_priority)
-				T = get_step(src, 2**i)
+			if(overlay_priority > get_step(src, i).overlay_priority)
+				T = get_step(src, i)
 				if(T)
-					T.overlays += WaterEdgeCache[2**i]
+					T.overlays += WaterEdgeCache[i]
 	return
 
 /turf/stalker/floor/wood
@@ -474,6 +506,7 @@ var/global/list/WaterEdgeCache
 
 /turf/stalker/floor/wood/doski
 	icon_state = "dosochki"
+	overlay_priority = 6
 
 /turf/stalker/floor/wood/doski/Entered(atom/movable/A)
 	if(istype(A, /mob/living))

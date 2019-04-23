@@ -166,33 +166,6 @@
 				dat += "[sig]<BR>"
 			usr << browse(dat, "window=lawchanges;size=800x500")
 
-		if("moveminingshuttle")
-			if(!check_rights(R_ADMIN))
-				return
-			feedback_inc("admin_secrets_fun_used",1)
-			feedback_add_details("admin_secrets_fun_used","ShM")
-			if(!SSshuttle.toggleShuttle("mining","KPP","Agroprom"))
-				message_admins("[key_name_admin(usr)] moved helicopter")
-				log_admin("[key_name(usr)] moved the helicopter")
-
-		if("movelaborshuttle")
-			if(!check_rights(R_ADMIN))
-				return
-			feedback_inc("admin_secrets_fun_used",1)
-			feedback_add_details("admin_secrets_fun_used","ShL")
-			if(!SSshuttle.toggleShuttle("laborcamp","laborcamp_home","laborcamp_away"))
-				message_admins("[key_name_admin(usr)] moved labor shuttle")
-				log_admin("[key_name(usr)] moved the labor shuttle")
-
-		if("moveferry")
-			if(!check_rights(R_ADMIN))
-				return
-			feedback_inc("admin_secrets_fun_used",1)
-			feedback_add_details("admin_secrets_fun_used","ShF")
-			if(!SSshuttle.toggleShuttle("ferry","ferry_home","ferry_away"))
-				message_admins("[key_name_admin(usr)] moved the centcom ferry")
-				log_admin("[key_name(usr)] moved the centcom ferry")
-
 		if("showailaws")
 			if(!check_rights(R_ADMIN))
 				return

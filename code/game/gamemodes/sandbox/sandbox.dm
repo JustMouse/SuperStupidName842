@@ -11,7 +11,3 @@
 	for(var/mob/M in player_list)
 		M.CanBuild()
 	return 1
-
-/datum/game_mode/sandbox/post_setup()
-	..()
-	SSshuttle.emergencyNoEscape = 1

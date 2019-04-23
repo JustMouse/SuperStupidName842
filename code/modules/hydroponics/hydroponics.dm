@@ -412,16 +412,6 @@
 		update_icon()
 		dead = 1
 
-
-/obj/machinery/hydroponics/proc/mutatepest()
-	if(pestlevel > 5)
-		visible_message("The pests seem to behave oddly...")
-		for(var/i=0, i<3, i++)
-			var/obj/effect/spider/spiderling/S = new(src.loc)
-			S.grow_as = /mob/living/simple_animal/hostile/poison/giant_spider/hunter
-	else
-		usr << "The pests seem to behave oddly, but quickly settle down..."
-
 /obj/machinery/hydroponics/proc/applyChemicals(datum/reagents/S)
 
 	if(myseed)
@@ -436,7 +426,6 @@
 			if(41 to 65)	mutate()
 			if(21 to 41)	usr << "The plants don't seem to react..."
 			if(11 to 20)	mutateweed()
-			if(1 to 10)		mutatepest()
 			else 			usr << "Nothing happens..."
 
 	// 2 or 1 units is enough to change the yield and other stats.// Can change the yield and other stats, but requires more than mutagen
@@ -625,8 +614,6 @@
 		switch(rand(100))
 			if(66  to 100)	mutatespecie()
 			if(33	to 65)	mutateweed()
-			if(1   to 32)	mutatepest()
-			else 			usr << "Nothing happens..."
 
 /obj/machinery/hydroponics/attackby(obj/item/O, mob/user, params)
 

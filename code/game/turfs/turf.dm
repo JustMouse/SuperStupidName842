@@ -33,7 +33,7 @@
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-	spawn(100)
+	spawn
 		if(locate(/obj/structure/stalker/window) in contents)  //stalkerfixs
 			opacity = 0
 			windowed = 1
@@ -300,7 +300,7 @@
 	explosion_block = 50
 
 /turf/indestructible/splashscreen
-	name = "Space Station 13"
+	name = "O.B.O.S.R.A.L.K.E.R."
 	icon = 'icons/misc/sand_room.dmi'
 	icon_state = "title"
 	layer = FLY_LAYER

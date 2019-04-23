@@ -90,7 +90,7 @@
 	var/stunned = 0
 
 	var/stamina = 100 //Living stalker
-
+	var/busy = 0
 	var/weakened = 0
 	var/losebreath = 0//Carbon
 	var/a_intent = "help"//Living

@@ -211,7 +211,6 @@
 	var/list/blacklist = list(
 		/mob/living,
 		/obj/effect/blob,
-		/obj/effect/spider/spiderling,
 		/obj/item/weapon/disk/nuclear,
 		/obj/machinery/nuclearbomb,
 		/obj/item/device/radio/beacon,
@@ -282,17 +281,12 @@
 			temp = "<div class='statusDisplay'><b>Supply points: [SSshuttle.points]</b><BR>"
 			temp += "<A href='?src=\ref[src];order=categories'>Back to all categories</A><BR></div><BR>"
 			temp += "<b>Request from: [get_supply_group_name(cat)]</b><BR><BR>"
-			for(var/supply_type in SSshuttle.supply_packs )
-				var/datum/supply_packs/N = SSshuttle.supply_packs[supply_type]
-				if(N.hidden || N.contraband || N.group != cat) continue												//Have to send the type instead of a reference to
-				temp += "<A href='?src=\ref[src];doorder=[supply_type]'>[N.name]</A> Cost: [N.cost]<BR>"		//the obj because it would get caught by the garbage
 	else if (href_list["doorder"])
 		if(world.time < reqtime)
 			say("[world.time - reqtime] seconds remaining until another requisition form may be printed.")
 			return
 
 		//Find the correct supply_pack datum
-		if(!SSshuttle.supply_packs["[href_list["doorder"]]"])	return
 
 		var/timeout = world.time + 600
 		var/reason = sanitize_russian(stripped_input(usr,"Reason:","Why do you require this item?",""), 1)

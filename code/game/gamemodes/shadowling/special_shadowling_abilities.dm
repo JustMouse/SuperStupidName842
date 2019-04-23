@@ -116,8 +116,6 @@ var/list/possibleShadowlingNames = list("Controller") //Unpronouncable 2: electr
 				H.invisibility = 60 //This is pretty bad, but is also necessary for the shuttle call to function properly
 				H.loc = A
 				sleep(50)
-				if(!ticker.mode.shadowling_ascended)
-					SSshuttle.emergency.request(null, 0.3)
 				ticker.mode.shadowling_ascended = 1
 				A.mind.remove_spell(src)
 				qdel(H)

@@ -129,18 +129,6 @@
 	var/turf_type = /turf/space
 	var/area_type = /area/space
 
-/obj/docking_port/stationary/New()
-	..()
-	SSshuttle.stationary += src
-	if(!id)
-		id = "[SSshuttle.stationary.len]"
-	if(name == "dock")
-		name = "dock[SSshuttle.stationary.len]"
-
-	#ifdef DOCKING_PORT_HIGHLIGHT
-	highlight("#f00")
-	#endif
-
 //returns first-found touching shuttleport
 /obj/docking_port/stationary/get_docked()
 	return locate(/obj/docking_port/mobile) in loc
@@ -154,10 +142,6 @@
 /obj/docking_port/stationary/transit
 	name = "In Transit"
 	turf_type = /turf/space/transit
-
-/obj/docking_port/stationary/transit/New()
-	..()
-	SSshuttle.transit += src
 
 
 /obj/docking_port/mobile
@@ -178,16 +162,10 @@
 
 /obj/docking_port/mobile/New()
 	..()
-	SSshuttle.mobile += src
 
 	var/area/A = get_area(src)
 	if(istype(A, /area/shuttle))
 		areaInstance = A
-
-	if(!id)
-		id = "[SSshuttle.mobile.len]"
-	if(name == "shuttle")
-		name = "shuttle[SSshuttle.mobile.len]"
 
 	if(!areaInstance)
 		areaInstance = new()
@@ -248,7 +226,6 @@
 			destination = S
 			mode = SHUTTLE_CALL
 			timer = world.time
-			enterTransit()		//hyperspace
 
 //recall the shuttle to where it was previously
 /obj/docking_port/mobile/proc/cancel()
@@ -257,20 +234,6 @@
 
 	timer = world.time - timeLeft(1)
 	mode = SHUTTLE_RECALL
-
-/obj/docking_port/mobile/proc/enterTransit()
-	previous = null
-//		if(!destination)
-//			return
-	var/obj/docking_port/stationary/S0 = get_docked()
-	var/obj/docking_port/stationary/S1 = findTransitDock()
-	if(S1)
-		if(dock(S1))
-			WARNING("shuttle \"[id]\" could not enter transit space. Docked at [S0 ? S0.id : "null"]. Transit dock [S1 ? S1.id : "null"].")
-		else
-			previous = S0
-	else
-		WARNING("shuttle \"[id]\" could not enter transit space. S0=[S0 ? S0.id : "null"] S1=[S1 ? S1.id : "null"]")
 
 //default shuttleRotate
 /atom/proc/shuttleRotate(rotation)
@@ -423,20 +386,6 @@
 */
 
 
-
-/obj/docking_port/mobile/proc/findTransitDock()
-	var/obj/docking_port/stationary/transit/T = SSshuttle.getDock("[id]_transit")
-	if(T && !canDock(T))
-		return T
-/*	commented out due to issues with rotation
-	for(var/obj/docking_port/stationary/transit/S in SSshuttle.transit)
-		if(S.id)
-			continue
-		if(!canDock(S))
-			return S
-*/
-
-
 //shuttle-door closing is handled in the dock() proc whilst looping through turfs
 //this one closes the door where we are docked at, if there is one there.
 /obj/docking_port/mobile/proc/closePortDoors()
@@ -539,35 +488,6 @@
 		possible_destinations = C.possible_destinations
 		shuttleId = C.shuttleId
 
-/obj/machinery/computer/shuttle/attack_hand(mob/user)
-	if(..(user))
-		return
-	src.add_fingerprint(usr)
-
-	var/list/options = params2list(possible_destinations)
-	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-	var/dat = "Status: [M ? M.getStatusText() : "*Missing*"]<br><br>"
-	if(M)
-		var/destination_found
-		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
-			if(!options.Find(S.id))
-				continue
-			if(M.canDock(S))
-				continue
-			destination_found = 1
-			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
-		if(!destination_found)
-			dat += "<B>Shuttle Locked</B><br>"
-			if(admin_controlled)
-				dat += "Authorized personnel only<br>"
-				dat += "<A href='?src=\ref[src];request=1]'>Request Authorization</A><br>"
-	dat += "<a href='?src=\ref[user];mach_close=computer'>Close</a>"
-
-	var/datum/browser/popup = new(user, "computer", M ? M.name : "shuttle", 300, 200)
-	popup.set_content("<center>[dat]</center>")
-	popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
-	popup.open()
-
 /obj/machinery/computer/shuttle/Topic(href, href_list)
 	if(..())
 		return
@@ -577,12 +497,6 @@
 		usr << "<span class='danger'>Access denied.</span>"
 		return
 
-	if(href_list["move"])
-		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
-			if(0)	usr << "<span class='notice'>Shuttle received message and will be sent shortly.</span>"
-			if(1)	usr << "<span class='warning'>Invalid shuttle requested.</span>"
-			else	usr << "<span class='notice'>Unable to comply.</span>"
-
 /obj/machinery/computer/shuttle/emag_act(mob/user)
 	if(!emagged)
 		src.req_access = list()
@@ -590,7 +504,6 @@
 		user << "<span class='notice'>You fried the consoles ID checking system.</span>"
 
 /obj/machinery/computer/shuttle/ferry
-	name = "transport ferry console"
 	circuit = /obj/item/weapon/circuitboard/ferry
 	shuttleId = "ferry"
 	possible_destinations = "ferry_home;ferry_away"

@@ -19,7 +19,6 @@
 // CRAFTING //
 
 /obj/item/weaponcrafting/reciever/attackby(obj/item/W, mob/user, params)
-	if(istype(W,/obj/item/pipe))
 		user << "<span class='notice'>You attach the shotgun barrel to the receiver. The pins seem loose.</span>"
 		var/obj/item/weaponcrafting/ishotgunconstruction/I = new /obj/item/weaponcrafting/ishotgunconstruction
 		user.unEquip(src)

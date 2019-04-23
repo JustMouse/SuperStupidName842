@@ -4,7 +4,7 @@
 	icon_state = "derevo1"
 	density = 0
 	opacity = 0
-	layer = 9
+	layer = 4.9
 
 /obj/structure/stalker/tree/New()
 	icon_state = "derevo[rand(1, 5)]"

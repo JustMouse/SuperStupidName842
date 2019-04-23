@@ -22,22 +22,6 @@
 /datum/round_event/shuttle_loan/start()
 	dispatch_type = pick(HIJACK_SYNDIE, RUSKY_PARTY, SPIDER_GIFT, DEPARTMENT_RESUPPLY, ANTIDOTE_NEEDED)
 
-/datum/round_event/shuttle_loan/announce()
-	SSshuttle.shuttle_loan = src
-	switch(dispatch_type)
-		if(HIJACK_SYNDIE)
-			priority_announce("Cargo: The syndicate are trying to infiltrate your station. If you let them hijack your cargo shuttle, you'll save us a headache.","Centcom Counter Intelligence")
-		if(RUSKY_PARTY)
-			priority_announce("Cargo: A group of angry russians want to have a party, can you send them your cargo shuttle then make them disappear?","Centcom Russian Outreach Program")
-		if(SPIDER_GIFT)
-			priority_announce("Cargo: The Spider Clan has sent us a mysterious gift, can we ship it to you to see what's inside?","Centcom Diplomatic Corps")
-		if(DEPARTMENT_RESUPPLY)
-			priority_announce("Cargo: Seems we've ordered doubles of our department resupply packages this month. Can we send them to you?","Centcom Supply Department")
-			thanks_msg = "The cargo shuttle should return in 5 minutes."
-			bonus_points = 0
-		if(ANTIDOTE_NEEDED)
-			priority_announce("Cargo: Your station has been chosen for an epidemiological research project. Send us your cargo shuttle to receive your research samples.", "Centcom Research Initiatives")
-
 /datum/round_event/shuttle_loan/proc/loan_shuttle()
 	priority_announce(thanks_msg, "Cargo shuttle commandeered by Centcom.")
 
@@ -46,7 +30,6 @@
 	endWhen = activeFor + 1
 
 	SSshuttle.supply.sell()
-	SSshuttle.supply.enterTransit()
 	if(SSshuttle.supply.z != ZLEVEL_STATION)
 		SSshuttle.supply.mode = SHUTTLE_CALL
 		SSshuttle.supply.destination = SSshuttle.getDock("supply_home")
@@ -108,32 +91,20 @@
 				if(prob(50))
 					shuttle_spawns.Add(/mob/living/simple_animal/hostile/bear)
 
-			if(SPIDER_GIFT)
-				add_crates(list(/datum/supply_packs/emergency/specialops), empty_shuttle_turfs)
-				shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider)
-				shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider)
-				shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider/nurse)
-				if(prob(50))
-					shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider/hunter)
+//			if(SPIDER_GIFT)
+//				add_crates(list(/datum/supply_packs/emergency/specialops), empty_shuttle_turfs)
+//				shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider)
+//				shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider)
+//				shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider/nurse)
+//				if(prob(50))
+//					shuttle_spawns.Add(/mob/living/simple_animal/hostile/poison/giant_spider/hunter)
 
-				var/turf/T = pick(empty_shuttle_turfs)
-				empty_shuttle_turfs.Remove(T)
+//				var/turf/T = pick(empty_shuttle_turfs)
+//				empty_shuttle_turfs.Remove(T)
 
-				new /obj/effect/decal/remains/human(T)
-				new /obj/item/clothing/shoes/space_ninja(T)
-				new /obj/item/clothing/mask/balaclava(T)
-
-				T = pick(empty_shuttle_turfs)
-				new /obj/effect/spider/stickyweb(T)
-				T = pick(empty_shuttle_turfs)
-				new /obj/effect/spider/stickyweb(T)
-				T = pick(empty_shuttle_turfs)
-				new /obj/effect/spider/stickyweb(T)
-				T = pick(empty_shuttle_turfs)
-				new /obj/effect/spider/stickyweb(T)
-				T = pick(empty_shuttle_turfs)
-				new /obj/effect/spider/stickyweb(T)
-
+//				new /obj/effect/decal/remains/human(T)
+//				new /obj/item/clothing/shoes/space_ninja(T)
+//				new /obj/item/clothing/mask/balaclava(T)
 
 			if(ANTIDOTE_NEEDED)
 				var/virus_type = pick(/datum/disease/beesease, /datum/disease/brainrot, /datum/disease/fluspanish)

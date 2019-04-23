@@ -142,7 +142,7 @@ calculate the longest number of ticks the MC can wait between each cycle without
 #if DM_VERSION >= 510
 							var/tick_usage = world.tick_usage
 #endif
-							SS.fire(paused) // Fire the subsystem
+							SS.fire(paused) // Fire the subsystem //stalkerfixs
 #if DM_VERSION >= 510
 							if(priorityrunning)
 								priorityrunning--

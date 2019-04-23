@@ -1,28 +1,5 @@
-///////////////////////////////////////////////Одноразовый лутспавнер////////////////////////////////////////////////////////////////////////////////
-
-/obj/effect/spawner/lootdrop
-	icon = 'icons/mob/screen_gen.dmi'
-	icon_state = "x2"
-	color = "#00FF00"
-	var/lootcount = 1		//how many items will be spawned
-	var/lootdoubles = 1		//if the same item can be spawned twice
-	var/list/loot			//a list of possible items to spawn e.g. list(/obj/item, /obj/structure, /obj/effect)
-
-/obj/effect/spawner/lootdrop/New(cooldown)
-	if(loot && loot.len)
-		for(var/i = lootcount, i > 0, i--)
-			if(!loot.len) break
-			var/lootspawn = pickweight(loot)
-			if(!lootdoubles)
-				loot.Remove(lootspawn)
-
-			if(lootspawn)
-				new lootspawn(get_turf(src))
-	qdel(src)
-
-
-/obj/effect/spawner/lootdrop/stalker/stash_crate/low
-	name = "khabar loot spawner"
+/obj/effect/spawner/lootdrop/stash_crate/low
+	name = "loot spawner"
 
 	loot = list(/obj/structure/closet/crate/stalker/blue/stash/low = 80,
 				"" = 20)
@@ -52,7 +29,7 @@
 				"" = 10
 				)
 */
-/obj/effect/spawner/lootdrop/stalker/stash_crate/medium
+/obj/effect/spawner/lootdrop/stash_crate/medium
 	name = "khabar loot spawner"
 
 	loot = list(
@@ -60,7 +37,7 @@
 				"" = 50
 				)
 
-/obj/effect/spawner/lootdrop/stalker/stash_crate/high
+/obj/effect/spawner/lootdrop/stash_crate/high
 	name = "khabar loot spawner"
 
 	loot = list(
@@ -68,12 +45,12 @@
 				"" = 90
 				)
 
-/obj/effect/spawner/lootdrop/stalker/weapon
+/obj/effect/spawner/lootdrop/weapon
 	lootcount = 1
 	loot = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm = 85,
 				/obj/item/trash/can = 15)
 
-/obj/effect/spawner/lootdrop/stalker/armory_contraband
+/obj/effect/spawner/lootdrop/armory_contraband
 	name = "armory contraband gun spawner"
 	lootdoubles = 0
 
@@ -152,7 +129,7 @@
 				"" = 11
 				)
 
-/obj/effect/spawner/lootdrop/stalker/crate_spawner
+/obj/effect/spawner/lootdrop/crate_spawner
 	name = "lootcrate spawner"
 	lootdoubles = 0
 
@@ -161,28 +138,11 @@
 				"" = 70
 				)
 
-	//How to balance this table
-	//-------------------------
-	//The total added weight of all the entries should be (roughly) equal to the total number of lootdrops
-	//(take in account those that spawn more than one object!)
-	//
-	//While this is random, probabilities tells us that item distribution will have a tendency to look like
-	//the content of the weighted table that created them.
-	//The less lootdrops, the less even the distribution.
-	//
-	//If you want to give items a weight <1 you can multiply all the weights by 10
-	//
-	//the "" entry will spawn nothing, if you increase this value,
-	//ensure that you balance it with more spawn points
+/obj/effect/spawner/lootdrop/cooldown_enable/crate_spawner
+	name = "lootcrate spawner"
+	lootdoubles = 0
 
-	//table data:
-	//-----------
-	//aft maintenance: 		24 items, 18 spots 2 extra (28/08/2014)
-	//asmaint: 				16 items, 11 spots 0 extra (08/08/2014)
-	//asmaint2:			 	36 items, 26 spots 2 extra (28/08/2014)
-	//fpmaint:				5  items,  4 spots 0 extra (08/08/2014)
-	//fpmaint2:				12 items, 11 spots 2 extra (28/08/2014)
-	//fsmaint:				0  items,  0 spots 0 extra (08/08/2014)
-	//fsmaint2:				40 items, 27 spots 5 extra (28/08/2014)
-	//maintcentral:			2  items,  2 spots 0 extra (08/08/2014)
-	//port:					5  items,  5 spots 0 extra (08/08/2014)
+	loot = list(
+				/obj/structure/barricade/stalker/box = 30,
+				"" = 70
+				)

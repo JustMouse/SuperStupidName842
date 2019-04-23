@@ -55,12 +55,6 @@
 
 // timed process
 
-/obj/machinery/status_display/process()
-	if(stat & NOPOWER)
-		remove_display()
-		return
-	update()
-
 /obj/machinery/status_display/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
@@ -69,72 +63,6 @@
 	..(severity)
 
 // set what is displayed
-
-/obj/machinery/status_display/proc/update()
-	if(friendc && mode!=4) //Makes all status displays except supply shuttle timer display the eye -- Urist
-		set_picture("ai_friend")
-		return
-
-	switch(mode)
-		if(0)				//blank
-			remove_display()
-		if(1)				//emergency shuttle timer
-			if(SSshuttle.emergency.timer)
-				var/line1
-				var/line2 = get_shuttle_timer()
-				switch(SSshuttle.emergency.mode)
-					if(SHUTTLE_RECALL)
-						line1 = "-RCL-"
-					if(SHUTTLE_CALL)
-						line1 = "-ETA-"
-					if(SHUTTLE_DOCKED)
-						line1 = "-ETD-"
-					if(SHUTTLE_ESCAPE)
-						line1 = "-ESC-"
-					if(SHUTTLE_STRANDED)
-						line1 = "-ERR-"
-						line2 = "??:??"
-				if(length(line2) > CHARS_PER_LINE)
-					line2 = "Error!"
-				update_display(line1, line2)
-			else
-				remove_display()
-		if(2)				//custom messages
-			var/line1
-			var/line2
-
-			if(!index1)
-				line1 = message1
-			else
-				line1 = copytext(message1+"|"+message1, index1, index1+CHARS_PER_LINE)
-				var/message1_len = length(message1)
-				index1 += SCROLL_SPEED
-				if(index1 > message1_len)
-					index1 -= message1_len
-
-			if(!index2)
-				line2 = message2
-			else
-				line2 = copytext(message2+"|"+message2, index2, index2+CHARS_PER_LINE)
-				var/message2_len = length(message2)
-				index2 += SCROLL_SPEED
-				if(index2 > message2_len)
-					index2 -= message2_len
-			update_display(line1, line2)
-		if(4)				// supply shuttle timer
-			var/line1
-			var/line2
-			if(SSshuttle.supply.mode == SHUTTLE_IDLE)
-				if(SSshuttle.supply.z == ZLEVEL_STATION)
-					line1 = "CARGO"
-					line2 = "Docked"
-			else
-				line1 = "CARGO"
-				line2 = get_supply_shuttle_timer()
-				if(lentext(line2) > CHARS_PER_LINE)
-					line2 = "Error"
-
-			update_display(line1, line2)
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
@@ -167,18 +95,6 @@
 	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
-
-/obj/machinery/status_display/proc/get_shuttle_timer()
-	var/timeleft = SSshuttle.emergency.timeLeft()
-	if(timeleft > 0)
-		return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
-	return "00:00"
-
-/obj/machinery/status_display/proc/get_supply_shuttle_timer()
-	var/timeleft = SSshuttle.supply.timeLeft()
-	if(timeleft > 0)
-		return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
-	return "00:00"
 
 /obj/machinery/status_display/proc/remove_display()
 	if(overlays.len)

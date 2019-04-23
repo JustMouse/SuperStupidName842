@@ -62,11 +62,11 @@
 	name = "Wild Shapeshift"
 	desc = "Change into a variety of forms. Most of them deadly. Or inconspicious"
 
-	var/list/possible_shapes = list(/mob/living/simple_animal/pet/dog/corgi,\
+//	var/list/possible_shapes = list(/mob/living/simple_animal/pet/dog/corgi,\
 		/mob/living/simple_animal/hostile/poison/giant_spider/hunter,\
 		/mob/living/simple_animal/hostile/carp/megacarp,\
 		/mob/living/simple_animal/hostile/construct/armored)
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/wild/New()
 	..()
-	shapeshift_type = pick(possible_shapes)
+//	shapeshift_type = pick(possible_shapes)

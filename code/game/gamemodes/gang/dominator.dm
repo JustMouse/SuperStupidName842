@@ -71,50 +71,10 @@
 		sparks.start()
 		overlays += "damage"
 
-	if(operating != -1)
-		if(health <= 0)
-			set_broken()
-		else
-			icon_state = iconname
-
 	if(health <= -100)
 		new /obj/item/stack/sheet/plasteel(src.loc)
 		qdel(src)
 
-/obj/machinery/dominator/proc/set_broken()
-	if(gang)
-		gang.dom_timer = "OFFLINE"
-
-		var/takeover_in_progress = 0
-		for(var/datum/gang/G in ticker.mode.gangs)
-			if(isnum(G.dom_timer))
-				takeover_in_progress = 1
-				break
-		if(!takeover_in_progress)
-			SSshuttle.emergencyNoEscape = 0
-			if(SSshuttle.emergency.mode == SHUTTLE_STRANDED)
-				SSshuttle.emergency.mode = SHUTTLE_DOCKED
-				SSshuttle.emergency.timer = world.time
-				priority_announce("Hostile enviroment resolved. You have 3 minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
-			else
-				priority_announce("All hostile activity within station systems have ceased.","Network Alert")
-
-			if(get_security_level() == "delta")
-				set_security_level("red")
-
-		gang.message_gangtools("Hostile takeover cancelled: Dominator is no longer operational.[gang.dom_attempts ? " You have [gang.dom_attempts] attempt remaining." : " The station network will have likely blocked any more attempts by us."]",1,1)
-
-	set_light(0)
-	icon_state = "dominator-broken"
-	overlays.Cut()
-	operating = -1
-	SSmachine.processing -= src
-
-/obj/machinery/dominator/Destroy()
-	if(operating != -1)
-		set_broken()
-	poi_list.Remove(src)
-	return ..()
 
 /obj/machinery/dominator/emp_act(severity)
 	healthcheck(100)

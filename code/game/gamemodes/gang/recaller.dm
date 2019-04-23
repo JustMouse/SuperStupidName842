@@ -397,13 +397,6 @@
 	gang.message_gangtools("[usr] is attempting to recall the emergency shuttle.")
 	recalling = 1
 	loc << "<span class='info'>\icon[src]Generating shuttle recall order with codes retrieved from last call signal...</span>"
-
-	sleep(rand(100,300))
-
-	if(SSshuttle.emergency.mode != SHUTTLE_CALL) //Shuttle can only be recalled when it's moving to the station
-		user << "<span class='warning'>\icon[src]Emergency shuttle cannot be recalled at this time.</span>"
-		recalling = 0
-		return 0
 	loc << "<span class='info'>\icon[src]Shuttle recall order generated. Accessing station long-range communication arrays...</span>"
 
 	sleep(rand(100,300))
@@ -433,8 +426,7 @@
 	message_admins("[key_name_admin(user)] has tried to recall the shuttle with a gangtool.", 1)
 	userturf = get_turf(user)
 	if(userturf.z == 1) //Check one more time that they are on station.
-		if(SSshuttle.cancelEvac(user))
-			return 1
+		return 1
 
 	loc << "<span class='info'>\icon[src]No response recieved. Emergency shuttle cannot be recalled at this time.</span>"
 	return 0

@@ -239,17 +239,6 @@
 	time = 5
 	category = CAT_AMMO
 
-/datum/table_recipe/ishotgun
-	name = "Improvised Shotgun"
-	result = /obj/item/weapon/gun/projectile/revolver/doublebarrel/improvised
-	reqs = list(/obj/item/weaponcrafting/reciever = 1,
-				/obj/item/pipe = 1,
-				/obj/item/weaponcrafting/stock = 1,
-				/obj/item/stack/packageWrap = 5,)
-	tools = list(/obj/item/weapon/screwdriver)
-	time = 200
-	category = CAT_WEAPON
-
 /datum/table_recipe/chainsaw
 	name = "Chainsaw"
 	result = /obj/item/weapon/twohanded/required/chainsaw
