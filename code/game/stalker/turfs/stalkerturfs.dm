@@ -36,7 +36,7 @@
 		if(src == /obj/structure/grille/stalker/beton)
 			return 0
 		return 1
-	if(src.icon_state="fence5")
+	if(src.icon_state == "fence5")
 		return 0
 	switch(src.icon_state)
 		if("fence0","fence1")
